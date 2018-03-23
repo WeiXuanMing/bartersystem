@@ -25,8 +25,10 @@ public class UserServiceImpl implements UserService{
         return null;
     }
     //添加用户
-    public Integer addUser(User user) {
-        return userMapper.insert(user);
+    public boolean addUser(User user) {
+        Integer i = userMapper.insert(user);
+        if(i == 0){ return false;}
+        if (i == 1){return true;}
 
     }
     //更新用户信息
@@ -35,5 +37,27 @@ public class UserServiceImpl implements UserService{
         UserExample.Criteria criteria = userExample.createCriteria();
         criteria.andUidEqualTo(user.getUid());
         return userMapper.updateByExample(user,userExample);
+    }
+
+    public User queryByLoginAccount(String LoginAccount) {
+        UserExample userExample = new UserExample();
+        UserExample.Criteria criteria = userExample.createCriteria();
+        criteria.andLoginAccountEqualTo(LoginAccount);
+        List<User> users = userMapper.selectByExample(userExample);
+        if (users.size()==1){
+            return users.get(0);
+        }
+        return null;
+    }
+
+    public User queryByUsername(String username) {
+        UserExample userExample = new UserExample();
+        UserExample.Criteria criteria = userExample.createCriteria();
+        criteria.andUsernameEqualTo(username);
+        List<User> users = userMapper.selectByExample(userExample);
+        if (users.size()==1){
+            return users.get(0);
+        }
+        return null;
     }
 }

@@ -1,11 +1,8 @@
 package com.daming.bartersystem.dao;
 
 import com.daming.bartersystem.entitys.AdminInformation;
-
-import java.util.List;
-
-
 import com.daming.bartersystem.entitys.AdminInformationExample;
+import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 public interface AdminInformationMapper {

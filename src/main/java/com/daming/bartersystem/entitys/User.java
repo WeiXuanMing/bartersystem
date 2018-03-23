@@ -373,7 +373,13 @@ public class User {
         this.state = state;
         this.isdel = isdel;
     }
-
+    public User(String loginAccount, String username, String password, String phone, String email){
+        this.loginAccount = loginAccount;
+        this.username = username;
+        this.password = password;
+        this.phone = phone;
+        this.email = email;
+    }
     @Override
     public String toString() {
         return "User{" +

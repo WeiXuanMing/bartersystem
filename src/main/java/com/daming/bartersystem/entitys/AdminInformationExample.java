@@ -404,52 +404,62 @@ public class AdminInformationExample {
             return (Criteria) this;
         }
 
-        public Criteria andPasswordEqualTo(Integer value) {
+        public Criteria andPasswordEqualTo(String value) {
             addCriterion("password =", value, "password");
             return (Criteria) this;
         }
 
-        public Criteria andPasswordNotEqualTo(Integer value) {
+        public Criteria andPasswordNotEqualTo(String value) {
             addCriterion("password <>", value, "password");
             return (Criteria) this;
         }
 
-        public Criteria andPasswordGreaterThan(Integer value) {
+        public Criteria andPasswordGreaterThan(String value) {
             addCriterion("password >", value, "password");
             return (Criteria) this;
         }
 
-        public Criteria andPasswordGreaterThanOrEqualTo(Integer value) {
+        public Criteria andPasswordGreaterThanOrEqualTo(String value) {
             addCriterion("password >=", value, "password");
             return (Criteria) this;
         }
 
-        public Criteria andPasswordLessThan(Integer value) {
+        public Criteria andPasswordLessThan(String value) {
             addCriterion("password <", value, "password");
             return (Criteria) this;
         }
 
-        public Criteria andPasswordLessThanOrEqualTo(Integer value) {
+        public Criteria andPasswordLessThanOrEqualTo(String value) {
             addCriterion("password <=", value, "password");
             return (Criteria) this;
         }
 
-        public Criteria andPasswordIn(List<Integer> values) {
+        public Criteria andPasswordLike(String value) {
+            addCriterion("password like", value, "password");
+            return (Criteria) this;
+        }
+
+        public Criteria andPasswordNotLike(String value) {
+            addCriterion("password not like", value, "password");
+            return (Criteria) this;
+        }
+
+        public Criteria andPasswordIn(List<String> values) {
             addCriterion("password in", values, "password");
             return (Criteria) this;
         }
 
-        public Criteria andPasswordNotIn(List<Integer> values) {
+        public Criteria andPasswordNotIn(List<String> values) {
             addCriterion("password not in", values, "password");
             return (Criteria) this;
         }
 
-        public Criteria andPasswordBetween(Integer value1, Integer value2) {
+        public Criteria andPasswordBetween(String value1, String value2) {
             addCriterion("password between", value1, value2, "password");
             return (Criteria) this;
         }
 
-        public Criteria andPasswordNotBetween(Integer value1, Integer value2) {
+        public Criteria andPasswordNotBetween(String value1, String value2) {
             addCriterion("password not between", value1, value2, "password");
             return (Criteria) this;
         }

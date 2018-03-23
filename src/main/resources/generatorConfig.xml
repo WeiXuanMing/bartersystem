@@ -56,14 +56,13 @@
         <table tableName="shopping_trolley_item" domainObjectName="ShoppingTrolleyItem" />
         <table tableName="shopping_trolley" domainObjectName="ShoppingTrolley" />
 
-        -->
         <table tableName="barter_order" domainObjectName="BarterOrder" />
         <table tableName="barter_order_item" domainObjectName="BarterOrderItem" />
-        <!--
         <table tableName="item" domainObjectName="Item" />
         <table tableName="classification" domainObjectName="Classification" />
-        <table tableName="admin_information" domainObjectName="AdminInformation" />
+
         -->
+        <table tableName="admin_information" domainObjectName="AdminInformation" />
         <!--<table tableName="user_review" domainObjectName="UserReview" />-->
         <!-- enableCountByExample="false" enableUpdateByExample="false"
         enableDeleteByExample="false" enableSelectByExample="false"

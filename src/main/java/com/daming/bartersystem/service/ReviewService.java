@@ -5,8 +5,8 @@ import com.daming.bartersystem.entitys.UserReview;
 import java.util.List;
 
 public interface ReviewService {
-    public List<UserReview> QueryByItemId(Integer itemId);
+     List<UserReview> QueryByItemId(Integer itemId);
 
-    public Integer addReview(UserReview userReview);
+     Integer addReview(UserReview userReview);
 
 }

@@ -9,7 +9,7 @@
     <id column="admin_id" jdbcType="INTEGER" property="adminId" />
     <result column="login_account" jdbcType="VARCHAR" property="loginAccount" />
     <result column="username" jdbcType="VARCHAR" property="username" />
-    <result column="password" jdbcType="INTEGER" property="password" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <!--
@@ -138,7 +138,7 @@
     insert into admin_information (admin_id, login_account, username, 
       password)
     values (#{adminId,jdbcType=INTEGER}, #{loginAccount,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, 
-      #{password,jdbcType=INTEGER})
+      #{password,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.daming.bartersystem.entitys.AdminInformation">
     <!--
@@ -171,7 +171,7 @@
         #{username,jdbcType=VARCHAR},
       </if>
       <if test="password != null">
-        #{password,jdbcType=INTEGER},
+        #{password,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -202,7 +202,7 @@
         username = #{record.username,jdbcType=VARCHAR},
       </if>
       <if test="record.password != null">
-        password = #{record.password,jdbcType=INTEGER},
+        password = #{record.password,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null">
@@ -218,7 +218,7 @@
     set admin_id = #{record.adminId,jdbcType=INTEGER},
       login_account = #{record.loginAccount,jdbcType=VARCHAR},
       username = #{record.username,jdbcType=VARCHAR},
-      password = #{record.password,jdbcType=INTEGER}
+      password = #{record.password,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -237,7 +237,7 @@
         username = #{username,jdbcType=VARCHAR},
       </if>
       <if test="password != null">
-        password = #{password,jdbcType=INTEGER},
+        password = #{password,jdbcType=VARCHAR},
       </if>
     </set>
     where admin_id = #{adminId,jdbcType=INTEGER}
@@ -250,7 +250,7 @@
     update admin_information
     set login_account = #{loginAccount,jdbcType=VARCHAR},
       username = #{username,jdbcType=VARCHAR},
-      password = #{password,jdbcType=INTEGER}
+      password = #{password,jdbcType=VARCHAR}
     where admin_id = #{adminId,jdbcType=INTEGER}
   </update>
 </mapper>

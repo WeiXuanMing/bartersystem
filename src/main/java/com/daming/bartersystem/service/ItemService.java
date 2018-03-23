@@ -5,12 +5,12 @@ import com.daming.bartersystem.entitys.Item;
 import java.util.List;
 
 public interface ItemService {
-    public Item query(Integer itemId);
+    Item query(Integer itemId);
 
-    public List<Item> queryList(String condition);
+    List<Item> queryList(String condition);
 
-    public List<Item> queryByUid(Integer uid);
+    List<Item> queryByUid(Integer uid);
 
-    public int update(Item item);
+    int update(Item item);
 
 }

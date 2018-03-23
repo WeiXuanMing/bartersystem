@@ -173,6 +173,12 @@
           <version>4.12</version>
           <scope>test</scope>
       </dependency>
+    <!--加入验证框架-->
+    <dependency>
+      <groupId>org.hibernate</groupId>
+      <artifactId>hibernate-validator</artifactId>
+      <version>5.4.2.Final</version>
+    </dependency>
   </dependencies>
   <build>
     <finalName>bartersystem</finalName>

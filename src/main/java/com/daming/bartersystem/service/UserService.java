@@ -4,9 +4,13 @@ import com.daming.bartersystem.entitys.User;
 
 public interface UserService {
 
-    public User queryByUid(Integer uid);
+     User queryByUid(Integer uid);
 
-    public Integer addUser(User user);
+     boolean addUser(User user);
 
-    public Integer updateUser(User user);
+     Integer updateUser(User user);
+
+     User queryByLoginAccount(String LoginAccount);
+
+     User queryByUsername(String username);
 }
