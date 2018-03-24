@@ -6,9 +6,11 @@ import com.daming.bartersystem.entitys.ShoppingTrolleyItemExample;
 import com.daming.bartersystem.service.ShoppingTrolleyItemService;
 import com.daming.bartersystem.service.ShoppingTrolleyService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class ShoppingTrolleyItemServiceImpl implements ShoppingTrolleyItemService{
     @Autowired
     private ShoppingTrolleyItemMapper shoppingTrolleyItemMapper;

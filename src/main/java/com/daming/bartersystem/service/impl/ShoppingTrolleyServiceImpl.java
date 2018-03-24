@@ -5,9 +5,11 @@ import com.daming.bartersystem.entitys.ShoppingTrolley;
 import com.daming.bartersystem.entitys.ShoppingTrolleyExample;
 import com.daming.bartersystem.service.ShoppingTrolleyService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class ShoppingTrolleyServiceImpl implements ShoppingTrolleyService{
 
     @Autowired

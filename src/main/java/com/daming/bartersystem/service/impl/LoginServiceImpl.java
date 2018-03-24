@@ -9,16 +9,18 @@ import com.daming.bartersystem.entitys.User;
 import com.daming.bartersystem.entitys.UserExample;
 import com.daming.bartersystem.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class LoginServiceImpl implements LoginService{
     @Autowired
     private UserMapper userMapper;
     @Autowired
     private AdminInformationMapper adminInformationMapper;
     public boolean checkLogin(Loginer Loginer) {
-        if (Loginer.getLogintype().equals("用户")){
+        if (Loginer.getLogintype().equals("user")){
             UserExample userExample = new UserExample();
             UserExample.Criteria criteria = userExample.createCriteria();
             criteria.andLoginAccountEqualTo(Loginer.getLoginAccount());
@@ -26,7 +28,7 @@ public class LoginServiceImpl implements LoginService{
             User user = userMapper.selectByExample(userExample).get(0);
             if(user != null) {return true;}
         }
-        if(Loginer.getLogintype().equals("管理员")){
+        if(Loginer.getLogintype().equals("admin")){
             AdminInformationExample adminInformationExample = new AdminInformationExample();
             AdminInformationExample.Criteria criteria = adminInformationExample.createCriteria();
             criteria.andLoginAccountEqualTo(Loginer.getLoginAccount());

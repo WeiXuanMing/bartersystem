@@ -5,9 +5,11 @@ import com.daming.bartersystem.entitys.UserReview;
 import com.daming.bartersystem.entitys.UserReviewExample;
 import com.daming.bartersystem.service.ReviewService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class ReviewServiceImpl implements ReviewService{
     @Autowired
     private UserReviewMapper userReviewMapper;

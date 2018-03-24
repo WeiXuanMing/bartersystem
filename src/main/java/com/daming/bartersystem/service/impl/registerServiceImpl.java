@@ -1,10 +1,14 @@
-package com.daming.bartersystem.service;
+package com.daming.bartersystem.service.impl;
 
 import com.daming.bartersystem.DTO.Register;
 import com.daming.bartersystem.entitys.User;
+import com.daming.bartersystem.service.UserService;
+import com.daming.bartersystem.service.registerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-public class registerServiceImpl implements registerService{
+@Service
+public class registerServiceImpl implements registerService {
 
     @Autowired
     private UserService userService;

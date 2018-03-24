@@ -1,14 +1,12 @@
 package com.daming.bartersystem.DTO;
 
 
-import javax.validation.constraints.NotNull;
+
 
 public class Loginer {
-    @NotNull(message = "帐号不能为空")
+
     private String loginAccount;
-    @NotNull(message = "密码不能为空")
     private String password;
-    @NotNull(message = "请选择登录身份")
     private String logintype;
 
     public String getLoginAccount() {
@@ -33,5 +31,14 @@ public class Loginer {
 
     public void setLogintype(String logintype) {
         this.logintype = logintype;
+    }
+
+    @Override
+    public String toString() {
+        return "Loginer{" +
+                "loginAccount='" + loginAccount + '\'' +
+                ", password='" + password + '\'' +
+                ", logintype='" + logintype + '\'' +
+                '}';
     }
 }

@@ -11,7 +11,8 @@ import java.util.List;
 
 @Service
 public class UserServiceImpl implements UserService{
-    @Autowired
+
+    @Autowired(required = false)
     private UserMapper userMapper;
     //根据用户id查询用户所有信息
     public User queryByUid(Integer uid) {
@@ -29,7 +30,7 @@ public class UserServiceImpl implements UserService{
         Integer i = userMapper.insert(user);
         if(i == 0){ return false;}
         if (i == 1){return true;}
-
+        return false;
     }
     //更新用户信息
     public Integer updateUser(User user) {
