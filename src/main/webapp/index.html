@@ -15,7 +15,7 @@
 	     <!-- jQuery (Bootstrap 的 JavaScript 插件需要引入 jQuery) -->
       <script src="https://code.jquery.com/jquery.js"></script>
    </head>
-   <body>
+   <body onload="init()">
 		<nav class="navbar navbar-default" role="navigation">
 			<div class="container-fluid">
 			<div class="navbar-header">
@@ -23,10 +23,13 @@
 			</div>
 			<div>
 
-            <ul class="nav navbar-nav ">
-					<li><a href="#">登录</a></li>
+            <ul class="nav navbar-nav " id="loginandregister">
+					<li><a href="/login">登录</a></li>
 					<li><a href="#">注册</a></li>
 			</ul>
+				<ul class="nav navbar-nav " id="logined">
+						<li><a href="/login" id="username_href"></a></li>
+				</ul>
 			<div class="">
 				<form class="navbar-form navbar-left" role="search">
        			 <div class="form-group">
@@ -110,18 +113,38 @@
 					</div>
 				</div>
 			</div>
-		</div>
-		
-		
-		
-		
-		
-		
-		
-		
-   
-      <!-- 包括所有已编译的插件 -->
-      <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-	
+
    </body>
+   <!-- jQuery (Bootstrap 的 JavaScript 插件需要引入 jQuery) -->
+   <script src="https://code.jquery.com/jquery.js"></script>
+   <!-- 包括所有已编译的插件 -->
+   <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+   <script type="application/javascript">
+		var logined = $("#logined");//已登录显示的组件
+		logined.hide();
+		var loginandregister = $("#loginandregister");
+		var username_href = $("#username");
+		var username = "";
+		var phone = "";
+		var email = "";
+		var balance =　"";
+        function init(){
+
+            $.post("/getUI","",function (json,status) {
+                var obj = json;
+                if(obj.message == "isLogin"){
+                    username = obj.data.username;
+                    phone = obj.data.phone;
+                    email = obj.data.email;
+                    balance = obj.data.balance;
+                    loginandregister.hide();
+                    document.getElementById("username_href").innerHTML = "Hi,"+username+"!";
+                    logined.show();
+                }else if (obj.message == "isNotLogin"){
+
+                }
+            },"json");
+        }
+
+	</script>
 </html>

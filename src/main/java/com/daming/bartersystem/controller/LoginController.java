@@ -11,6 +11,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.util.DigestUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
@@ -21,7 +22,7 @@ import javax.validation.Valid;
 import java.util.Map;
 
 @Controller
-@SessionAttributes({"userId","uuid"})
+@SessionAttributes(value = {"uid","uuid"})
 public class LoginController {
     private final String salt = "daming";
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
@@ -33,6 +34,7 @@ public class LoginController {
     private LoginService loginService;
     @Autowired
     private UserService userService;
+
     @GetMapping("/login")
     public String showLogin(){
         return "login";
@@ -40,7 +42,7 @@ public class LoginController {
 
     @RequestMapping(value = "/login", method = RequestMethod.POST, consumes = "application/json")
     @ResponseBody
-    public Result<LoginResult> login(@RequestBody Map<String, String> map, Model model){
+    public Result<LoginResult> login(@RequestBody Map<String, String> map, ModelMap model){
         Result<LoginResult> loginResult = new Result<LoginResult>(0,"failure",new LoginResult(""));
         Loginer loginer = new Loginer();
         loginer.setLoginAccount(map.get("loginAccount"));
@@ -54,7 +56,7 @@ public class LoginController {
             User user = userService.queryByLoginAccount(loginer.getLoginAccount());
             Integer uid = user.getUid();
             String password = user.getPassword();
-            model.addAttribute("userId",uid);
+            model.addAttribute("uid",uid);
             String base = uid +"/"+salt+"/"+password;
             String uuid = DigestUtils.md5DigestAsHex(base.getBytes());
             logger.debug(uuid);

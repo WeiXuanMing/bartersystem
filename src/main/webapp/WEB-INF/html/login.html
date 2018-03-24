@@ -52,6 +52,9 @@ body {
                 <div class="col-lg-11 text-center text-info">
                     <h2>以物易物系统</h2>
                 </div>
+                <div class="col-lg-11 text-center text-info">
+                    <font id="hiddenMessage" color="red" size="3">账户、密码错误,请重新输入</font>
+                </div>
                 <div class="col-lg-10">
                     <input type="text" class="form-control" id="loginAccount" name="loginAccount" placeholder="请输入账户名" required autofocus/>
                 </div>
@@ -93,8 +96,11 @@ body {
 <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <script type="application/javascript">
     $(document).ready(function(){
+        var hiddenMessage = $("#hiddenMessage");
+        hiddenMessage.hide();
+
+        //登录按钮响应事件
         $("#login_btn").click(function () {
-            alert("haha");
             var loginAccount = $("#loginAccount").val();
             var password = $("#password").val();
             var logintype= $("#logintype").attr("name");
@@ -111,34 +117,19 @@ body {
 
            $.post("/login",mydata,function (json,status) {
                var obj = json;
-               alert(obj+"obj"+obj.message);
-               alert(json+"json"+json.message);
                if(obj.message == "succeed"){
                    if (obj.data.loginType == "user"){
                        window.location.href='/index.html';
                    }else if (obj.data.loginType == "admin"){
 
                    }
+               }else if (obj.message == "failure"){
+                    hiddenMessage.show(500);
                }
            },"json");
-            /*
-                      $.ajax({
-                          type : 'POST',
-                          contentType : 'application/json',
-                          url : '/login',
-                          processData : false,
-                          dataType : 'json',
-                          data : mydata,
-                          success : function(data) {
-                              var obj = JSON.parse(data);
-                              alert(obj.message);
-                          },
-                          error : function() {
-                              alert('Err...');
-                          }
-                      });
-                      */
-
+        });
+        $("input").onfocus(function () {
+            hiddenMessage.hide(500);
         });
     });
 </script>

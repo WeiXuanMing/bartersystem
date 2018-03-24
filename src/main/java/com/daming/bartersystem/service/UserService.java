@@ -13,4 +13,6 @@ public interface UserService {
      User queryByLoginAccount(String LoginAccount);
 
      User queryByUsername(String username);
+
+     boolean CheckUUID(Integer uid,String uuid);
 }

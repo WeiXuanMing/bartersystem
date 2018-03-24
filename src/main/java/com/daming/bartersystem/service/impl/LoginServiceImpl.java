@@ -25,16 +25,22 @@ public class LoginServiceImpl implements LoginService{
             UserExample.Criteria criteria = userExample.createCriteria();
             criteria.andLoginAccountEqualTo(Loginer.getLoginAccount());
             criteria.andPasswordEqualTo(Loginer.getPassword());
-            User user = userMapper.selectByExample(userExample).get(0);
-            if(user != null) {return true;}
+
+            List<User> users = userMapper.selectByExample(userExample);
+            if (users.size()>0){
+                User user = users.get(0);
+                if (user != null){return true;}
+            }
         }
         if(Loginer.getLogintype().equals("admin")){
             AdminInformationExample adminInformationExample = new AdminInformationExample();
             AdminInformationExample.Criteria criteria = adminInformationExample.createCriteria();
             criteria.andLoginAccountEqualTo(Loginer.getLoginAccount());
             criteria.andPasswordEqualTo(Loginer.getPassword());
-            AdminInformation adminInformation = adminInformationMapper.selectByExample(adminInformationExample).get(0);
-            if(adminInformation != null) {return true;}
+            List<AdminInformation> adminInformations = adminInformationMapper.selectByExample(adminInformationExample);
+            if(adminInformations.size()>0) {
+                return true;
+            }
         }
         return false;
     }
