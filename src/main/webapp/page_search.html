@@ -160,7 +160,9 @@
                     var newItemDiv = itemDiv.clone();
                     initItemDiv(itemId, itemtitle, itemrefprice, newItemDiv);
                     newItemDiv.show();
-                    newItemDiv.click();
+                    newItemDiv.click(function () {
+
+                    });
                     $("#justforappend").append(newItemDiv);//justforappend
                 });
             });

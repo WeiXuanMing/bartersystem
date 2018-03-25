@@ -18,7 +18,7 @@ public class ItemServiceImpl implements ItemService{
     public Item query(Integer itemId) {
         ItemExample itemExample = new ItemExample();
         ItemExample.Criteria criteria = itemExample.createCriteria();
-        criteria.andUidEqualTo(itemId);
+        criteria.andItemIdEqualTo(itemId);
         List<Item> items = itemMapper.selectByExample(itemExample);
         if (items.size()==1){
             return items.get(0);

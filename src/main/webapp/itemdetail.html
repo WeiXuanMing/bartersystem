@@ -22,7 +22,11 @@
 <!-- jQuery (Bootstrap 的 JavaScript 插件需要引入 jQuery) -->
 <script src="https://code.jquery.com/jquery.js"></script>
 <!-- 包括所有已编译的插件 -->
-<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous">
+
+	</script>
+	<link rel="stylesheet" href="/jeui/css/jeui.css">
+	<script src="/jeui/js/modules/jquery.min.js"></script>
 </head>
 <body>
 <nav class="navbar navbar-default" role="navigation">
@@ -150,6 +154,15 @@
   </div>
   <!--此处是评论的div -->
   <div class="container" id ="user_review_container">
+	  <div class="row" id="review_table">
+		  <div class="je-form-item">
+			  <label class="je-label je-f14">评论</label>
+			  <div class="je-inputbox">
+				  <textarea placeholder="请输入内容" class="je-textarea"></textarea>
+			  </div>
+			  <button class="je-btn je-bg-green je-rdu" style="float: right">绿色按钮</button>
+		  </div>
+	  </div>
 	  <div class="row" id="user_review">
 		<div class="jumbotron" style="height:180px">
 			<div id="review">
@@ -174,26 +187,26 @@
 	  </div>
 	 </div>
 </div>
-<script type="text/javascript">
-						$(document).ready(function(){
-							//加的效果
-							$(".add").click(function(){
-							var n=$(this).prev().val();
-							var num=parseInt(n)+1;
-							if(num==0){ return;}
-							$(this).prev().val(num);
-							});
-							//减的效果
-							$(".jian").click(function(){
-							var n=$(this).next().val();
-							var num=parseInt(n)-1;
-							if(num==0){ return}
-							$(this).next().val(num);
-							});
-
-						})
-						
-				</script>
-
 </body>
+<script type="text/javascript">
+    $(document).ready(function(){
+        //加的效果
+        $(".add").click(function(){
+            var n=$(this).prev().val();
+            var num=parseInt(n)+1;
+            if(num==0){ return;}
+            $(this).prev().val(num);
+        });
+        //减的效果
+        $(".jian").click(function(){
+            var n=$(this).next().val();
+            var num=parseInt(n)-1;
+            if(num==0){ return}
+            $(this).next().val(num);
+        });
+        $("#user_review").hide();
+
+    })
+
+</script>
 </html>
