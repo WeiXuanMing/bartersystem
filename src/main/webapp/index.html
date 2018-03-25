@@ -33,9 +33,9 @@
 			<div class="">
 				<form class="navbar-form navbar-left" role="search">
        			 <div class="form-group">
-            		<input type="text" class="form-control" placeholder="Search">
+            		<input type="text" class="form-control" placeholder="Search" id="searchCondition">
        			 </div>
-        			<button type="submit" class="btn btn-default">搜索</button>
+        			<button type="button" class="btn btn-default" id="searchButton">搜索</button>
    			 	</form>
     		</div>
 			<ul class="nav navbar-nav navbar-right">
@@ -123,13 +123,12 @@
 		var logined = $("#logined");//已登录显示的组件
 		logined.hide();
 		var loginandregister = $("#loginandregister");
-		var username_href = $("#username");
+		var username_href = $("#username_href");
 		var username = "";
 		var phone = "";
 		var email = "";
 		var balance =　"";
         function init(){
-
             $.post("/getUI","",function (json,status) {
                 var obj = json;
                 if(obj.message == "isLogin"){
@@ -141,10 +140,14 @@
                     document.getElementById("username_href").innerHTML = "Hi,"+username+"!";
                     logined.show();
                 }else if (obj.message == "isNotLogin"){
-
                 }
             },"json");
+            $("#searchButton").click(function () {
+				var searchCondition = $("#searchCondition").val();
+				alert(searchCondition);
+				localStorage.setItem("searchCondition",searchCondition);
+                window.location.href='/page_search.html';
+            });
         }
-
 	</script>
 </html>

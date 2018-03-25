@@ -1,0 +1,182 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>无标题文档</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <!-- 引入 Bootstrap -->
+      <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+ 
+      <!-- HTML5 Shiv 和 Respond.js 用于让 IE8 支持 HTML5元素和媒体查询 -->
+      <!-- 注意： 如果通过 file://  引入 Respond.js 文件，则该文件无法起效果 -->
+      <!--[if lt IE 9]>
+         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+         <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+      <![endif]-->
+</head>
+
+<body onload="init()">
+<nav class="navbar navbar-default" role="navigation">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<a class="navbar-brand" href="#">以物易物</a>
+		</div>
+		<div>
+
+			<ul class="nav navbar-nav " id="loginandregister">
+				<li><a href="/login">登录</a></li>
+				<li><a href="#">注册</a></li>
+			</ul>
+			<ul class="nav navbar-nav " id="logined">
+				<li><a href="/login" id="username_href"></a></li>
+			</ul>
+			<div class="">
+				<form class="navbar-form navbar-left" role="search">
+					<div class="form-group">
+						<input type="text" class="form-control" placeholder="Search" id="searchCondition">
+					</div>
+					<button type="button" class="btn btn-default" id="searchButton">搜索</button>
+				</form>
+			</div>
+			<ul class="nav navbar-nav navbar-right">
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+						个人信息
+						<b class="caret"></b>
+					</a>
+
+					<ul class="dropdown-menu">
+						<li><a href="#">设置</a></li>
+						<li><a href="#">我的钱包</a></li>
+					</ul>
+				</li>
+				<li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span>  购物车</a></li>
+			</ul>
+		</div>
+	</div>
+</nav>
+
+			   <nav class="navbar navbar-default" role="navigation">
+			<div class="container-fluid">
+			<div class="navbar-header">
+				<h5 class="navbar-brand">全部分类></h5>
+			</div>
+			</nav>
+		
+		<nav class="navbar navbar-default" role="navigation">
+    <div class="container-fluid">
+    <div>
+        <ul class="nav navbar-nav">
+            <li><a href="#">销量</a></li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                   价格
+                    <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                    <li class="divider"></li>
+                    <li><a href="#">价格从高到底</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">价格从低到高</a></li>
+                </ul>
+            </li>
+			 <li><a href="#">好评率</a></li>
+        </ul>
+    </div>
+    </div>
+</nav>
+		
+
+<div class="container" id="itemListView">  <!-- 开加一个container的目的是为了让整体布局居中 -->
+<div class="row" id="itemColumnView"><!-- 将要加入的略缩图放入row中 -->
+	<div id="justforappend"></div>
+	<div id="itemDiv" style="border:2px solid #ccc;width: 251.74px;height:361.74px;margin-right: 100px;" class="col-md-2"><!-- 大屏幕放3张略缩图，pc端放4张，平板和手机放6张-->
+		<input type="hidden" id="uid" value=""/>
+		<div class="thumbnail">
+			<img src="http://i.yinyuetai.com/images/i/album/default_646.png" alt="..."  class="img-responsive" style="width:180px;height:180px">
+		</div>
+		<div class="caption">
+			<div class="row">
+				<div class="col-md-6"><p style="color:red;" id="refPrice">参考价:**</p></div>
+				<div class="col-md-6 pull-right"><p style="color:red;">1000人申请</p></div>
+			</div>
+			<p id="itemviewtitle">vivo X9s Plus</p>
+			<p style="color:red;">
+				2000万柔光双摄内置&nbsp;&nbsp;震撼HIFI音效&nbsp;&nbsp;&nbsp;便捷一屏两用
+			</p>
+			<p style="color:red;" id="item_owner">
+			</p>
+		</div>
+	</div>
+</div>
+</div>
+
+</body>
+      <!-- jQuery (Bootstrap 的 JavaScript 插件需要引入 jQuery) -->
+<script src="https://code.jquery.com/jquery.js"></script>
+      <!-- 包括所有已编译的插件 -->
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script type="application/javascript">
+    var logined = $("#logined");//已登录显示的组件
+    logined.hide();
+    var loginandregister = $("#loginandregister");
+    var username_href = $("#username_href");
+    var username = "";
+    var phone = "";
+    var email = "";
+    var balance =　"";
+    var itemDiv = $("#itemDiv");//显示item的div
+	itemDiv.hide();
+	var itemColumnView = $("#itemColumnView");//显示item列的div
+	var itemListView = $("#itemListView");//显示item列表的view div
+	var row_num = 0;
+	var row_item_num=0;
+    function init(){
+        //获取登录状态
+        $.post("/getUI","",function (json,status) {
+            var obj = json;
+            if(obj.message == "isLogin"){
+                username = obj.data.username;
+                phone = obj.data.phone;
+                email = obj.data.email;
+                balance = obj.data.balance;
+                loginandregister.hide();
+                document.getElementById("username_href").innerHTML = "Hi,"+username+"!";
+                logined.show();
+            }else if (obj.message == "isNotLogin"){
+
+            }
+        },"json");
+        var searchCondition;
+        searchCondition = localStorage.getItem("searchCondition");
+        localStorage.removeItem("searchCondition");
+        if(searchCondition != null) {
+            //获取
+            $.getJSON("/search?condition=" + searchCondition, function (result) {
+                $.each(result.items, function (i, field) {
+                    var itemId = field.itemId;
+                    var itemtitle = field.title;
+                    var itemrefprice = field.refPrice;
+                    var newItemDiv = itemDiv.clone();
+                    initItemDiv(itemId, itemtitle, itemrefprice, newItemDiv);
+                    newItemDiv.show();
+                    newItemDiv.click();
+                    $("#justforappend").append(newItemDiv);//justforappend
+                });
+            });
+        }
+
+        $("#searchButton").click(function () {
+            var searchCondition = $("#searchCondition").val();
+            localStorage.setItem("searchCondition",searchCondition);
+            window.location.href='/page_search.html';
+        });
+    }
+
+	function  initItemDiv(itemid,itemtitle,itemrefprice,itemDiv) {
+		itemDiv.find("#refPrice").text("参考价:"+itemrefprice);
+        itemDiv.find("#itemviewtitle").text(itemtitle);
+        itemDiv.find("#uid").val(itemid);
+    }
+</script>
+</html>

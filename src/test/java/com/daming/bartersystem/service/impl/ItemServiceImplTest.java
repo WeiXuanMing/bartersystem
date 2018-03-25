@@ -21,7 +21,7 @@ public class ItemServiceImplTest extends TestCase {
     }
     @Test
     public void testQueryList() throws Exception {
-        System.out.println(itemService.queryList("b"));
+        System.out.println(itemService.queryList("i"));
     }
     @Test
     public void testQueryByUid() throws Exception {

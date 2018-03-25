@@ -1,0 +1,199 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>无标题文档</title>
+<style>
+	.gw_num{border: 1px solid #dbdbdb;width: 110px;line-height: 26px;overflow: hidden;}
+	.gw_num em{display: block;height: 26px;width: 26px;float: left;color: #7A7979;border-right: 1px solid #dbdbdb;text-align: center;cursor: pointer;font-style:normal;}
+	.gw_num .num{display: block;float: left;text-align: center;width: 52px;font-style: normal;font-size: 14px;line-height: 24px;border: 0;}
+	.gw_num em.add{float: right;border-right: 0;border-left: 1px solid #dbdbdb;}
+	</style>
+<!-- 引入 Bootstrap -->
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+<!-- HTML5 Shiv 和 Respond.js 用于让 IE8 支持 HTML5元素和媒体查询 -->
+<!-- 注意： 如果通过 file://  引入 Respond.js 文件，则该文件无法起效果 -->
+<!--[if lt IE 9]>
+			 <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+			 <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+		  <![endif]-->
+		  
+<script type="text/javascript" src="spinner/jquery.spinner.js"></script>
+<!-- jQuery (Bootstrap 的 JavaScript 插件需要引入 jQuery) -->
+<script src="https://code.jquery.com/jquery.js"></script>
+<!-- 包括所有已编译的插件 -->
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</head>
+<body>
+<nav class="navbar navbar-default" role="navigation">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<a class="navbar-brand" href="#">以物易物</a>
+		</div>
+		<div>
+
+			<ul class="nav navbar-nav " id="loginandregister">
+				<li><a href="/login">登录</a></li>
+				<li><a href="#">注册</a></li>
+			</ul>
+			<ul class="nav navbar-nav " id="logined">
+				<li><a href="/login" id="username_href"></a></li>
+			</ul>
+			<div class="">
+				<form class="navbar-form navbar-left" role="search">
+					<div class="form-group">
+						<input type="text" class="form-control" placeholder="Search" id="searchCondition">
+					</div>
+					<button type="button" class="btn btn-default" id="searchButton">搜索</button>
+				</form>
+			</div>
+			<ul class="nav navbar-nav navbar-right">
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+						个人信息
+						<b class="caret"></b>
+					</a>
+
+					<ul class="dropdown-menu">
+						<li><a href="#">设置</a></li>
+						<li><a href="#">我的钱包</a></li>
+					</ul>
+				</li>
+				<li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span>  购物车</a></li>
+			</ul>
+		</div>
+	</div>
+</nav>
+	<div class="container">
+		<div class="row">
+					<nav class="navbar navbar-default" role="navigation">
+					<div class="container-fluid">
+						<div class="navbar-header"> <a class="navbar-brand" href="#">全部分类></a> </div></div>
+					</nav>
+
+	</div>
+</div>
+
+<div class="container" >
+  <div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-10">
+      <div class="row">
+	  	<!--此处是图片-->
+        <div class="col-md-4" >
+          <div class="thumbnail"> <img src="http://www.qqw21.com/article/UploadPic/2015-4/201542322504350607.jpg" alt="..."  class="img-responsive" "> </div>
+        </div>
+		<!--这里是商品简介-->
+        <div class="col-md-8 jumbotron">
+          <div class="row">
+            <div class="col-md-12" >
+              <p style="overflow:hidden;
+												  text-overflow:ellipsis;
+												  white-space:nowrap;
+												  width:600px;
+												  " id="itemTitle">这是交换物品的名称</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4" id="itemOwner">交易者：<b>Harry botter</b></div>
+			 <div class="col-md-4" id="itemId">商品编号：<b>892382828</b></div>
+          </div>
+		  <br>
+		  <div class="row">
+		  	<div class="col-md-4">品牌:<b id="itemTrademark">清华电子</b></div>
+		  </div>
+		  <br>
+          <div class="row">
+            <div class="col-md-4"> <b id="Hot">2000</b>人气</div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="col-md-4"> <b style="font-size:20px;color:red;" id="item">参考价：</b><font style="">1234</font> </div>
+            <div class="col-md-4"> <b style="font-size:20px;color:red;" id="">库存：</b><font style="">1234</font> </div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="col-md-4">
+              <div class="gw_num"> <em class="jian">-</em>
+                <input type="text" value="1" class="num"/>
+                <em class="add">+</em> </div>
+            </div>
+            <div class="col-md-4">
+              <button type="button" class="btn btn-danger"><span class="glyphicon glyphicon-shopping-cart"></span> 加入意愿单</button>
+            </div>
+            <div class="col-md-4">
+              <button type="button" class="btn btn-danger"><span class="glyphicon glyphicon-hand-up"></span> 我要换</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-2"> </div>
+</div>
+<div class="container">
+  <div class="row">
+    <nav class="navbar navbar-default" role="navigation">
+      <div class="container-fluid">
+        <div>
+          <ul class="nav navbar-nav ">
+            <li class="active"><a href="#">商品详情</a></li>
+            <li><a href="#">评论<font size="2">1000</font>条</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </div>
+  <!--此处是物品信息的描述-->
+  <div class="row">
+  	
+  </div>
+  <!--此处是评论的div -->
+  <div class="container" id ="user_review_container">
+	  <div class="row" id="user_review">
+		<div class="jumbotron" style="height:180px">
+			<div id="review">
+				<div class="row">
+					<div class="col-md-1" style="width:180px;height:180px">
+						<img src="..." alt="..." class="img-circle">
+					</div>
+					<div class="col-md-10">
+						<div>
+							<div class="row">
+								<div id="review_username"><font size="2">This is username</font></div>
+							</div>
+							<div class="row">
+								<div id="review_content"><font size="4">This is Content,I Write Something in here</font></div>
+							</div>
+						</div>
+	
+					</div>
+				</div>
+			</div>
+		</div>
+	  </div>
+	 </div>
+</div>
+<script type="text/javascript">
+						$(document).ready(function(){
+							//加的效果
+							$(".add").click(function(){
+							var n=$(this).prev().val();
+							var num=parseInt(n)+1;
+							if(num==0){ return;}
+							$(this).prev().val(num);
+							});
+							//减的效果
+							$(".jian").click(function(){
+							var n=$(this).next().val();
+							var num=parseInt(n)-1;
+							if(num==0){ return}
+							$(this).next().val(num);
+							});
+
+						})
+						
+				</script>
+
+</body>
+</html>

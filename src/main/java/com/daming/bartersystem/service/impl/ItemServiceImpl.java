@@ -29,19 +29,17 @@ public class ItemServiceImpl implements ItemService{
 
     public List<Item> queryList(String condition) {
         ItemExample itemExample = new ItemExample();
-        List<Item> itemList = itemMapper.selectByExample(null);
         ItemExample.Criteria criteria = itemExample.createCriteria();
-        criteria.andTitleLike("%condition%");
-        itemMapper.selectByExample(itemExample);
+        criteria.andTitleLike("%"+condition+"%");
+        List<Item> itemList = itemMapper.selectByExample(itemExample);
         return itemList;
     }
 
     public List<Item> queryByUid(Integer uid) {
         ItemExample itemExample = new ItemExample();
-        List<Item> itemList = itemMapper.selectByExample(null);
         ItemExample.Criteria criteria = itemExample.createCriteria();
         criteria.andUidEqualTo(uid);
-        itemMapper.selectByExample(itemExample);
+        List<Item> itemList = itemMapper.selectByExample(itemExample);
         return itemList;
     }
 
