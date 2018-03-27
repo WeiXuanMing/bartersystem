@@ -4,6 +4,8 @@
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
     <settings>
+        <!-- 开启后禁用懒加载-->
+        <setting name="aggressiveLazyLoading" value="true" />
         <!-- 获取数据库自增主键的值-->
         <setting name="useGeneratedKeys" value="true"/>
         <!-- 配置使用列别名替代列名-->

@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="../jeui/css/jeui.css">
     <link rel="stylesheet" href="../jeui/css/skin/jebox.css">
     <link rel="stylesheet" href="../jeui/css/skin/jedate.css">
+    <link rel="stylesheet" href="../jeui/css/skin/">
     <!-- jQuery (Bootstrap 的 JavaScript 插件需要引入 jQuery) -->
     <script src="https://code.jquery.com/jquery.js"></script>
     <script src="../jeui/js/modules/jeBox.js"></script>
@@ -16,16 +17,100 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <style>
+    .userphoto{width: 60px;height: 60px;overflow: hidden;}
+    #add_btn{
 
+         }
+    .HorizontalCenter{
+        text-align: center;
+
+        margin: auto;
+
+        position: absolute;
+        left: 50%;
+        margin-left: -?px;
+    }
+    #self_order_button button{
+        margin-right:20px;
+    }
 </style>
 <body>
-<button class="je-btn je-bg-native" id="btn">原始按钮</button>
-<input type="hidden" id="justforappend"/>
+<div id="order">
+    <div class="row">
+        <div id="seft_list" class="col-md-5">
+            <table class="je-table"  skin="botline">
+                <thead>
+                    <tr>
+                        <th width="100" align="left">物品编号</th>
+                        <th width="80">图片</th>
+                        <th>标题</th>
+                        <th>收货地址</th>
+                        <th>参考价格</th>
+                        <th>介绍</th>
+                        <th >操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr id="seft_orderItemSample">
+                        <td id="seft_itemId">物品编号</td>
+                        <td align="center" class="imgtd"><img src="../jeui/images/userphoto.jpg" class="userphoto"/></td>
+                        <td id="seft_itemtitle">标题</td>
+                        <td id="seft_itemShipAddress">收货地址</td>
+                        <td id="seft_itemRefPrice">参考价格</td>
+                        <td id="seft_itemDescription">介绍</td>
+                        <td align="left">
+                            <button class="je-btn je-bg-red" id="del_btn">删除</button>
+                        </td>
+                    </tr>
+                    <p id="seft_justforappend"></p>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-md-2"></div>
+        <div id="owner_list" class="col-md-5">
+            <table class="je-table"  skin="botline">
+                <thead>
+                <tr>
+                    <th width="100" align="left">物品编号</th>
+                    <th width="80">图片</th>
+                    <th>标题</th>
+                    <th>收货地址</th>
+                    <th>参考价格</th>
+                    <th>介绍</th>
+                    <th >操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr id="orderItemSample">
+                        <td id="owner_itemId">物品编号</td>
+                        <td align="center" class="imgtd"><img src="../jeui/images/userphoto.jpg" class="userphoto"/></td>
+                        <td id="owner_itemtitle">标题</td>
+                        <td id="owner_itemShipAddress">收货地址</td>
+                        <td id="owner_itemRefPrice">参考价格</td>
+                        <td id="owner_itemDescription">介绍</td>
+                        <td align="left">
+                            <button class="je-btn je-bg-red">删除</button></td>
+                    </tr>
+                <input type="hidden" id="owner_justforappend"/>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <div id="self_order_button" class="col-md-5"><div align="right"><button class="je-btn je-bg-green" id="confirm_btn">确认</button><button class="je-btn je-bg-orange" id="add_btn">添加</button><button class="je-btn" id="cancel">取消</button></div></div>
+        <div class="col-md-2"></div>
+        <div id="" class="col-md-5"></div>
+    </div>
+</div>
+
 </body>
 <script type="text/javascript">
     var alreadyChosedItemId = new Array();
+    var seft_orderItemSample = $("#seft_orderItemSample");//seft_orderItemSample组件
+    seft_orderItemSample.hide();
+    localStorage.removeItem("chooseItemId");//保证自己显示的itemId是从iframe中选出来的。
 	$(document).ready(function(){
-		$("#btn").click(function(){
+		$("#add_btn").click(function(){
                 jeBox.open({
                 title:"mBox mobile页",
                 type:'iframe',
@@ -37,19 +122,49 @@
                         //do something
                         var chooseItemId = localStorage.getItem("chooseItemId");
                         var isExist = false;
-                        for (id in alreadyChosedItemId){
-                            if(id == chooseItemId){
-                                isExist = true
+                        for (var i in alreadyChosedItemId){
+                            if(alreadyChosedItemId[i] == chooseItemId){
+                                isExist = true;
                             }
                         }
                         if (isExist == false){
                             //添加新元素
+                            alreadyChosedItemId.push(chooseItemId);
+                            reloadSeft_list();
                         }
                     }
                  });
 			});
-		}
-
-	);
+		});
+	function reloadSeft_list() {
+        for (var i = 0; i < alreadyChosedItemId.length;i++){
+            $("[target='del']").remove();
+            $.getJSON("/itemDetail/" + alreadyChosedItemId[i], function (result) {
+                if (result.message=="succeed") {
+                    /** "item": {
+                                "itemId": 1,
+                                "uid": 1,
+                                "title": "item1_title",
+                                "shipAddress": "asdasdasd",
+                                "refPrice": 1000,
+                                "classificationId": 1,
+                                "stock": 1,
+                                "ison": 1,
+                                "description": null
+                            }
+                    * */
+                    var newseft_orderItemSample = seft_orderItemSample.clone();
+                    newseft_orderItemSample.attr("target","del");
+                    newseft_orderItemSample.find("#seft_itemId").text(result.data.item.itemId);
+                    newseft_orderItemSample.find("#seft_itemtitle").text(result.data.item.title);
+                    newseft_orderItemSample.find("#seft_itemShipAddress").text(result.data.item.shipAddress);
+                    newseft_orderItemSample.find("#seft_itemRefPrice").text(result.data.item.refPrice);
+                    newseft_orderItemSample.find("#seft_itemDescription").text(result.data.item.description);
+                    newseft_orderItemSample.show();
+                    seft_orderItemSample.after(newseft_orderItemSample);
+                }
+            });
+            }
+    }
 	</script>
 </html>

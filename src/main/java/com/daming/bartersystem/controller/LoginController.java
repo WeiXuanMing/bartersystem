@@ -40,9 +40,9 @@ public class LoginController {
         return "login";
     }
 
-    @RequestMapping(value = "/login", method = RequestMethod.POST, consumes = "application/json")
+    @RequestMapping(value = "/login", method = RequestMethod.POST, consumes = "application/json",produces="application/json")
     @ResponseBody
-    public Result<LoginResult> login(@RequestBody Map<String, String> map, ModelMap model){
+    public Result<LoginResult> login(@RequestBody Map<String, String> map, ModelMap model,HttpSession session){
         Result<LoginResult> loginResult = new Result<LoginResult>(0,"failure",new LoginResult(""));
         Loginer loginer = new Loginer();
         loginer.setLoginAccount(map.get("loginAccount"));
