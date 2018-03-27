@@ -51,7 +51,7 @@
  jeui.use(["jquery","jeCheck"],function () {
         $("#newCheck").jeCheck({
             jename:"chunk",
-            attrName:[false,"勾选"], 
+            attrName:[false,"勾选v b"],
             itemfun: function(elem,bool) {
                 console.log(bool)
                 //console.log(elem.prop('checked'))
@@ -81,7 +81,9 @@
                         initItemSample(itemId, itemtitle, itemShipAddress, itemDescription, itemrefprice, newItemSample);
                         newItemSample.show();
                         newItemSample.click(function () {
-
+                            localStorage.setItem("chooseItemId",itemId);
+                            var index = parent.jeBox.frameIndex(window.name); //先得到当前iframe层的索引
+                            parent.jeBox.close(index);
                         });
                         $("#justforappend").before(newItemSample);//justforappend
                     });

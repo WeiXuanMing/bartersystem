@@ -19,25 +19,37 @@
 
 </style>
 <body>
- 
-<!-- 你的HTML代码 -->
-<div></div>
 <button class="je-btn je-bg-native" id="btn">原始按钮</button>
-
+<input type="hidden" id="justforappend"/>
 </body>
 <script type="text/javascript">
+    var alreadyChosedItemId = new Array();
 	$(document).ready(function(){
 		$("#btn").click(function(){
-			jeBox.open({
-			title:"mBox mobile页",
-			type:'iframe',
-			padding:"0",
-			boxSize:["450px","80%"],
-			content: "/choosebox.html",
-			maskLock : true
-			 });
+                jeBox.open({
+                title:"mBox mobile页",
+                type:'iframe',
+                padding:"0",
+                boxSize:["450px","80%"],
+                content: "/choosebox.html",
+                maskLock : true,
+                    endfun: function(id, index){
+                        //do something
+                        var chooseItemId = localStorage.getItem("chooseItemId");
+                        var isExist = false;
+                        for (id in alreadyChosedItemId){
+                            if(id == chooseItemId){
+                                isExist = true
+                            }
+                        }
+                        if (isExist == false){
+                            //添加新元素
+                        }
+                    }
+                 });
 			});
 		}
+
 	);
 	</script>
 </html>

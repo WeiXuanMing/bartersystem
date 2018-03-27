@@ -7,50 +7,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d351c5f8-64e2-40d0-9057-e5fa05da4f85" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../bartersystem/src/main/webapp/jeui/images/actico.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../bartersystem/src/main/webapp/jeui/images/bg01.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../bartersystem/src/main/webapp/jeui/images/bg02.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../bartersystem/src/main/webapp/jeui/images/ddico.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../bartersystem/src/main/webapp/jeui/images/exit_ico.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../bartersystem/src/main/webapp/jeui/images/folder-hide.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../bartersystem/src/main/webapp/jeui/images/folder-show.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../bartersystem/src/main/webapp/jeui/images/icon-arrow-left.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../bartersystem/src/main/webapp/jeui/images/icon-arrow-right.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../bartersystem/src/main/webapp/jeui/images/icon-close.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../bartersystem/src/main/webapp/jeui/images/icon-error.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../bartersystem/src/main/webapp/jeui/images/icon-loading.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../bartersystem/src/main/webapp/jeui/images/icon-sigh.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../bartersystem/src/main/webapp/jeui/images/icon-wenj.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../bartersystem/src/main/webapp/jeui/images/icon-xiala.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../bartersystem/src/main/webapp/jeui/images/leaf.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../bartersystem/src/main/webapp/jeui/images/logo-small.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../bartersystem/src/main/webapp/jeui/images/logo.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../bartersystem/src/main/webapp/jeui/images/memico.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../bartersystem/src/main/webapp/jeui/images/photo.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../bartersystem/src/main/webapp/jeui/images/sancico.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../bartersystem/src/main/webapp/jeui/images/setico.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../bartersystem/src/main/webapp/jeui/images/spico.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../bartersystem/src/main/webapp/jeui/images/userphoto.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../bartersystem/src/main/webapp/jeui/images/wxico.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/DTO/PossessionsResult.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/DTO/ReviewResult.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/DTO/UserSimpleInfoResult.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/service/UserBarterInformationService.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/service/impl/UserBarterInformationService.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../bartersystem/src/main/webapp/choosebox.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../bartersystem/src/main/webapp/test.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../bartersystem/src/test/java/com/daming/bartersystem/service/impl/ReviewServiceImplTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../bartersystem/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../bartersystem/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/controller/ItemController.java" afterPath="$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/controller/ItemController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/controller/ReviewController.java" afterPath="$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/controller/ReviewController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/controller/UserController.java" afterPath="$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/controller/UserController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/entitys/User.java" afterPath="$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/entitys/User.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/service/ReviewService.java" afterPath="$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/service/ReviewService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/service/impl/ReviewServiceImpl.java" afterPath="$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/service/impl/ReviewServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../bartersystem/src/main/resources/generatorConfig.xml" afterPath="$PROJECT_DIR$/../bartersystem/src/main/resources/generatorConfig.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../bartersystem/src/main/webapp/WEB-INF/html/login.html" afterPath="$PROJECT_DIR$/../bartersystem/src/main/webapp/WEB-INF/html/login.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../bartersystem/src/main/webapp/itemdetail.html" afterPath="$PROJECT_DIR$/../bartersystem/src/main/webapp/itemdetail.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../bartersystem/src/main/webapp/page_search.html" afterPath="$PROJECT_DIR$/../bartersystem/src/main/webapp/page_search.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../bartersystem/src/main/webapp/choosebox.html" afterPath="$PROJECT_DIR$/../bartersystem/src/main/webapp/choosebox.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../bartersystem/src/main/webapp/test.html" afterPath="$PROJECT_DIR$/../bartersystem/src/main/webapp/order.html" />
     </list>
     <ignored path="$PROJECT_DIR$/../bartersystem/out/" />
     <ignored path="$PROJECT_DIR$/../bartersystem/target/" />
@@ -83,31 +42,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="userdetail.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../bartersystem/src/main/webapp/WEB-INF/html/userdetail.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-487">
-              <caret line="173" column="15" lean-forward="false" selection-start-line="173" selection-start-column="15" selection-end-line="173" selection-end-column="15" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="choosebox.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../bartersystem/src/main/webapp/choosebox.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="16" selection-end-column="7" />
+            <state relative-caret-position="446">
+              <caret line="83" column="49" lean-forward="false" selection-start-line="83" selection-start-column="49" selection-end-line="83" selection-end-column="49" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="test.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/../bartersystem/src/main/webapp/test.html">
+      <file leaf-file-name="order.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/../bartersystem/src/main/webapp/order.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="308">
-              <caret line="35" column="23" lean-forward="false" selection-start-line="35" selection-start-column="23" selection-end-line="35" selection-end-column="23" />
+            <state relative-caret-position="236">
+              <caret line="22" column="41" lean-forward="true" selection-start-line="22" selection-start-column="41" selection-end-line="22" selection-end-column="41" />
               <folding />
             </state>
           </provider>
@@ -147,7 +96,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/service/ItemService.java" />
         <option value="$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/service/OrderService.java" />
         <option value="$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/service/ShoppingTrolleyItemService.java" />
         <option value="$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/service/ShoppingTrolleyService.java" />
@@ -198,6 +146,7 @@
         <option value="$PROJECT_DIR$/../bartersystem/src/main/webapp/WEB-INF/html/login.html" />
         <option value="$PROJECT_DIR$/../bartersystem/src/main/webapp/choosebox.html" />
         <option value="$PROJECT_DIR$/../bartersystem/src/main/webapp/test.html" />
+        <option value="$PROJECT_DIR$/../bartersystem/src/main/webapp/order.html" />
       </list>
     </option>
   </component>
@@ -681,7 +630,7 @@
       <workItem from="1522048128574" duration="1745000" />
       <workItem from="1522052670712" duration="911000" />
       <workItem from="1522061919133" duration="6437000" />
-      <workItem from="1522108994971" duration="4818000" />
+      <workItem from="1522108994971" duration="7396000" />
     </task>
     <task id="LOCAL-00001" summary="额~~">
       <created>1521817753105</created>
@@ -718,7 +667,14 @@
       <option name="project" value="LOCAL" />
       <updated>1521970037337</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="再次commit">
+      <created>1522116100197</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1522116100197</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -754,7 +710,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="130471000" />
+    <option name="totallyTimeSpent" value="133049000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -873,7 +829,8 @@
     <MESSAGE value="新版本" />
     <MESSAGE value="完美" />
     <MESSAGE value="完美..." />
-    <option name="LAST_COMMIT_MESSAGE" value="完美..." />
+    <MESSAGE value="再次commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="再次commit" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1259,16 +1216,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/../bartersystem/src/main/webapp/choosebox.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="16" selection-end-column="7" />
+        <state relative-caret-position="446">
+          <caret line="83" column="49" lean-forward="false" selection-start-line="83" selection-start-column="49" selection-end-line="83" selection-end-column="49" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../bartersystem/src/main/webapp/test.html">
+    <entry file="file://$PROJECT_DIR$/../bartersystem/src/main/webapp/order.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="35" column="23" lean-forward="false" selection-start-line="35" selection-start-column="23" selection-end-line="35" selection-end-column="23" />
+        <state relative-caret-position="236">
+          <caret line="22" column="41" lean-forward="true" selection-start-line="22" selection-start-column="41" selection-end-line="22" selection-end-column="41" />
           <folding />
         </state>
       </provider>
