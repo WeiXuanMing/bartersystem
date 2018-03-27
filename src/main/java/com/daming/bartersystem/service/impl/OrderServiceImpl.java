@@ -4,6 +4,7 @@ package com.daming.bartersystem.service.impl;
 import com.daming.bartersystem.DTO.BarterOrderResult;
 import com.daming.bartersystem.dao.BarterOrderItemMapper;
 import com.daming.bartersystem.dao.BarterOrderMapper;
+import com.daming.bartersystem.dao.BarterOrder_OrderItemMapper;
 import com.daming.bartersystem.entitys.*;
 import com.daming.bartersystem.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,8 +20,41 @@ public class OrderServiceImpl implements OrderService{
 
     @Autowired
     private BarterOrderMapper barterOrderMapper;
-    @Autowired
-    private BarterOrderItemMapper barterOrderItemMapper;
+
+
+    public boolean CreateOrder(Integer uid, Integer itemId) {
+        BarterOrder barterOrder = new BarterOrder();
+        barterOrder.setUid(uid);
+        barterOrder.setItemId(itemId);
+        barterOrder.setOrderState(0);
+        Integer count = barterOrderMapper.insert(barterOrder);
+        if (count == 1){
+            return true;
+        }
+        return false;
+    }
+
+    public BarterOrder queryByUidAndItemId(Integer uid, Integer itemId) {
+        BarterOrderExample barterOrderExample = new BarterOrderExample();
+        BarterOrderExample.Criteria criteria = barterOrderExample.createCriteria();
+        criteria.andUidEqualTo(uid);
+        criteria.andItemIdEqualTo(itemId);
+        List<BarterOrder> barterOrders = barterOrderMapper.selectByExample(barterOrderExample);
+        if (barterOrders.size()>0){
+            return barterOrders.get(0);
+        }
+        return null;
+    }
+
+    public List<BarterOrder> queryByUid(Integer uid) {
+        List<BarterOrder> barterOrders;
+        BarterOrderExample barterOrderExample = new BarterOrderExample();
+        BarterOrderExample.Criteria criteria = barterOrderExample.createCriteria();
+        criteria.andUidEqualTo(uid);
+        barterOrders = barterOrderMapper.selectByExample(barterOrderExample);
+        return barterOrders;
+    }
+    /*
     //创建一个Order列和两个OrderItem列
     public Integer CreateOrder(Integer uid1, Integer uid2) {
         BarterOrder barterOrder = new BarterOrder();
@@ -93,5 +127,6 @@ public class OrderServiceImpl implements OrderService{
         }
         return barterOrderResults;
     }
+    */
 
 }

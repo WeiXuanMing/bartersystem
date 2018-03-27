@@ -34,7 +34,47 @@
         margin-right:20px;
     }
 </style>
-<body>
+<body onload="init()">
+    <nav class="navbar navbar-default" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">以物易物</a>
+        </div>
+        <div>
+
+            <ul class="nav navbar-nav " id="loginandregister">
+                <li><a href="/login">登录</a></li>
+                <li><a href="#">注册</a></li>
+            </ul>
+            <ul class="nav navbar-nav " id="logined">
+                <li><a href="/login" id="username_href"></a></li>
+            </ul>
+            <div class="">
+                <form class="navbar-form navbar-left" role="search">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search" id="searchCondition">
+                    </div>
+                    <button type="button" class="btn btn-default" id="searchButton">搜索</button>
+                </form>
+            </div>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        个人信息
+                        <b class="caret"></b>
+                    </a>
+
+                    <ul class="dropdown-menu">
+                        <li><a href="#">设置</a></li>
+                        <li><a href="#">我的钱包</a></li>
+                    </ul>
+                </li>
+                <li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span>  购物车</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
 <div id="order">
     <div class="row">
         <div id="seft_list" class="col-md-5">
@@ -135,7 +175,16 @@
                     }
                  });
 			});
+		initOwnerItemList();
 		});
+	function alreadyChosedItemIdDelItem(itemId) {
+        for (var i in alreadyChosedItemId){
+            if (alreadyChosedItemId[i] == itemId){
+                alreadyChosedItemId.splice(i,1);
+            }
+        }
+
+    }
 	function reloadSeft_list() {
         for (var i = 0; i < alreadyChosedItemId.length;i++){
             $("[target='del']").remove();
@@ -152,7 +201,7 @@
                                 "ison": 1,
                                 "description": null
                             }
-                    * */
+                     * */
                     var newseft_orderItemSample = seft_orderItemSample.clone();
                     newseft_orderItemSample.attr("target","del");
                     newseft_orderItemSample.find("#seft_itemId").text(result.data.item.itemId);
@@ -160,6 +209,15 @@
                     newseft_orderItemSample.find("#seft_itemShipAddress").text(result.data.item.shipAddress);
                     newseft_orderItemSample.find("#seft_itemRefPrice").text(result.data.item.refPrice);
                     newseft_orderItemSample.find("#seft_itemDescription").text(result.data.item.description);
+                    newseft_orderItemSample.find("#del_btn").click(function () {
+                        var id = $(this).parent().parent().find("#seft_itemId").text();
+                        console.log("del itemid:"+id);
+                        alreadyChosedItemIdDelItem(parseInt(id));
+                        for (var i in alreadyChosedItemId) {
+                            console.log("the ress alreadyChosedItemId item is:" +alreadyChosedItemId[i]);
+                        }
+                        $(this).parent().parent().remove();
+                    });
                     newseft_orderItemSample.show();
                     seft_orderItemSample.after(newseft_orderItemSample);
                 }
@@ -167,4 +225,35 @@
             }
     }
 	</script>
+<script type="application/javascript">
+    var logined = $("#logined");//已登录显示的组件
+    logined.hide();
+    var loginandregister = $("#loginandregister");
+    var username_href = $("#username_href");
+    var username = "";
+    var phone = "";
+    var email = "";
+    var balance =　"";
+    function init(){
+        $.post("/getUI","",function (json,status) {
+            var obj = json;
+            if(obj.message == "isLogin"){
+                username = obj.data.username;
+                phone = obj.data.phone;
+                email = obj.data.email;
+                balance = obj.data.balance;
+                loginandregister.hide();
+                document.getElementById("username_href").innerHTML = "Hi,"+username+"!";
+                logined.show();
+            }else if (obj.message == "isNotLogin"){
+            }
+        },"json");
+        $("#searchButton").click(function () {
+            var searchCondition = $("#searchCondition").val();
+            alert(searchCondition);
+            localStorage.setItem("searchCondition",searchCondition);
+            window.location.href='/page_search.html';
+        });
+    }
+</script>
 </html>

@@ -12,20 +12,23 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @ContextConfiguration({"classpath:spring/spring-dao.xml",
         "classpath:spring/spring-service.xml"})
 public class OrderServiceImplTest extends TestCase {
-    @Autowired
-    private OrderService orderService;
 
     @Test
     public void testCreateOrder() throws Exception {
-        orderService.CreateOrder(1,2);
+        System.out.println(orderService.CreateOrder(1,2));
     }
     @Test
-    public void testQueryByOrderId() throws Exception {
-        System.out.println(orderService.queryByOrderId(3));
+    public void testQueryByUidAndItemId() throws Exception {
+        System.out.println(orderService.queryByUidAndItemId(1,2));
     }
     @Test
-    public void testQueryByUid()throws Exception {
+    public void testQueryByUid() throws Exception {
         System.out.println(orderService.queryByUid(1));
     }
+
+    @Autowired
+    private OrderService orderService;
+
+
 
 }

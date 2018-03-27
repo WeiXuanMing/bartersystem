@@ -3,14 +3,20 @@ package com.daming.bartersystem.service;
 
 import com.daming.bartersystem.DTO.BarterOrderResult;
 import com.daming.bartersystem.entitys.BarterOrder;
+import com.daming.bartersystem.entitys.BarterOrder_OrderItem;
 
 import java.util.List;
 
 public interface OrderService {
-     Integer CreateOrder(Integer uid1,Integer uid2);
+     /*
+          Integer CreateOrder(Integer uid1,Integer uid2);
 
-     BarterOrderResult queryByOrderId(Integer BarterOrderId);
+          BarterOrderResult queryByOrderId(Integer BarterOrderId);
 
-     List<BarterOrderResult> queryByUid(Integer uid);
+     */
+     boolean CreateOrder(Integer uid,Integer itemId);
 
+     BarterOrder queryByUidAndItemId(Integer uid,Integer itemId);
+
+     List<BarterOrder> queryByUid(Integer uid);
 }
