@@ -49,10 +49,11 @@
         </javaClientGenerator>
 
         <!-- 表名对应生成的实体 -->
+        <table tableName="user_review" domainObjectName="UserReview" />
         <!--
         <table tableName="user" domainObjectName="User" />
-        <table tableName="user_barter_information" domainObjectName="UserBarterUnformation" />
         <table tableName="user_review" domainObjectName="UserReview" />
+        <table tableName="user_barter_information" domainObjectName="UserBarterUnformation" />
         <table tableName="shopping_trolley_item" domainObjectName="ShoppingTrolleyItem" />
         <table tableName="shopping_trolley" domainObjectName="ShoppingTrolley" />
 
@@ -61,8 +62,8 @@
         <table tableName="item" domainObjectName="Item" />
         <table tableName="classification" domainObjectName="Classification" />
 
-        -->
         <table tableName="admin_information" domainObjectName="AdminInformation" />
+        -->
         <!--<table tableName="user_review" domainObjectName="UserReview" />-->
         <!-- enableCountByExample="false" enableUpdateByExample="false"
         enableDeleteByExample="false" enableSelectByExample="false"

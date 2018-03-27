@@ -380,6 +380,9 @@ public class User {
         this.phone = phone;
         this.email = email;
     }
+    public User(String username,String phone, String email){
+
+    }
     @Override
     public String toString() {
         return "User{" +

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>开始使用</title>
+    <link rel="stylesheet" href="../jeui/css/jeui.css">
+    <link rel="stylesheet" href="../jeui/css/skin/jebox.css">
+    <link rel="stylesheet" href="../jeui/css/skin/jedate.css">
+    <!-- jQuery (Bootstrap 的 JavaScript 插件需要引入 jQuery) -->
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="../jeui/js/modules/jeBox.js"></script>
+    <script src="../jeui/js/modules/jeui.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <!-- 引入 Bootstrap -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<style>
+
+</style>
+<body>
+ 
+<!-- 你的HTML代码 -->
+<div></div>
+<button class="je-btn je-bg-native" id="btn">原始按钮</button>
+
+</body>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("#btn").click(function(){
+			jeBox.open({
+			title:"mBox mobile页",
+			type:'iframe',
+			padding:"0",
+			boxSize:["450px","80%"],
+			content: "/choosebox.html",
+			maskLock : true
+			 });
+			});
+		}
+	);
+	</script>
+</html>

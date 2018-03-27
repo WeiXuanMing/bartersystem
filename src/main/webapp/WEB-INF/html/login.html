@@ -109,13 +109,12 @@ body {
                     '"password" : "'+ password + '",'+
                         '"logintype" : "' +logintype
                 +'"}';
-            alert(mydata);
 
            $.ajaxSetup({
                contentType : 'application/json'
            });
 
-           $.post("/login",mydata,function (json,status) {
+               $.post("/login",mydata,function (json,status) {
                var obj = json;
                if(obj.message == "succeed"){
                    if (obj.data.loginType == "user"){
@@ -128,7 +127,7 @@ body {
                }
            },"json");
         });
-        $("input").onfocus(function () {
+        $("input").focus(function () {
             hiddenMessage.hide(500);
         });
     });

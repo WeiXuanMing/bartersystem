@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<title>开始使用</title>
+<link rel="stylesheet" href="../jeui/css/jeui.css">
+<link rel="stylesheet" href="../jeui/css/skin/jebox.css">
+<link rel="stylesheet" href="../jeui/css/skin/jedate.css">
+<!-- jQuery (Bootstrap 的 JavaScript 插件需要引入 jQuery) -->
+<script src="https://code.jquery.com/jquery.js"></script>
+<script src="../jeui/js/modules/jeBox.js"></script>
+<script src="../jeui/js/modules/jeui.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<!-- 引入 Bootstrap -->
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<style>
+  .userphoto{width: 60px;height: 60px;overflow: hidden;}
+</style>
+<body>
+<table class="je-table je-mb20" id="newCheck">
+	<thead>
+		<tr>
+			<!--<th width="30"><input type="checkbox" name="checkbox" id="gocheck" jename="chunk"></th>-->
+			<th width="100" align="left">物品编号</th>
+			<th width="80">图片</th>
+			<th>标题</th>
+			<th>收货地址</th>
+			<th>参考价格</th>
+			<th>介绍</th>
+			<th>操作</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr id="itemSample">
+			<!--<td align="center"><input type="checkbox" name="checkbox" jename="chunk"></td>-->
+			<td id="itemId">物品编号</td>
+			<td align="center" class="imgtd"><img src="../jeui/images/userphoto.jpg" class="userphoto"/></td>
+			<td id="itemtitle">标题</td>
+			<td id="itemShipAddress">收货地址</td>
+			<td id="itemRefPrice">参考价格</td>
+			<td id="itemDescription">介绍</td>
+			<td align="center"><button class="je-btn je-btn-mini je-f12">编辑</button>
+				<button class="je-btn je-btn-mini je-bg-red je-f12">删除</button></td>
+		</tr>
+		<input type="hidden" id="justforappend"/>
+	</tbody>
+</table>
+<script type="text/javascript">
+ jeui.use(["jquery","jeCheck"],function () {
+        $("#newCheck").jeCheck({
+            jename:"chunk",
+            attrName:[false,"勾选"], 
+            itemfun: function(elem,bool) {
+                console.log(bool)
+                //console.log(elem.prop('checked'))
+            },
+            success:function(elem){
+                jeui.chunkSelect(elem,'#gocheck','on')
+                
+            }
+        })
+    });
+</script>
+</body>
+<script type="text/javascript">
+	$(document).ready(function () {
+        var sample = $("#itemSample");
+        sample.hide();
+            $.getJSON("/possessions", function (result) {
+                if(result.message == "succeed"){
+                    $.each(result.data.items, function (i, field) {
+                        var itemId = field.itemId;
+                        var itemtitle = field.title;
+                        var itemShipAddress = field.shipAddress;
+                        var itemDescription = field.description;
+                        var itemrefprice = field.refPrice;
+                        var newItemSample = sample.clone();
+                        alert(field.shipAddress);
+                        initItemSample(itemId, itemtitle, itemShipAddress, itemDescription, itemrefprice, newItemSample);
+                        newItemSample.show();
+                        newItemSample.click(function () {
+
+                        });
+                        $("#justforappend").before(newItemSample);//justforappend
+                    });
+                }
+            });
+
+    	});
+    function initItemSample(itemId, itemtitle, itemShipAddress, itemDescription, itemrefprice, newItemSample){
+        newItemSample.find("#itemId").text(itemId);
+        newItemSample.find("#itemtitle").text(itemtitle);
+        newItemSample.find("#itemShipAddress").text(itemShipAddress);
+        newItemSample.find("#itemRefPrice").text(itemDescription);
+        newItemSample.find("#itemDescription").text(itemrefprice);
+    }
+
+</script>
+</html>

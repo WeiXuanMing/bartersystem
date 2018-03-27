@@ -2,8 +2,12 @@ package com.daming.bartersystem.controller;
 
 import com.daming.bartersystem.DTO.Result;
 import com.daming.bartersystem.DTO.UserInformationResult;
+import com.daming.bartersystem.DTO.UserSimpleInfoResult;
 import com.daming.bartersystem.entitys.User;
+import com.daming.bartersystem.entitys.UserBarterUnformation;
 import com.daming.bartersystem.service.UserService;
+import com.daming.bartersystem.service.impl.UserBarterInformationService;
+import com.sun.org.apache.regexp.internal.RE;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -15,6 +19,10 @@ import javax.xml.ws.Action;
 public class UserController {
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private UserBarterInformationService userBarterInformationService;
+
     @PostMapping("/getUI")
     @ResponseBody
     public Result<UserInformationResult> getUserInformation(HttpSession session){
@@ -46,7 +54,29 @@ public class UserController {
         }
         return result;
     }
+    @GetMapping("/getUserSimpleInfo/{uid}")
+    @ResponseBody
+    public Result<UserSimpleInfoResult> getUIByUid(@PathVariable("uid") Integer uid){
+        Result<UserSimpleInfoResult> result = new Result<UserSimpleInfoResult>(0,"failure",new UserSimpleInfoResult());
+        if (uid != null) {
+            User user = userService.queryByUid(uid);
+            if (user != null){
+                UserBarterUnformation userBarterUnformation = userBarterInformationService.getUBInfoByUid(uid);
+                UserSimpleInfoResult userSimpleInfoResult = new UserSimpleInfoResult();
+                userSimpleInfoResult.setUsername(user.getUsername());
+                userSimpleInfoResult.setPhone(user.getPhone());
+                userSimpleInfoResult.setEmail(user.getEmail());
+                userSimpleInfoResult.setConsignee(userBarterUnformation.getConsignee());
+                userSimpleInfoResult.setConsignee_phone(userBarterUnformation.getConsigneePhone());
+                userSimpleInfoResult.setConsignee_address(userBarterUnformation.getConsigneeAddress());
+                userSimpleInfoResult.setConsignee_postalcode(userBarterUnformation.getConsigneePostalcode());
+                return new Result<UserSimpleInfoResult>(0,"succeed",userSimpleInfoResult);
+            }
 
+        }
+        return result;
+
+    }
 
 
 }

@@ -2,6 +2,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- 引入 Bootstrap -->
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+	<!-- HTML5 Shiv 和 Respond.js 用于让 IE8 支持 HTML5元素和媒体查询 -->
+	<!-- 注意： 如果通过 file://  引入 Respond.js 文件，则该文件无法起效果 -->
+	<!--[if lt IE 9]>
+	<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+	<script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+	<![endif]-->
 <title>无标题文档</title>
 <style>
 	.gw_num{border: 1px solid #dbdbdb;width: 110px;line-height: 26px;overflow: hidden;}
@@ -17,16 +27,8 @@
 			 <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
 			 <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
 		  <![endif]-->
-		  
-<script type="text/javascript" src="spinner/jquery.spinner.js"></script>
-<!-- jQuery (Bootstrap 的 JavaScript 插件需要引入 jQuery) -->
-<script src="https://code.jquery.com/jquery.js"></script>
-<!-- 包括所有已编译的插件 -->
-	<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous">
 
-	</script>
 	<link rel="stylesheet" href="/jeui/css/jeui.css">
-	<script src="/jeui/js/modules/jquery.min.js"></script>
 </head>
 <body>
 <nav class="navbar navbar-default" role="navigation">
@@ -99,8 +101,8 @@
             </div>
           </div>
           <div class="row">
-            <div class="col-md-4" id="itemOwner">交易者：<b>Harry botter</b></div>
-			 <div class="col-md-4" id="itemId">商品编号：<b>892382828</b></div>
+            <div class="col-md-4" >物主：<b id="itemOwner">Harry botter</b></div>
+			 <div class="col-md-4" >商品编号：<b id="itemId">892382828</b></div>
           </div>
 		  <br>
 		  <div class="row">
@@ -112,8 +114,8 @@
           </div>
           <br>
           <div class="row">
-            <div class="col-md-4"> <b style="font-size:20px;color:red;" id="item">参考价：</b><font style="">1234</font> </div>
-            <div class="col-md-4"> <b style="font-size:20px;color:red;" id="">库存：</b><font style="">1234</font> </div>
+            <div class="col-md-4"> <b style="font-size:20px;color:red;" id="item">参考价：</b><font style="" id="refPrice">1234</font> </div>
+            <div class="col-md-4"> <b style="font-size:20px;color:red;" id="">库存：</b><font style="" id="stock">1234</font> </div>
           </div>
           <br>
           <div class="row">
@@ -142,7 +144,7 @@
         <div>
           <ul class="nav navbar-nav ">
             <li class="active"><a href="#">商品详情</a></li>
-            <li><a href="#">评论<font size="2">1000</font>条</a></li>
+            <li><a href="#">评论<font size="2" id="reviewNum">1000</font>条</a></li>
           </ul>
         </div>
       </div>
@@ -151,16 +153,16 @@
   <!--此处是物品信息的描述-->
   <div class="row">
   	
-  </div>
+	</div>
   <!--此处是评论的div -->
   <div class="container" id ="user_review_container">
 	  <div class="row" id="review_table">
 		  <div class="je-form-item">
 			  <label class="je-label je-f14">评论</label>
 			  <div class="je-inputbox">
-				  <textarea placeholder="请输入内容" class="je-textarea"></textarea>
+				  <textarea placeholder="请输入内容" class="je-textarea" id="review_context"></textarea>
 			  </div>
-			  <button class="je-btn je-bg-green je-rdu" style="float: right">绿色按钮</button>
+			  <button class="je-btn je-bg-green je-rdu" style="float: right" id="review_button">评论</button>
 		  </div>
 	  </div>
 	  <div class="row" id="user_review">
@@ -188,6 +190,10 @@
 	 </div>
 </div>
 </body>
+<!-- jQuery (Bootstrap 的 JavaScript 插件需要引入 jQuery) -->
+<script src="https://code.jquery.com/jquery.js"></script>
+<!-- 包括所有已编译的插件 -->
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <script type="text/javascript">
     $(document).ready(function(){
         //加的效果
@@ -205,8 +211,144 @@
             $(this).next().val(num);
         });
         $("#user_review").hide();
+        var itemTitle = $("#itemTitle"); //物品名称组件
+        var itemOwner = $("#itemOwner"); //物主组件
+        var itemId = $("#itemId"); //物品编号组件
+		var itemTradeMark = $("#itemTradeMark"); //物品品牌
+		var Hot = $("#Hot");//人气组件
+		var refPrice = $("#refPrice"); //参考价格组件
+		var stock = $("#stock"); //库存数量
+		var reviewNem = $("#reviewNum"); //评论数量
+		var review_text = $("#review_context");//评论内容
+		var review_button = $("#review_button");//评论按钮
 
+		var user_review=$("#user_review");//用户评论div
+        user_review.hide();
+//		var review_username= $("#review_username");//评论用户名
+//		var review_content=$("#review_content");//评论内容
+        var localStorageItemId = localStorage.getItem("ItemDetailItemId");
+        if (localStorageItemId != null){
+           // localStorage.removeItem("ItemDetailItemId");
+			$.getJSON("/itemDetail/" + localStorageItemId, function (result) {
+			    if (result.message=="succeed"){
+			        /*
+			        * {"code":0,"message":"succeed","data":{"succeed":true}}
+			        * */
+			        alert(review_text.val());
+			        var reviewdata =   '{'+
+                        '"itemId" : "' + localStorageItemId + '",'+
+                        '"reviewContent" : "'+ review_text.val()
+                        +'"}';
+			        review_button.click(function () {
+			            alert(reviewdata);
+                        $.ajaxSetup({
+                            contentType : 'application/json'
+                        });
+                        $.post("/review" ,reviewdata, function (result) {
+                            if(result.message=="succeed") {
+                                alert("评论成功");
+                                window.location.href='/itemdetail.html';
+                            }
+                            if (result.message=="isNotLogin"){
+                                alert("请先登录");
+                                window.location.href='/login';
+							}
+                        },"json");
+                    });
+
+
+			        /*
+			        * {
+						"code": 0,
+						"message": "failure",
+						"data": 2
+}
+			        * */
+                    $.getJSON("/getReviewNum/" + localStorageItemId, function (result) {
+                        if(result.message=="succeed") {
+                            reviewNem.text(result.data);
+                        }
+                    });
+			    /*
+			    * "item": {
+							"itemId": 1,
+							"uid": 1,
+							"title": "item1_title",
+							"shipAddress": "asdasdasd",
+							"refPrice": 1000,
+							"classificationId": 1,
+							"stock": 1,
+							"ison": 1,
+							"description": null
+        				}
+			    * */
+					itemTitle.text(result.data.item.title);
+					itemId.text(result.data.item.itemId);
+					refPrice.text(result.data.item.refPrice);
+					stock.text(result.data.item.stock);
+					/*
+					* {
+							"code": 0,
+							"message": "succeed",
+							"data": {
+								"username": "haha",
+								"phone": "123123",
+								"email": "123123@qq.com",
+								"consignee": "consignee",
+								"consignee_phone": "consignee_phone",
+								"consignee_address": "consignee_address",
+								"consignee_postalcode": 529600
+							}
+						}
+					*
+					* */
+
+
+					$.getJSON("/getUserSimpleInfo/" + localStorageItemId, function (result) {
+					    if(result.message=="succeed") {
+                            itemOwner.text(result.data.username);
+                        }
+					});
+				/*
+				*"userReviews": [
+								{
+									"userReviewId": 1,
+									"reviewFatherId": 1,
+									"reviewSonId": null,
+									"reviewTime": 1521969699000,
+									"itemId": 1,
+									"reviewContent": null
+								},
+								{
+									"userReviewId": 2,
+									"reviewFatherId": 2,
+									"reviewSonId": null,
+									"reviewTime": 1521883308000,
+									"itemId": 1,
+									"reviewContent": null
+								}
+							]
+				*
+				* */
+                $.each(result.data.userReviews, function (i, field) {
+					var newuser_review = user_review.clone();
+                    $.getJSON("/getUserSimpleInfo/" + field.reviewFatherId, function (result) {
+                        if(result.message=="succeed") {
+                            newuser_review.find("#review_username").text(result.data.username);
+                        }
+                    });
+
+                    newuser_review.find("#review_content").text(field.reviewContent);
+                    newuser_review.show();
+                    $("#user_review_container").append(newuser_review);
+                });
+                }
+			});
+        }
     })
+
+</script>
+<script type="text/javascript">
 
 </script>
 </html>

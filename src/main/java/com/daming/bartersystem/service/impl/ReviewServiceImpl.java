@@ -18,7 +18,7 @@ public class ReviewServiceImpl implements ReviewService{
         UserReviewExample userReviewExample = new UserReviewExample();
         UserReviewExample.Criteria criteria = userReviewExample.createCriteria();
         criteria.andItemIdEqualTo(itemId);
-        List<UserReview> userReviews = userReviewMapper.selectByExample(userReviewExample);
+        List<UserReview> userReviews = userReviewMapper.selectByExampleWithBLOBs(userReviewExample);
         if (userReviews.size() > 0){
             return userReviews;
         }
@@ -29,6 +29,15 @@ public class ReviewServiceImpl implements ReviewService{
         if (userReview!=null) {
             userReviewMapper.insert(userReview);
             return 1;
+        }
+        return 0;
+    }
+
+    public Integer QueryReviewNumByItemId(Integer itemId) {
+        List<UserReview> userReviews = QueryByItemId(itemId);
+        Integer num = userReviews.size();
+        if (num > 0){
+            return num;
         }
         return 0;
     }

@@ -9,4 +9,5 @@ public interface ReviewService {
 
      Integer addReview(UserReview userReview);
 
+     Integer QueryReviewNumByItemId(Integer itemId);
 }

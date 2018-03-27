@@ -161,7 +161,8 @@
                     initItemDiv(itemId, itemtitle, itemrefprice, newItemDiv);
                     newItemDiv.show();
                     newItemDiv.click(function () {
-
+						localStorage.setItem("ItemDetailItemId",itemId)
+                        window.location.href='/itemdetail.html'
                     });
                     $("#justforappend").append(newItemDiv);//justforappend
                 });

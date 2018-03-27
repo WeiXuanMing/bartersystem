@@ -1,6 +1,7 @@
 package com.daming.bartersystem.controller;
 
 import com.daming.bartersystem.DTO.ItemDetailResult;
+import com.daming.bartersystem.DTO.PossessionsResult;
 import com.daming.bartersystem.DTO.Result;
 import com.daming.bartersystem.DTO.SearchResult;
 import com.daming.bartersystem.entitys.Item;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
@@ -60,6 +62,24 @@ public class ItemController {
             itemDetailResult.setUserReviews(userReviews);
             result.setData(itemDetailResult);
             result.setMessage("succeed");
+        }
+        return result;
+    }
+    /*
+    *{"code":0,"message":"succeed","data":{"items":[{"itemId":1,"uid":1,"title":"item1_title","shipAddress":"asdasdasd","refPrice":1000.00,"classificationId":1,"stock":1,"ison":1,"description":null},{"itemId":2,"uid":1,"title":"item2_title","shipAddress":"fdsfdsfsdf","refPrice":1000.00,"classificationId":1,"stock":1,"ison":1,"description":null}]}}
+    * */
+    @GetMapping("/possessions")
+    @ResponseBody
+    public Result<PossessionsResult> getPossessions(HttpSession session){
+        PossessionsResult possessionsResult = new PossessionsResult();
+        Result<PossessionsResult> result = new Result<PossessionsResult>(0,"failure",possessionsResult);
+        Integer uid = (Integer) session.getAttribute("uid");
+        if (uid != null){
+            List<Item> items = itemService.queryByUid(uid);
+            possessionsResult.setItems(items);
+            result =  new Result<PossessionsResult>(0,"succeed",possessionsResult);
+        }else if(uid == null){
+            result = new Result<PossessionsResult>(0,"isNotLogin",possessionsResult);
         }
         return result;
     }
