@@ -7,11 +7,27 @@ import java.util.List;
 
 public class OrderResult {
 
-    private List<BarterOrderItem> selfOrderListResult;
+    private List<BarterOrderItem> selfOrderList;
 
-    private List<BarterOrderItem> ownerOrderListResult;
+    private List<BarterOrderItem> ownerOrderList;
 
     private Item ownerItem;
+
+    public List<BarterOrderItem> getSelfOrderList() {
+        return selfOrderList;
+    }
+
+    public void setSelfOrderList(List<BarterOrderItem> selfOrderList) {
+        this.selfOrderList = selfOrderList;
+    }
+
+    public List<BarterOrderItem> getOwnerOrderList() {
+        return ownerOrderList;
+    }
+
+    public void setOwnerOrderList(List<BarterOrderItem> ownerOrderList) {
+        this.ownerOrderList = ownerOrderList;
+    }
 
     public Item getOwnerItem() {
         return ownerItem;
@@ -21,27 +37,11 @@ public class OrderResult {
         this.ownerItem = ownerItem;
     }
 
-    public List<BarterOrderItem> getSelfOrderListResult() {
-        return selfOrderListResult;
-    }
-
-    public void setSelfOrderListResult(List<BarterOrderItem> selfOrderListResult) {
-        this.selfOrderListResult = selfOrderListResult;
-    }
-
-    public List<BarterOrderItem> getOwnerOrderListResult() {
-        return ownerOrderListResult;
-    }
-
-    public void setOwnerOrderListResult(List<BarterOrderItem> ownerOrderListResult) {
-        this.ownerOrderListResult = ownerOrderListResult;
-    }
-
     @Override
     public String toString() {
         return "OrderResult{" +
-                "selfOrderListResult=" + selfOrderListResult +
-                ", ownerOrderListResult=" + ownerOrderListResult +
+                "selfOrderList=" + selfOrderList +
+                ", ownerOrderList=" + ownerOrderList +
                 ", ownerItem=" + ownerItem +
                 '}';
     }

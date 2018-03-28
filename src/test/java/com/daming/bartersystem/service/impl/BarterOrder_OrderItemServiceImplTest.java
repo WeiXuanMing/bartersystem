@@ -16,7 +16,7 @@ public class BarterOrder_OrderItemServiceImplTest extends TestCase {
     private BarterOrder_OrderItemService barterOrder_orderItemService;
     @Test
     public void testQueryByOrderId() throws Exception {
-        System.out.println(barterOrder_orderItemService.queryByOrderId(3));
+        System.out.println(barterOrder_orderItemService.queryByOrderId(6));
     }
 
     public void testAddBarterOrder_OrderItem() throws Exception {

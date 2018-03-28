@@ -10,4 +10,6 @@ public interface OrderItemService {
     boolean insert(BarterOrderItem barterOrderItem);
 
     boolean updateByBarterOrderItem(BarterOrderItem barterOrderItem);
+
+
 }

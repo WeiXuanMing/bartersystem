@@ -1,18 +1,14 @@
 package com.daming.bartersystem.service.impl;
 
 
-import com.daming.bartersystem.DTO.BarterOrderResult;
-import com.daming.bartersystem.dao.BarterOrderItemMapper;
+
 import com.daming.bartersystem.dao.BarterOrderMapper;
-import com.daming.bartersystem.dao.BarterOrder_OrderItemMapper;
+
 import com.daming.bartersystem.entitys.*;
 import com.daming.bartersystem.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.sql.Timestamp;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @Service
@@ -53,6 +49,23 @@ public class OrderServiceImpl implements OrderService{
         criteria.andUidEqualTo(uid);
         barterOrders = barterOrderMapper.selectByExample(barterOrderExample);
         return barterOrders;
+    }
+
+    public List<Integer> queryUidByOrderId(Integer OrderId) {
+
+
+        return null;
+    }
+
+    public BarterOrder queryByOrderId(Integer orderId) {
+        BarterOrderExample barterOrderExample = new BarterOrderExample();
+        BarterOrderExample.Criteria criteria = barterOrderExample.createCriteria();
+        criteria.andBarterOrderIdEqualTo(orderId);
+        List<BarterOrder> barterOrders = barterOrderMapper.selectByExample(barterOrderExample);
+        if(barterOrders!=null&&barterOrders.size()>0){
+            return barterOrders.get(0);
+        }
+        return null;
     }
     /*
     //创建一个Order列和两个OrderItem列
