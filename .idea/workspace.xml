@@ -6,17 +6,7 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d351c5f8-64e2-40d0-9057-e5fa05da4f85" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/DTO/OrderAccepter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../bartersystem/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../bartersystem/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/DTO/OrderResult.java" afterPath="$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/DTO/OrderResult.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/controller/OrderController.java" afterPath="$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/controller/OrderController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/service/ItemService.java" afterPath="$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/service/ItemService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/service/OrderItemService.java" afterPath="$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/service/OrderItemService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/service/OrderService.java" afterPath="$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/service/OrderService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/service/impl/OrderServiceImpl.java" afterPath="$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/service/impl/OrderServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../bartersystem/src/test/java/com/daming/bartersystem/service/impl/BarterOrder_OrderItemServiceImplTest.java" afterPath="$PROJECT_DIR$/../bartersystem/src/test/java/com/daming/bartersystem/service/impl/BarterOrder_OrderItemServiceImplTest.java" />
-    </list>
+    <list default="true" id="d351c5f8-64e2-40d0-9057-e5fa05da4f85" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/../bartersystem/out/" />
     <ignored path="$PROJECT_DIR$/../bartersystem/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -646,7 +636,7 @@
       <workItem from="1522108994971" duration="26104000" />
       <workItem from="1522149762839" duration="97000" />
       <workItem from="1522150556509" duration="12785000" />
-      <workItem from="1522196802987" duration="9460000" />
+      <workItem from="1522196802987" duration="9482000" />
     </task>
     <task id="LOCAL-00001" summary="额~~">
       <created>1521817753105</created>
@@ -711,7 +701,14 @@
       <option name="project" value="LOCAL" />
       <updated>1522165625923</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="再次commit~~~">
+      <created>1522206322433</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1522206322433</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -747,7 +744,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="174099000" />
+    <option name="totallyTimeSpent" value="174121000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
