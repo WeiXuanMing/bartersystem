@@ -1,0 +1,222 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>无标题文档</title>
+
+<style>
+	.gw_num{border: 1px solid #dbdbdb;width: 110px;line-height: 26px;overflow: hidden;}
+	.gw_num em{display: block;height: 26px;width: 26px;float: left;color: #7A7979;border-right: 1px solid #dbdbdb;text-align: center;cursor: pointer;font-style:normal;}
+	.gw_num .num{display: block;float: left;text-align: center;width: 52px;font-style: normal;font-size: 14px;line-height: 24px;border: 0;}
+	.gw_num em.add{float: right;border-right: 0;border-left: 1px solid #dbdbdb;}
+	
+
+	.fixed{ position:fixed; left:0px; bottom:0px; width:100%; height:50px; background-color:#fff; z-index:9999;}
+	</style>
+	<!-- 引入 Bootstrap -->
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+	<!-- HTML5 Shiv 和 Respond.js 用于让 IE8 支持 HTML5元素和媒体查询 -->
+	<!-- 注意： 如果通过 file://  引入 Respond.js 文件，则该文件无法起效果 -->
+	<!--[if lt IE 9]>
+	<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+	<script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+	<![endif]-->
+
+	<script src="https://code.jquery.com/jquery.js"></script>
+	<script src="../jeui/js/modules/jeTable.js"></script>
+	<link rel="stylesheet" href="../jeui/css/jeui.css">
+	<link rel="stylesheet" href="../jeui/css/skin/jebox.css">
+	<link rel="stylesheet" href="../jeui/css/skin/jedate.css">
+	<!-- jQuery (Bootstrap 的 JavaScript 插件需要引入 jQuery) -->
+	<script src="https://code.jquery.com/jquery.js"></script>
+	<script src="../jeui/js/modules/jeBox.js"></script>
+	<script src="../jeui/js/modules/jeui.js"></script>
+	<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<!-- 引入 Bootstrap -->
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body onload="init()">
+<nav class="navbar navbar-default" role="navigation">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<a class="navbar-brand" href="#">以物易物</a>
+		</div>
+		<div>
+
+			<ul class="nav navbar-nav " id="loginandregister">
+				<li><a href="/login">登录</a></li>
+				<li><a href="#">注册</a></li>
+			</ul>
+			<ul class="nav navbar-nav " id="logined">
+				<li><a href="/login" id="username_href"></a></li>
+			</ul>
+			<div class="">
+				<form class="navbar-form navbar-left" role="search">
+					<div class="form-group">
+						<input type="text" class="form-control" placeholder="Search" id="searchCondition">
+					</div>
+					<button type="button" class="btn btn-default" id="searchButton">搜索</button>
+				</form>
+			</div>
+			<ul class="nav navbar-nav navbar-right">
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+						个人信息
+						<b class="caret"></b>
+					</a>
+
+					<ul class="dropdown-menu">
+						<li><a href="#">设置</a></li>
+						<li><a href="#">我的钱包</a></li>
+					</ul>
+				</li>
+				<li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span>  购物车</a></li>
+			</ul>
+		</div>
+	</div>
+</nav>
+<div class="container">
+	<div class="row">
+		<nav class="navbar navbar-default" role="navigation">
+			<div class="container-fluid">
+				<div class="navbar-header"> <a class="navbar-brand" href="#"><span class="glyphicon glyphicon-shopping-cart"></span>购物车></a> </div>	
+			</div>
+		</nav>
+	</div>
+</div>
+<div class="container">
+<form role="form">
+	<!--卖家-->
+	<div class="container" style="border:2px solid #ccc;">
+		<div class="row">
+			<div class="pull-right">
+				<div class="checkbox">
+					<input type="checkbox">
+				</div>
+				<font size="3">卖家</font><font size="3">daming</font> </div>
+			<h5 class="page-header"></h5>
+		</div>
+		<br />
+		<!--商品信息-->
+		<div class="row">
+			<!--书本封面-->
+			<div class="col-md-2">
+				<div class="thumbnail"> <img src="http://a1.att.hudong.com/66/85/01200000023879134440853552750_s.jpg" alt="..."  class="img-responsive" style="width:180px;height:150px"> </div>
+			</div>
+			<div class="col-md-4">
+				<div class="row">
+					<!--书本标题-->
+					<font size="3">这是物品的名称</font> </div>
+				<div class="row">
+					<div class="col-md-4"><font size="1">物主：<b>Harry botter</b></font></div>
+					<div class="col-md-4"><font size="1">物品编号:<b>10291</b></font></div>
+				</div>
+			</div>
+			<div class="col-md-2">
+				<!--数量-->
+				<div class="row">
+					<div class="gw_num"> <em class="jian">-</em>
+						<input type="text" value="1" class="num"/>
+						<em class="add">+</em> </div>
+				</div>
+			</div>
+			<div class="col-md-2"> <b style="font-size:20px;color:red;">参考价格：</b><font style="">1234</font> </div>
+			<div class="col-md-2 pull-right">
+				<button class="je-btn je-bg-red">提交申请</button>
+			</div>
+		</div>
+	</div>
+	</div>
+</form>
+
+</div>
+<div class="container" > </div>
+<script type="text/javascript">
+						$(document).ready(function(){
+							//加的效果
+							$(".add").click(function(){
+							var n=$(this).prev().val();
+							var num=parseInt(n)+1;
+							if(num==0){ return;}
+							$(this).prev().val(num);
+							});
+							//减的效果
+							$(".jian").click(function(){
+							var n=$(this).next().val();
+							var num=parseInt(n)-1;
+							if(num==0){ return}
+							$(this).next().val(num);
+							});
+						})
+				</script>
+<!-- 包括所有已编译的插件 -->
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</body>
+<script type="application/javascript">
+    var logined = $("#logined");//已登录显示的组件
+    logined.hide();
+    var loginandregister = $("#loginandregister");
+    var username_href = $("#username_href");
+    var username = "";
+    var phone = "";
+    var email = "";
+    var balance =　"";
+    var itemDiv = $("#itemDiv");//显示item的div
+    itemDiv.hide();
+    var itemColumnView = $("#itemColumnView");//显示item列的div
+    var itemListView = $("#itemListView");//显示item列表的view div
+    var row_num = 0;
+    var row_item_num=0;
+    function init(){
+        //获取登录状态
+        $.post("/getUI","",function (json,status) {
+            var obj = json;
+            if(obj.message == "isLogin"){
+                username = obj.data.username;
+                phone = obj.data.phone;
+                email = obj.data.email;
+                balance = obj.data.balance;
+                loginandregister.hide();
+                document.getElementById("username_href").innerHTML = "Hi,"+username+"!";
+                logined.show();
+            }else if (obj.message == "isNotLogin"){
+
+            }
+        },"json");
+        var searchCondition;
+        searchCondition = localStorage.getItem("searchCondition");
+        localStorage.removeItem("searchCondition");
+        if(searchCondition != null) {
+            //获取
+            $.getJSON("/search?condition=" + searchCondition, function (result) {
+                $.each(result.items, function (i, field) {
+                    var itemId = field.itemId;
+                    var itemtitle = field.title;
+                    var itemrefprice = field.refPrice;
+                    var newItemDiv = itemDiv.clone();
+                    initItemDiv(itemId, itemtitle, itemrefprice, newItemDiv);
+                    newItemDiv.show();
+                    newItemDiv.click(function () {
+                        localStorage.setItem("ItemDetailItemId",itemId)
+                        window.location.href='/itemdetail.html'
+                    });
+                    $("#justforappend").append(newItemDiv);//justforappend
+                });
+            });
+        }
+
+        $("#searchButton").click(function () {
+            var searchCondition = $("#searchCondition").val();
+            localStorage.setItem("searchCondition",searchCondition);
+            window.location.href='/page_search.html';
+        });
+    }
+
+    function  initItemDiv(itemid,itemtitle,itemrefprice,itemDiv) {
+        itemDiv.find("#refPrice").text("参考价:"+itemrefprice);
+        itemDiv.find("#itemviewtitle").text(itemtitle);
+        itemDiv.find("#uid").val(itemid);
+    }
+</script>
+</html>

@@ -11,6 +11,7 @@ public class ReviewServiceImplTest extends TestCase {
     }
 
     public void testQueryReviewNumByItemId() throws Exception {
+
     }
 
 }

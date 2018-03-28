@@ -12,4 +12,6 @@ public interface OrderItemService {
     boolean updateByBarterOrderItem(BarterOrderItem barterOrderItem);
 
     BarterOrderItem queryByUidUidItemId(Integer uid1,Integer uid2,Integer itemId);
+
+    BarterOrderItem queryByOrderIdUidUidItemId(Integer orderId,Integer uid1,Integer uid2,Integer itemId);
 }

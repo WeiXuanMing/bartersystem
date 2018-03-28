@@ -58,4 +58,18 @@ public class OrderItemServiceImpl implements OrderItemService{
         }
         return null;
     }
+
+    public BarterOrderItem queryByOrderIdUidUidItemId(Integer orderId, Integer uid1, Integer uid2, Integer itemId) {
+        BarterOrderItemExample barterOrderItemExample = new BarterOrderItemExample();
+        BarterOrderItemExample.Criteria criteria = barterOrderItemExample.createCriteria();
+        criteria.andOrderIdEqualTo(orderId);
+        criteria.andUid1EqualTo(uid1);
+        criteria.andUid2EqualTo(uid2);
+        criteria.andItemIdEqualTo(itemId);
+        List<BarterOrderItem> barterOrderItems = barterOrderItemMapper.selectByExample(barterOrderItemExample);
+        if (barterOrderItems.size()>0){
+            return barterOrderItems.get(0);
+        }
+        return null;
+    }
 }
