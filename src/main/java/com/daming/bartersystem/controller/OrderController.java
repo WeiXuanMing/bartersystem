@@ -270,9 +270,9 @@ public class OrderController {
     * 最后将结果返回
     *
     * */
-    @RequestMapping(value = "/getItemOwnerExchangeOrder/{orderId}/{applicantUid}", method = RequestMethod.GET)
+    @RequestMapping(value = "/getItemOwnerExchangeOrder/{orderId}", method = RequestMethod.GET)
     @ResponseBody
-    public Result<ItemOwnerExchangeOrderResult> getApplyExchangeOrder(@PathVariable("orderId") Integer orderId, @PathVariable("applicantUid") Integer applicantUid,HttpSession session){
+    public Result<ItemOwnerExchangeOrderResult> getApplyExchangeOrder(@PathVariable("orderId") Integer orderId, HttpSession session){
         Result<ItemOwnerExchangeOrderResult> result = new Result<ItemOwnerExchangeOrderResult>(0,"failure",new ItemOwnerExchangeOrderResult());
         Integer uid = (Integer) session.getAttribute("uid");
         List<BarterOrderItem> selfOrderItemList = new ArrayList<BarterOrderItem>();
