@@ -20,6 +20,8 @@ public class BarterOrder_OrderItemServiceImplTest extends TestCase {
     }
 
     public void testAddBarterOrder_OrderItem() throws Exception {
+
+
     }
 
 }
