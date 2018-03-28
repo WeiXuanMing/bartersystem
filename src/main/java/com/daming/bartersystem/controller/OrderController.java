@@ -3,6 +3,7 @@ package com.daming.bartersystem.controller;
 import com.daming.bartersystem.DTO.OrderAccepter;
 import com.daming.bartersystem.DTO.OrderResult;
 import com.daming.bartersystem.DTO.Result;
+import com.daming.bartersystem.DTO.SubmitOrderItemResult;
 import com.daming.bartersystem.entitys.BarterOrder;
 import com.daming.bartersystem.entitys.BarterOrderItem;
 import com.daming.bartersystem.entitys.BarterOrder_OrderItem;
@@ -143,18 +144,35 @@ public class OrderController {
 
     /**
      * 提交订单详细信息，信息包含自己提供的物品信息
+     * 需要提供orderId、receiver_address和selfOrderItemIdList{item_id,item_id}等信息
+     *
+     *
+     * 返回的message有：
+     * failure：失败
+     * isNotYouItem：存在不是物主的物品
+     * isNotLogin：未登录
+     *
      * @param
      * @param orderId
      * @return
      */
 
+
     @RequestMapping(value = "/submitOrderItem/{orderId}", method = RequestMethod.POST, produces="application/json")
     @ResponseBody
-    public Integer submitOrderItem(@RequestBody String param,@PathVariable("orderId") Integer orderId,HttpSession session) throws IOException {
+    public Result<SubmitOrderItemResult> submitOrderItem(@RequestBody String param,@PathVariable("orderId") Integer orderId,HttpSession session) throws IOException {
+        /*
+        * 实现思路，先解析Json，获取到orderId,receiver_address和selfOrderItemIdList（itemId数组的）的数据
+        * 先检验是否是本人的ItemId,如果都是，执行下一步-->
+        * 根据orderId和Uid获取到BarterOrder实例，根据 BarterOrder的itemid属性获取物主id，
+        * 然后根据orderId,用户uid,物主uid，itemId，收货地址，将orderItem状态设置成1；（0；）创建barterorderItem
+        * 将barterorderItem加入数据表中，然后将返回的barterorderItemid和barter_order_id创建BarterOrder_OrderItem然后加入数据表中
+        * 然后根据orderId,
+        * */
+        Result<SubmitOrderItemResult> result = new Result<SubmitOrderItemResult>(0,"failure",new SubmitOrderItemResult());
         System.out.println("接受到的json格式是这个样子的："+param);
         param = new String(param.getBytes("ISO-8859-1"), "UTF-8");
         Integer uid = (Integer) session.getAttribute("uid");
-
         /*
         中文乱码问题还可以通过修改tomcat配置文件/conf/server.xml 加上
             <Connector port="8080" protocol="HTTP/1.1"
@@ -165,6 +183,8 @@ public class OrderController {
                    解决
          */
         if(uid != null) {
+            //已登录
+            System.out.println("已经登录了耶~~(＾－＾)V");
             ObjectMapper objectMapper = new ObjectMapper();
             OrderAccepter orderAccepter = objectMapper.readValue(param, OrderAccepter.class);
             System.out.println("获取到的SelfOrderItemIdList是：" + orderAccepter.getSelfOrderItemIdList());
@@ -175,17 +195,53 @@ public class OrderController {
             String receiver_address = orderAccepter.getReceiver_address();
             Integer accptedOrderId = orderAccepter.getOrderId();
             //然后加入orderItem表，在加入barterorder_orderitem的关系映射表,将状态设置成未确认状态
-            BarterOrder barterOrder = orderService.queryByOrderId(orderId);
-
-            Integer otherId;
-            for (int i = 0; i < selfOrderItemIdList.size(); i++) {
-                BarterOrderItem barterOrderItem = new BarterOrderItem();
-                barterOrderItem.setItemId(selfOrderItemIdList.get(i));
-                barterOrderItem.setOrderId(orderId);
-                barterOrderItem.setOrderItemState(0);
-                barterOrderItem.setUid1(uid);
+            List<Item> items = new ArrayList<Item>();
+            boolean isSelfItem = true;
+            //检查是否是本人的物品
+            for (int i = 0;i < selfOrderItemIdList.size();i++) {
+                 Item item = itemService.query(selfOrderItemIdList.get(i));
+                 if (!item.getUid().equals(uid)){
+                    isSelfItem = false;
+                    break;
+                 }
+                items.add(item);
             }
+            if (isSelfItem){
+                //都是自己的物品
+                System.out.println("全是自己的物品耶~~o(∩_∩)o ");
+                BarterOrder barterOrder = orderService.queryByOrderId(orderId);
+                Integer ownerItemId = barterOrder.getItemId();
+                Item item = itemService.query(ownerItemId);
+                Integer ownerId = item.getUid();
+                //为每一个item创建一个BarterOrderItem，并存入
+                for (int i = 0;i < selfOrderItemIdList.size();i++) {
+                    BarterOrderItem barterOrderItem = new BarterOrderItem();
+                    barterOrderItem.setOrderId(orderId);
+                    barterOrderItem.setUid1(uid);
+                    barterOrderItem.setUid2(ownerId);
+                    barterOrderItem.setItemId(selfOrderItemIdList.get(i));
+                    barterOrderItem.setReceiverAddress(receiver_address);
+                    barterOrderItem.setOrderItemState(1);
+
+                    System.out.printf("物品编号："+selfOrderItemIdList.get(i)+"插入数据表"+orderItemService.insert(barterOrderItem));
+                    System.out.println("物品编号："+selfOrderItemIdList.get(i)+"插入数据表"+barterOrderItem);
+                    BarterOrder_OrderItem barterOrder_orderItem = new BarterOrder_OrderItem();
+                    barterOrder_orderItem.setBarterOrderId(orderId);
+                    barterOrder_orderItem.setOrderitemId(barterOrderItem.getOrderitemId());
+                    barterOrder_orderItem.setAbandoned(0);
+                    System.out.printf(barterOrder_orderItem+"：插入数据表"+barterOrder_orderItemService.addBarterOrder_OrderItem(barterOrder_orderItem));
+                    System.out.printf("插入的关系表的barterOrder_orderItem的详情"+barterOrder_orderItem);
+                }
+                result = new Result<SubmitOrderItemResult>(0,"succeed",new SubmitOrderItemResult());
+                return result;
+            }else {
+                result = new Result<SubmitOrderItemResult>(0,"isNotYouItem",new SubmitOrderItemResult());
+                return result;
+            }
+        }else {
+            //未登录
+            result = new Result<SubmitOrderItemResult>(0,"isNotLogin",new SubmitOrderItemResult());
+            return result;
         }
-        return orderId;
     }
 }

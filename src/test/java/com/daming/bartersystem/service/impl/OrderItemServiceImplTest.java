@@ -26,6 +26,7 @@ public class OrderItemServiceImplTest extends TestCase {
         barterOrderItem.setUid2(1);
         barterOrderItem.setOrderItemState(0);
         System.out.println(orderItemService.insert(barterOrderItem));
+        System.out.println(barterOrderItem);
     }
 
     public void testUpdateByBarterOrderItem() throws Exception {
