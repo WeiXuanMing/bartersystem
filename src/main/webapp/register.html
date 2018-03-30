@@ -136,97 +136,46 @@ body {
 		  </style>
 </head>
 <body>
- 
-	<nav class="navbar navbar-inverse navbar-fixed-top">
-			<div class="container-fluid">
-			<div class="navbar-header">
-				<a class="navbar-brand">用户个人信息</a>
-			</div>
-			
-			</div>
-    </nav>
+
     <div class="container-fluid">
       <div class="row">
-        <div class="col-sm-3 col-md-2 sidebar">
-			<div class="row">
-				
-			</div>
-          <ul class="nav nav-sidebar">
-            <li class="active"><a href="#">个人信息<span class="sr-only">(current)</span></a></li>
-            <li><a href="#">上架物品</a></li>
-            <li><a href="#">已上架物品</a></li>
-            <li><a href="#">已完成订单</a></li>
-            <li><a href="#">未完成订单</a></li>
-          </ul>
-
-        </div>
-        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-          <h1 class="page-header">个人信息</h1>
+        <div class="main">
+          <h1 class="page-header">帐号注册</h1>
           <div class="je-p20">
-            <form class="je-form-item">
-              <table class="je-table je-f14">
-                <input type="hidden" id="uid" value=""/>
-                <colgroup>
-                  <col width="20%">
-                  <col width="50%">
-                  <col>
-                </colgroup>
-                <thead>
-                <tr>
-                  <th>用户属性</th>
-                  <th>属性值</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                  <td>模版名称</td>
-                  <td><input type="text" class="je-input cmsName" lay-verify="required" placeholder="请输入模版名称"></td>
-                </tr>
-                <tr>
-                  <td>昵称</td>
-                  <td><input type="text" class="je-input version" placeholder="请输入当前模版版本"></td>
-                </tr>
-                <tr>
-                  <td>手机号码</td>
-                  <td><input type="text" class="je-input author" placeholder="请输入手机号码"></td>
-                </tr>
-                <tr>
-                  <td>邮箱地址</td>
-                  <td><input type="text" class="je-input homePage" placeholder="请输入网站首页"></td>
-                </tr>
-                </tbody>
-              </table>
-            </form>
-            <div align="right"><button class="je-btn je-bg-native je-btn-big je-f18">确认修改</button></div>
+            <div class="col-md-6 col-md-offset-3" >
+              <form class="je-form-item">
+                <table class="je-table je-f14">
+                  <input type="hidden" id="uid" value=""/>
+                  <colgroup>
+                    <col width="20%">
+                    <col width="50%">
+                    <col>
+                  </colgroup>
+                  <thead>
+                  </thead>
+                  <tbody>
+                  <tr>
+                    <td><input type="text" class="je-input cmsName" lay-verify="required" placeholder="昵称（例：什么什么）"></td>
+                  </tr>
+                  <tr>
+                    <td><input type="text" class="je-input version" placeholder="密码（6-16个字符，区分大小写）"></td>
+                  </tr>
+                  <tr>
+                    <td><input type="text" class="je-input author" placeholder="请输入手机号码"></td>
+                  </tr>
+                  <tr>
+                    <td><input type="text" class="je-input homePage" placeholder="请输入邮箱地址"></td>
+                  </tr>
+                  </tbody>
+                </table>
+              </form>
+              <div align="right"><button class="je-btn je-bg-native je-btn-big je-f18">确认提交</button></div>
+            </div>
           </div>
           <script type="text/javascript">
               jeui.use(["jquery"],function () {
-
               })
           </script>
-          <div class="je-form-item je-p20">
-            <h1 class="page-header">修改密码</h1>
-            <div class="je-w33 je-dib">
-              <label class="je-label je-f14">旧密码</label>
-              <div class="je-inputbox">
-                <input type="text" name="title" autocomplete="off" placeholder="请输入" class="je-input">
-              </div>
-            </div>
-            <div class="je-w33 je-dib">
-              <label class="je-label je-f14">新密码</label>
-              <div class="je-inputbox">
-                <input type="text" name="title" autocomplete="off" placeholder="请输入" class="je-input">
-              </div>
-            </div>
-            <div class="je-w33 je-dib">
-              <label class="je-label je-f14">确认密码</label>
-              <div class="je-inputbox">
-                <input type="text" name="title" autocomplete="off" placeholder="请输入" disabled class="je-input">
-              </div>
-            </div>
-            <p/><p/>
-            <div align="right"><button class="je-btn je-bg-native je-btn-big je-f18">确认修改</button></div>
-          </div>
         </div>
       </div>
     </div>
