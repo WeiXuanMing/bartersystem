@@ -1,11 +1,9 @@
 package com.daming.bartersystem.service.impl;
 
+import com.daming.bartersystem.dao.AdminInformationMapper;
 import com.daming.bartersystem.dao.ItemMapper;
 import com.daming.bartersystem.dao.UserMapper;
-import com.daming.bartersystem.entitys.Item;
-import com.daming.bartersystem.entitys.ItemExample;
-import com.daming.bartersystem.entitys.User;
-import com.daming.bartersystem.entitys.UserExample;
+import com.daming.bartersystem.entitys.*;
 import com.daming.bartersystem.service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,7 +17,10 @@ public class AdminServiceImpl implements AdminService{
     private UserMapper userMapper;
     @Autowired
     private ItemMapper itemMapper;
-
+    @Autowired
+    private UserMapper userMapper;
+    @Autowired
+    private AdminInformationMapper adminInformationMapper;
     public boolean banByUid(Integer uid) {
         UserExample userExample = new UserExample();
         UserExample.Criteria criteria = userExample.createCriteria();
@@ -52,5 +53,32 @@ public class AdminServiceImpl implements AdminService{
         criteria.andIsonEqualTo(0);
         List<Item> items = itemMapper.selectByExample(itemExample);
         return items;
+    }
+
+    public boolean auditItem(Integer itemId) {
+        return false;
+    }
+
+    public List<User> getAllUserInfo() {
+        UserExample userExample = new UserExample();
+        UserExample.Criteria criteria = userExample.createCriteria();
+        criteria.andUidIsNotNull();
+        List<User> users = userMapper.selectByExample(userExample);
+        if (users != null){
+            return users;
+        }
+        return null;
+    }
+
+    public AdminInformation login(String account, String password) {
+        AdminInformationExample adminInformationExample = new AdminInformationExample();
+        AdminInformationExample.Criteria criteria = adminInformationExample.createCriteria();
+        criteria.andLoginAccountEqualTo(account);
+        criteria.andPasswordEqualTo(password);
+        List<AdminInformation> adminInformations = adminInformationMapper.selectByExample(adminInformationExample);
+        if (adminInformations!=null){
+            return adminInformations.get(0);
+        }
+        return null;
     }
 }

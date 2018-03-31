@@ -1,11 +1,10 @@
 package com.daming.bartersystem.service;
 
-public class PIMService {
-    //获取个人信息
+import com.daming.bartersystem.entitys.User;
 
-    //修改个人信息
-
-    //修改收货地址
-
-    //
+public interface PIMService {
+        //获取个人信息
+        User getUserInfo(Integer uid);
+        //修改个人信息
+        boolean updateUser(User user);
 }

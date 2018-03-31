@@ -13,5 +13,9 @@ public interface ItemService {
 
     int update(Item item);
 
+    boolean onSale(Integer itemId);
 
+    boolean offSale(Integer itemId);
+
+    boolean addItem(Item item);
 }

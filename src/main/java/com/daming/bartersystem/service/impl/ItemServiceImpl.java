@@ -49,4 +49,44 @@ public class ItemServiceImpl implements ItemService{
         criteria.andUidEqualTo(item.getUid());
         return itemMapper.updateByExample(item,itemExample);
     }
+
+    public boolean onSale(Integer itemId) {
+        ItemExample itemExample = new ItemExample();
+        ItemExample.Criteria criteria = itemExample.createCriteria();
+        criteria.andItemIdEqualTo(itemId);
+        List<Item> items = itemMapper.selectByExample(itemExample);
+        if (items!=null){
+            Item item = items.get(0);
+            item.setIson(1);
+            Integer i = itemMapper.updateByExample(item,itemExample);
+            if (i == 1) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean offSale(Integer itemId) {
+        ItemExample itemExample = new ItemExample();
+        ItemExample.Criteria criteria = itemExample.createCriteria();
+        criteria.andItemIdEqualTo(itemId);
+        List<Item> items = itemMapper.selectByExample(itemExample);
+        if (items!=null){
+            Item item = items.get(0);
+            item.setIson(0);
+            Integer i = itemMapper.updateByExample(item,itemExample);
+            if (i == 1) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean addItem(Item item) {
+        Integer count = itemMapper.insert(item);
+        if (count == 1){
+            return true;
+        }
+        return false;
+    }
 }

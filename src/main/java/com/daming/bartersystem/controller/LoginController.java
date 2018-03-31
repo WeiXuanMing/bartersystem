@@ -54,17 +54,23 @@ public class LoginController {
         if (result){
             loginResult.setMessage("succeed");
             User user = userService.queryByLoginAccount(loginer.getLoginAccount());
-            Integer uid = user.getUid();
-            String password = user.getPassword();
-            model.addAttribute("uid",uid);
-            String base = uid +"/"+salt+"/"+password;
-            String uuid = DigestUtils.md5DigestAsHex(base.getBytes());
-            logger.debug(uuid);
-            model.addAttribute("uuid",uuid);
-            if (loginer.getLogintype().equals("user")){
-                loginResult.setData(new LoginResult("user"));
-            }else if (loginer.getLogintype().equals("admin")){
-                loginResult.setData(new LoginResult("admin"));
+            //检查是否被ban了
+            if(user.getIsdel()==0) {
+                if (loginer.getLogintype().equals("user")) {
+                    Integer uid = user.getUid();
+                    String password = user.getPassword();
+                    model.addAttribute("uid", uid);
+                    String base = uid + "/" + salt + "/" + password;
+                    String uuid = DigestUtils.md5DigestAsHex(base.getBytes());
+                    logger.debug(uuid);
+                    model.addAttribute("uuid", uuid);
+                    loginResult.setData(new LoginResult("user"));
+                } else if (loginer.getLogintype().equals("admin")) {
+                    loginResult.setData(new LoginResult("admin"));
+                }
+            }else {
+                loginResult.setMessage("isBan");
+                return loginResult;
             }
         }
         return loginResult;

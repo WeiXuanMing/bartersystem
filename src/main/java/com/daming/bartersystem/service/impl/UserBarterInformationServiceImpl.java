@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class UserBarterInformationService implements com.daming.bartersystem.service.UserBarterInformationService{
+public class UserBarterInformationServiceImpl implements com.daming.bartersystem.service.UserBarterInformationService{
     @Autowired
     private UserBarterUnformationMapper userBarterUnformationMapper;
 
