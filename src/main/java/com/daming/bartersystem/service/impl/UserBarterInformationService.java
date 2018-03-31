@@ -25,4 +25,15 @@ public class UserBarterInformationService implements com.daming.bartersystem.ser
         }
         return null;
     }
+
+    public boolean updateUBInfo(UserBarterUnformation userBarterUnformation) {
+        UserBarterUnformationExample userBarterUnformationExample = new UserBarterUnformationExample();
+        UserBarterUnformationExample.Criteria criteria = userBarterUnformationExample.createCriteria();
+        criteria.andUdiIdEqualTo(userBarterUnformation.getUdiId());
+        Integer i = userBarterUnformationMapper.updateByExample(userBarterUnformation,userBarterUnformationExample);
+        if (i == 1){
+            return true;
+        }
+        return false;
+    }
 }

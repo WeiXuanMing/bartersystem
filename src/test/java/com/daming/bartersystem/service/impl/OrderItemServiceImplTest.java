@@ -30,6 +30,13 @@ public class OrderItemServiceImplTest extends TestCase {
     }
 
     public void testUpdateByBarterOrderItem() throws Exception {
+
+    }
+
+    @Test
+    public void testQueryByOrderIdUidUidItemId() throws  Exception{
+        BarterOrderItem item = orderItemService.queryByOrderIdUidUidItemId(14,2,1,4);
+        System.out.println(item);
     }
 
 }

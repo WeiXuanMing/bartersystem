@@ -5,4 +5,5 @@ import com.daming.bartersystem.entitys.ShoppingTrolley;
 public interface ShoppingTrolleyService {
      ShoppingTrolley queryByUid(Integer uid);
 
+     boolean createShoppingTrolley(Integer uid);
 }

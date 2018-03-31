@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface ShoppingTrolleyItemService {
      List<ShoppingTrolleyItem> queryByTrolleyId(Integer TrolleyId);
+
+     Integer createShoppingTrolleyItem(Integer trolleyId,Integer itemId);
 }

@@ -4,4 +4,6 @@ import com.daming.bartersystem.entitys.UserBarterUnformation;
 
 public interface UserBarterInformationService {
     UserBarterUnformation getUBInfoByUid(Integer uid);
+
+    boolean updateUBInfo(UserBarterUnformation userBarterUnformation);
 }

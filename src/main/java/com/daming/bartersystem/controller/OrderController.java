@@ -32,6 +32,8 @@ public class OrderController {
     private ItemService itemService;
 
     /**
+     * 返回申请人和物品的的申请单
+     *
      * 返回的message有：
      * failure：未知错误
      * NotItem：没有这个物品
@@ -148,12 +150,18 @@ public class OrderController {
      * failure：失败
      * isNotYouItem：存在不是物主的物品
      * isNotLogin：未登录
-     *
+     *接收的json格式是这个样子的：
+     * {
+             "orderId":"14",
+             "receiver_address":"迎福路的帅气的广金",
+             "selfOrderItemIdList":[
+             "1","2"
+             ]
+             }
      * @param
      * @param orderId
      * @return
      */
-
 
     @RequestMapping(value = "/submitOrderItem/{orderId}", method = RequestMethod.POST, produces="application/json")
     @ResponseBody
@@ -204,41 +212,75 @@ public class OrderController {
                 items.add(item);
             }
             if (isSelfItem){
-
-
                 //都是自己的物品
                 System.out.println("全是自己的物品耶~~o(∩_∩)o ");
+                //先做身份判断，判断是物主还是申请人（未完成）
                 BarterOrder barterOrder = orderService.queryByOrderId(orderId);
                 Integer ownerItemId = barterOrder.getItemId();
                 Item item = itemService.query(ownerItemId);
                 Integer ownerId = item.getUid();
+                if(uid.equals(ownerId)){
+                    //物主
+                    Integer applicantId = barterOrder.getUid();
+                    for (int i = 0; i < selfOrderItemIdList.size(); i++) {
+                        Integer submitItemId = selfOrderItemIdList.get(i);
+                        BarterOrderItem barterOrderItem1 = orderItemService.queryByOrderIdUidUidItemId(orderId, uid, applicantId, submitItemId);
+                        System.out.println("已经存在了不添加了"+barterOrderItem1);
+                        if (barterOrderItem1 != null) {
+                            //已经存在了，不添加，但是改动收货地址
+                            //判断是否已经提交过,根据orderId,uid1,uid2,item_id获取
+                            System.out.println("已经存在了不添加了"+barterOrderItem1);
+                            barterOrderItem1.setReceiverAddress(receiver_address);
+                            orderItemService.updateByBarterOrderItem(barterOrderItem1);
+                        } else {
+                            BarterOrderItem barterOrderItem = new BarterOrderItem();
+                            barterOrderItem.setOrderId(orderId);
+                            barterOrderItem.setUid1(uid);
+                            barterOrderItem.setUid2(applicantId);
+                            barterOrderItem.setItemId(submitItemId);
+                            barterOrderItem.setReceiverAddress(receiver_address);
+                            barterOrderItem.setOrderItemState(1);
 
-                //为每一个item创建一个BarterOrderItem，并存入
-                for (int i = 0;i < selfOrderItemIdList.size();i++) {
-                    Integer submitItemId =  selfOrderItemIdList.get(i);
-                    BarterOrderItem barterOrderItem1 = orderItemService.queryByOrderIdUidUidItemId(orderId, uid, ownerId, submitItemId);
-                    if (barterOrderItem1 !=null){
-                        //已经存在了，不添加，但是改动收货地址
-                        //判断是否已经提交过,根据orderId,uid1,uid2,item_id获取
-                        barterOrderItem1.setReceiverAddress(receiver_address);
-                        orderItemService.updateByBarterOrderItem(barterOrderItem1);
-                    }else {
-                        BarterOrderItem barterOrderItem = new BarterOrderItem();
-                        barterOrderItem.setOrderId(orderId);
-                        barterOrderItem.setUid1(uid);
-                        barterOrderItem.setUid2(ownerId);
-                        barterOrderItem.setItemId(submitItemId);
-                        barterOrderItem.setReceiverAddress(receiver_address);
-                        barterOrderItem.setOrderItemState(1);
+                            System.out.printf("物品编号：" + selfOrderItemIdList.get(i) + "插入数据表" + orderItemService.insert(barterOrderItem));
+                            System.out.println("物品编号：" + selfOrderItemIdList.get(i) + "插入数据表" + barterOrderItem);
+                            BarterOrder_OrderItem barterOrder_orderItem = new BarterOrder_OrderItem();
+                            barterOrder_orderItem.setBarterOrderId(orderId);
+                            barterOrder_orderItem.setOrderitemId(barterOrderItem.getOrderitemId());
+                            barterOrder_orderItem.setAbandoned(0);
+                            System.out.printf(barterOrder_orderItem + "：插入数据表" + barterOrder_orderItemService.addBarterOrder_OrderItem(barterOrder_orderItem));
+                            System.out.printf("插入的关系表的barterOrder_orderItem的详情" + barterOrder_orderItem);
+                        }
+                    }
+                }else {
+                    //申请人
+                    //为每一个item创建一个BarterOrderItem，并存入
+                    for (int i = 0; i < selfOrderItemIdList.size(); i++) {
+                        Integer submitItemId = selfOrderItemIdList.get(i);
+                        BarterOrderItem barterOrderItem1 = orderItemService.queryByOrderIdUidUidItemId(orderId, uid, ownerId, submitItemId);
+                        if (barterOrderItem1 != null) {
+                            //已经存在了，不添加，但是改动收货地址
+                            //判断是否已经提交过,根据orderId,uid1,uid2,item_id获取
+                            System.out.println("已经存在了不添加了"+barterOrderItem1);
+                            barterOrderItem1.setReceiverAddress(receiver_address);
+                            orderItemService.updateByBarterOrderItem(barterOrderItem1);
+                        } else {
+                            BarterOrderItem barterOrderItem = new BarterOrderItem();
+                            barterOrderItem.setOrderId(orderId);
+                            barterOrderItem.setUid1(uid);
+                            barterOrderItem.setUid2(ownerId);
+                            barterOrderItem.setItemId(submitItemId);
+                            barterOrderItem.setReceiverAddress(receiver_address);
+                            barterOrderItem.setOrderItemState(1);
 
-                        System.out.printf("物品编号：" + selfOrderItemIdList.get(i) + "插入数据表" + orderItemService.insert(barterOrderItem));
-                        System.out.println("物品编号：" + selfOrderItemIdList.get(i) + "插入数据表" + barterOrderItem);
-                        BarterOrder_OrderItem barterOrder_orderItem = new BarterOrder_OrderItem();
-                        barterOrder_orderItem.setBarterOrderId(orderId);
-                        barterOrder_orderItem.setOrderitemId(barterOrderItem.getOrderitemId());
-                        barterOrder_orderItem.setAbandoned(0);
-                        System.out.printf(barterOrder_orderItem + "：插入数据表" + barterOrder_orderItemService.addBarterOrder_OrderItem(barterOrder_orderItem));
-                        System.out.printf("插入的关系表的barterOrder_orderItem的详情" + barterOrder_orderItem);
+                            System.out.printf("物品编号：" + selfOrderItemIdList.get(i) + "插入数据表" + orderItemService.insert(barterOrderItem));
+                            System.out.println("物品编号：" + selfOrderItemIdList.get(i) + "插入数据表" + barterOrderItem);
+                            BarterOrder_OrderItem barterOrder_orderItem = new BarterOrder_OrderItem();
+                            barterOrder_orderItem.setBarterOrderId(orderId);
+                            barterOrder_orderItem.setOrderitemId(barterOrderItem.getOrderitemId());
+                            barterOrder_orderItem.setAbandoned(0);
+                            System.out.printf(barterOrder_orderItem + "：插入数据表" + barterOrder_orderItemService.addBarterOrder_OrderItem(barterOrder_orderItem));
+                            System.out.printf("插入的关系表的barterOrder_orderItem的详情" + barterOrder_orderItem);
+                        }
                     }
                 }
                 result = new Result<SubmitOrderItemResult>(0,"succeed",new SubmitOrderItemResult());
@@ -254,8 +296,7 @@ public class OrderController {
         }
     }
 
-    //作为物主获取物品别人申请的订单
-    /*
+    /*作为物主获取物品别人申请的订单
     * 需要获取selfOrderItemList和applicantOrderItemList
     *
     * 返回信息：
@@ -289,6 +330,7 @@ public class OrderController {
                     for (int i = 0; i < barterOrder_orderItems.size(); i++) {
                         BarterOrder_OrderItem barterOrder_orderItem = barterOrder_orderItems.get(i);
                         BarterOrderItem barterOrderItem = orderItemService.queryByOrderItemId(barterOrder_orderItem.getOrderitemId());
+                        System.out.println(barterOrderItem);
                         if (barterOrderItem.getUid1().equals(uid)) {
                             selfOrderItemList.add(barterOrderItem);
                         } else {
@@ -317,7 +359,51 @@ public class OrderController {
     }
 
     /*
-    *
+    *确认订单信息，进入互相发送物品环节
+    *根据UID和orderId通过关系映射表获取自己那部分的orderItem，然后将orderItem的状态设置成已确认
+    * 返回信息：
+    * NotYouItem：不是有关你的订单
+    * failure: 未知错误
+    *isNotLogin:未登录
+    * NotThisOrder: 没有这个订单
     */
-
+    @RequestMapping(value = "/confirmOrder/{orderId}", method = RequestMethod.GET)
+    @ResponseBody
+    public Result<ConfirmOrderResult> confirmOrder(@PathVariable("orderId") Integer ordreId,HttpSession session) {
+        Integer uid = (Integer) session.getAttribute("uid");
+        ConfirmOrderResult confirmOrderResult = new ConfirmOrderResult("failure");
+        Result<ConfirmOrderResult> result = new Result<ConfirmOrderResult>(0,"failure",confirmOrderResult);
+        if (uid != null){
+            //已登录
+            List<BarterOrder_OrderItem> barterOrder_orderItems = barterOrder_orderItemService.queryByOrderId(ordreId);
+            System.out.println(barterOrder_orderItems);
+            if (barterOrder_orderItems != null && barterOrder_orderItems.size() > 0){
+                //如果订单存在
+                for (int i = 0;i < barterOrder_orderItems.size();i++){
+                    Integer orderItemId = barterOrder_orderItems.get(i).getOrderitemId();
+                    BarterOrderItem barterOrderItem = orderItemService.queryByOrderItemId(orderItemId);
+                    if (!barterOrderItem.getUid1().equals(uid) && !barterOrderItem.getUid2().equals(uid)){
+                        //不是关于你的订单
+                        return result = new Result<ConfirmOrderResult>(0,"NotYouOrder",confirmOrderResult);
+                    }else {
+                        System.out.println(barterOrderItem);
+                        //是你的订单，将所有订单详细状态修改成2
+                        if (barterOrderItem.getUid1() == uid){
+                            barterOrderItem.setOrderItemState(2);
+                            System.out.println(barterOrderItem);
+                            orderItemService.updateByBarterOrderItem(barterOrderItem);
+                        }
+                    }
+                }
+                confirmOrderResult.setSucceed("succeed");
+                return result = new Result<ConfirmOrderResult>(0,"succeed",confirmOrderResult);
+            }else {
+                //订单不存在
+                return result = new Result<ConfirmOrderResult>(0,"NotThisOrder",confirmOrderResult);
+            }
+        }else {
+            //未登录
+            return result = new Result<ConfirmOrderResult>(0,"isNotLogin",confirmOrderResult);
+        }
+    }
 }

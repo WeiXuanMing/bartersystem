@@ -21,8 +21,19 @@ public class ShoppingTrolleyServiceImpl implements ShoppingTrolleyService{
         criteria.andUidEqualTo(uid);
         List<ShoppingTrolley> shoppingTrolleys = shoppingTrolleyMapper.selectByExample(shoppingTrolleyExample);
         if(shoppingTrolleys.size() == 1){
-            return shoppingTrolleys.get(1);
+            return shoppingTrolleys.get(0);
         }
         return null;
     }
+
+    public boolean createShoppingTrolley(Integer uid) {
+        ShoppingTrolley shoppingTrolley = new ShoppingTrolley();
+        shoppingTrolley.setUid(uid);
+        Integer i = shoppingTrolleyMapper.insert(shoppingTrolley);
+        if (i == 1){
+            return true;
+        }
+        return false;
+    }
+
 }

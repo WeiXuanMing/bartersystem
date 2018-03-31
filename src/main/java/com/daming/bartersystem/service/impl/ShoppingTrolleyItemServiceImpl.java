@@ -20,9 +20,21 @@ public class ShoppingTrolleyItemServiceImpl implements ShoppingTrolleyItemServic
         ShoppingTrolleyItemExample.Criteria criteria = shoppingTrolleyExample.createCriteria();
         criteria.andTrolleyIdEqualTo(TrolleyId);
         List<ShoppingTrolleyItem> shoppingTrolleyItems = shoppingTrolleyItemMapper.selectByExample(shoppingTrolleyExample);
-        if(shoppingTrolleyItems.size() == 1){
+        if(shoppingTrolleyItems!=null){
             return shoppingTrolleyItems;
         }
         return null;
     }
+
+    public Integer createShoppingTrolleyItem(Integer trolleyId, Integer itemId) {
+        ShoppingTrolleyItem shoppingTrolleyItem = new ShoppingTrolleyItem();
+        shoppingTrolleyItem.setItemId(itemId);
+        shoppingTrolleyItem.setTrolleyId(trolleyId);
+        Integer i = shoppingTrolleyItemMapper.insert(shoppingTrolleyItem);
+        if (i == 1){
+            return shoppingTrolleyItem.getTrolleyItemId();
+        }
+        return null;
+    }
+
 }

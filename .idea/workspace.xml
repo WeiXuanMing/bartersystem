@@ -7,30 +7,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d351c5f8-64e2-40d0-9057-e5fa05da4f85" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../bartersystem/src/main/webapp/indeximage/timg1.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../bartersystem/src/main/webapp/indeximage/timg2.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../bartersystem/src/main/webapp/indeximage/timg3.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../bartersystem/src/main/webapp/jeui/userphoto.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../bartersystem/src/main/webapp/test/test.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../bartersystem/src/main/webapp/AlreadyUpshelfItem.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../bartersystem/src/main/webapp/admin_login.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../bartersystem/src/main/webapp/drag/drag.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../bartersystem/src/main/webapp/managementsystem_admin_AccountManagement.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../bartersystem/src/main/webapp/managementsystem_admin_itemAudit.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../bartersystem/src/main/webapp/register.html" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../bartersystem/src/main/webapp/jeui/images/bg02.jpg" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../bartersystem/src/main/webapp/jeui/images/userphoto.jpg" afterPath="$PROJECT_DIR$/../bartersystem/src/main/webapp/jeui/images/userphoto.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../bartersystem/.idea/libraries/Maven__org_projectlombok_lombok_1_16_20.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/DTO/ConfirmOrderResult.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/DTO/ShoppingTrolleyResult.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/controller/PIMController.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/controller/ShoppingTrolleyController.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/service/PIMService.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../bartersystem/src/test/java/com/daming/bartersystem/service/ShoppingTrolleyItemServiceTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../bartersystem/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../bartersystem/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../bartersystem/bartersystem.iml" afterPath="$PROJECT_DIR$/../bartersystem/bartersystem.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../bartersystem/pom.xml" afterPath="$PROJECT_DIR$/../bartersystem/pom.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/controller/OrderController.java" afterPath="$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/controller/OrderController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../bartersystem/src/main/webapp/AlreadyDoneOrder.html" afterPath="$PROJECT_DIR$/../bartersystem/src/main/webapp/AlreadyDoneOrder.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../bartersystem/src/main/webapp/ItemUpshelfManagement.html" afterPath="$PROJECT_DIR$/../bartersystem/src/main/webapp/ItemUpshelfManagement.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../bartersystem/src/main/webapp/UnreadyOrder.html" afterPath="$PROJECT_DIR$/../bartersystem/src/main/webapp/UnreadyOrder.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/service/BarterOrder_OrderItemService.java" afterPath="$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/service/BarterOrder_OrderItemService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/service/ShoppingTrolleyItemService.java" afterPath="$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/service/ShoppingTrolleyItemService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/service/ShoppingTrolleyService.java" afterPath="$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/service/ShoppingTrolleyService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/service/UserBarterInformationService.java" afterPath="$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/service/UserBarterInformationService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/service/impl/ShoppingTrolleyItemServiceImpl.java" afterPath="$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/service/impl/ShoppingTrolleyItemServiceImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/service/impl/ShoppingTrolleyServiceImpl.java" afterPath="$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/service/impl/ShoppingTrolleyServiceImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/service/impl/UserBarterInformationService.java" afterPath="$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/service/impl/UserBarterInformationService.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../bartersystem/src/main/webapp/UserInformationManagement.html" afterPath="$PROJECT_DIR$/../bartersystem/src/main/webapp/UserInformationManagement.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../bartersystem/src/main/webapp/WEB-INF/html/login.html" afterPath="$PROJECT_DIR$/../bartersystem/src/main/webapp/WEB-INF/html/login.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../bartersystem/src/main/webapp/index.html" afterPath="$PROJECT_DIR$/../bartersystem/src/main/webapp/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../bartersystem/src/main/webapp/itemdetail.html" afterPath="$PROJECT_DIR$/../bartersystem/src/main/webapp/itemdetail.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../bartersystem/src/main/webapp/order.html" afterPath="$PROJECT_DIR$/../bartersystem/src/main/webapp/order.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../bartersystem/src/main/webapp/WEB-INF/html/userdetail.html" afterPath="$PROJECT_DIR$/../bartersystem/src/main/webapp/userdetail.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../bartersystem/src/test/java/com/daming/bartersystem/service/impl/OrderItemServiceImplTest.java" afterPath="$PROJECT_DIR$/../bartersystem/src/test/java/com/daming/bartersystem/service/impl/OrderItemServiceImplTest.java" />
     </list>
     <ignored path="$PROJECT_DIR$/../bartersystem/out/" />
     <ignored path="$PROJECT_DIR$/../bartersystem/target/" />
@@ -43,19 +39,54 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="OrderController.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/controller/OrderController.java">
+      <file leaf-file-name="PIMController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/controller/PIMController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="596">
-              <caret line="319" column="5" lean-forward="true" selection-start-line="319" selection-start-column="5" selection-end-line="319" selection-end-column="5" />
+            <state relative-caret-position="140">
+              <caret line="8" column="0" lean-forward="true" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
               <folding>
-                <element signature="docComment;method#getOrder#0;class#OrderController#0" expanded="false" />
-                <element signature="e#1391#1424#0" expanded="false" />
-                <element signature="method#getOrder#0;class#OrderController#0" expanded="false" />
-                <element signature="docComment;method#submitOrderItem#0;class#OrderController#0" expanded="false" />
-                <element signature="e#7173#7284#0" expanded="false" />
-                <element signature="method#getApplyExchangeOrder#0;class#OrderController#0" expanded="false" />
+                <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PIMService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/service/PIMService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="270">
+              <caret line="9" column="6" lean-forward="false" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="6" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UserBarterInformationService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/service/UserBarterInformationService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="210">
+              <caret line="7" column="68" lean-forward="false" selection-start-line="7" selection-start-column="47" selection-end-line="7" selection-end-column="68" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UserInformationManagement.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../bartersystem/src/main/webapp/UserInformationManagement.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="235">
+              <caret line="176" column="22" lean-forward="true" selection-start-line="176" selection-start-column="22" selection-end-line="176" selection-end-column="22" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UserBarterInformationService.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/service/impl/UserBarterInformationService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="326">
+              <caret line="32" column="85" lean-forward="false" selection-start-line="32" selection-start-column="64" selection-end-line="32" selection-end-column="85" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -101,26 +132,9 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/service/UserBarterInformationService.java" />
-        <option value="$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/service/impl/UserBarterInformationService.java" />
-        <option value="$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/controller/UserController.java" />
-        <option value="$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/DTO/UserSimpleInfoResult.java" />
-        <option value="$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/service/ReviewService.java" />
-        <option value="$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/service/impl/ReviewServiceImpl.java" />
-        <option value="$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/DTO/ReviewResult.java" />
-        <option value="$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/controller/ReviewController.java" />
-        <option value="$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/DTO/possessionsResult.java" />
-        <option value="$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/DTO/PossessionsResult.java" />
-        <option value="$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/controller/ItemController.java" />
-        <option value="$PROJECT_DIR$/../bartersystem/src/main/webapp/test.html" />
-        <option value="$PROJECT_DIR$/../bartersystem/src/main/resources/mybatis-config.xml" />
-        <option value="$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/controller/LoginController.java" />
-        <option value="$PROJECT_DIR$/../bartersystem/src/main/webapp/choosebox.html" />
-        <option value="$PROJECT_DIR$/../bartersystem/src/test/java/com/daming/bartersystem/service/impl/OrderServiceImplTest.java" />
         <option value="$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/entitys/BarterOrder.java" />
         <option value="$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/service/BarterOrderService.java" />
         <option value="$PROJECT_DIR$/../bartersystem/src/main/resources/generatorConfig.xml" />
-        <option value="$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/service/BarterOrder_OrderItemService.java" />
         <option value="$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/service/impl/BarterOrder_OrderItemServiceImpl.java" />
         <option value="$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/entitys/BarterOrder_OrderItem.java" />
         <option value="$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/DTO/OrderResult.java" />
@@ -129,7 +143,6 @@
         <option value="$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/service/impl/OrderServiceImpl.java" />
         <option value="$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/service/ItemService.java" />
         <option value="$PROJECT_DIR$/../bartersystem/src/test/java/com/daming/bartersystem/service/impl/BarterOrder_OrderItemServiceImplTest.java" />
-        <option value="$PROJECT_DIR$/../bartersystem/src/test/java/com/daming/bartersystem/service/impl/OrderItemServiceImplTest.java" />
         <option value="$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/DTO/SubmitOrderItemResult.java" />
         <option value="$PROJECT_DIR$/../bartersystem/src/test/java/com/daming/bartersystem/service/impl/ReviewServiceImplTest.java" />
         <option value="$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/DTO/ItemOwnerExchangeOrderResult.java" />
@@ -139,7 +152,6 @@
         <option value="$PROJECT_DIR$/../bartersystem/src/main/webapp/UnreadyOrder.html" />
         <option value="$PROJECT_DIR$/../bartersystem/src/main/webapp/AlreadyDoneOrder.html" />
         <option value="$PROJECT_DIR$/../bartersystem/src/main/webapp/ItemUpshelfManagement.html" />
-        <option value="$PROJECT_DIR$/../bartersystem/src/main/webapp/UserInformationManagement.html" />
         <option value="$PROJECT_DIR$/../bartersystem/src/main/webapp/AlreadyUpshelfItem.html" />
         <option value="$PROJECT_DIR$/../bartersystem/src/main/webapp/WEB-INF/html/managementsystem_admin_index.html" />
         <option value="$PROJECT_DIR$/../bartersystem/src/main/webapp/managementsystem_admin_index.html" />
@@ -151,7 +163,26 @@
         <option value="$PROJECT_DIR$/../bartersystem/src/main/webapp/managementsystem_admin_AccountManagement.html" />
         <option value="$PROJECT_DIR$/../bartersystem/src/main/webapp/managementsystem_admin_itemAudit.html" />
         <option value="$PROJECT_DIR$/../bartersystem/src/main/webapp/index.html" />
+        <option value="$PROJECT_DIR$/../bartersystem/pom.xml" />
+        <option value="$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/DTO/ConfirmOrderResult.java" />
+        <option value="$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/service/BarterOrder_OrderItemService.java" />
+        <option value="$PROJECT_DIR$/../bartersystem/src/test/java/com/daming/bartersystem/service/impl/OrderItemServiceImplTest.java" />
         <option value="$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/controller/OrderController.java" />
+        <option value="$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/DTO/ShoppingTrolleyResult.java" />
+        <option value="$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/service/ShoppingTrolleyService.java" />
+        <option value="$PROJECT_DIR$/../bartersystem/src/main/webapp/WEB-INF/web.xml" />
+        <option value="$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/service/ShoppingTrolleyItemService.java" />
+        <option value="$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/dao/ShoppingTrolleyItemMapper.java" />
+        <option value="$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/service/impl/ShoppingTrolleyServiceImpl.java" />
+        <option value="$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/controller/ShoppingTrolleyController.java" />
+        <option value="$PROJECT_DIR$/../bartersystem/src/test/java/com/daming/bartersystem/service/ShoppingTrolleyItemServiceTest.java" />
+        <option value="$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/service/impl/ShoppingTrolleyItemServiceImpl.java" />
+        <option value="$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/controller/PIMController.java" />
+        <option value="$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/service/PIMService.java" />
+        <option value="$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/service/UserBarterInformationService.java" />
+        <option value="$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/service/impl/UserBarterInformationServiceImpl.java" />
+        <option value="$PROJECT_DIR$/../bartersystem/src/main/webapp/UserInformationManagement.html" />
+        <option value="$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/service/impl/UserBarterInformationService.java" />
       </list>
     </option>
   </component>
@@ -168,6 +199,13 @@
     <option name="FILTER_DEBUG" value="true" />
     <option name="CUSTOM_FILTER" />
   </component>
+  <component name="MavenImportPreferences">
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+      </MavenImportingSettings>
+    </option>
+  </component>
   <component name="MavenProjectNavigator">
     <treeState>
       <expand />
@@ -175,8 +213,9 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="952" />
-    <option name="width" value="976" />
+    <option name="x" value="-9" />
+    <option name="y" value="-9" />
+    <option name="width" value="1561" />
     <option name="height" value="1038" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -197,9 +236,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="PackagesPane" />
       <pane id="Scope" />
-      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -240,15 +279,6 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="bartersystem" type="462c0819:PsiDirectoryNode" />
-              <item name="controller" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="bartersystem" type="b2602c69:ProjectViewProjectNode" />
-              <item name="bartersystem" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="bartersystem" type="462c0819:PsiDirectoryNode" />
               <item name="service" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -261,15 +291,60 @@
               <item name="service" type="462c0819:PsiDirectoryNode" />
               <item name="impl" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="bartersystem" type="b2602c69:ProjectViewProjectNode" />
+              <item name="bartersystem" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="bartersystem" type="b2602c69:ProjectViewProjectNode" />
+              <item name="bartersystem" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="bartersystem" type="b2602c69:ProjectViewProjectNode" />
+              <item name="bartersystem" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="bartersystem" type="b2602c69:ProjectViewProjectNode" />
+              <item name="bartersystem" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="bartersystem" type="b2602c69:ProjectViewProjectNode" />
+              <item name="bartersystem" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="service" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="bartersystem" type="b2602c69:ProjectViewProjectNode" />
+              <item name="bartersystem" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="service" type="462c0819:PsiDirectoryNode" />
+              <item name="impl" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scratches" />
+      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="settings.editor.selected.configurable" value="settings.github" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -280,6 +355,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.daming.bartersystem.service" />
       <recent name="com.daming.bartersystem.service.impl" />
     </key>
     <key name="CreateTestDialog.Recents.Supers">
@@ -321,31 +397,6 @@
     </option>
   </component>
   <component name="RunManager" selected="Tomcat Server.Unnamed">
-    <configuration name="BarterOrder_OrderItemServiceImplTest.testQueryByOrderId" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="com.daming.bartersystem.service.impl.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="bartersystem" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="com.daming.bartersystem.service.impl" />
-      <option name="MAIN_CLASS_NAME" value="com.daming.bartersystem.service.impl.BarterOrder_OrderItemServiceImplTest" />
-      <option name="METHOD_NAME" value="testQueryByOrderId" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-    </configuration>
     <configuration name="OrderItemServiceImplTest.testInsert" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -371,7 +422,7 @@
       <envs />
       <patterns />
     </configuration>
-    <configuration name="OrderServiceImplTest.testCreateOrder" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="OrderItemServiceImplTest.testQueryByOrderIdUidUidItemId" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
           <option name="PATTERN" value="com.daming.bartersystem.service.impl.*" />
@@ -382,8 +433,8 @@
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="com.daming.bartersystem.service.impl" />
-      <option name="MAIN_CLASS_NAME" value="com.daming.bartersystem.service.impl.OrderServiceImplTest" />
-      <option name="METHOD_NAME" value="testCreateOrder" />
+      <option name="MAIN_CLASS_NAME" value="com.daming.bartersystem.service.impl.OrderItemServiceImplTest" />
+      <option name="METHOD_NAME" value="testQueryByOrderIdUidUidItemId" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
@@ -409,6 +460,31 @@
       <option name="PACKAGE_NAME" value="com.daming.bartersystem.service.impl" />
       <option name="MAIN_CLASS_NAME" value="com.daming.bartersystem.service.impl.ReviewServiceImplTest" />
       <option name="METHOD_NAME" value="testQueryReviewNumByItemId" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+    </configuration>
+    <configuration name="ShoppingTrolleyItemServiceTest.testQueryByTrolleyId" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="com.daming.bartersystem.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="bartersystem" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="com.daming.bartersystem.service" />
+      <option name="MAIN_CLASS_NAME" value="com.daming.bartersystem.service.ShoppingTrolleyItemServiceTest" />
+      <option name="METHOD_NAME" value="testQueryByTrolleyId" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
@@ -574,40 +650,60 @@
       <properties />
       <listeners />
     </configuration>
-    <configuration name="generatortest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="com.ecjtu.generator.main.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="MAIN_CLASS_NAME" value="com.ecjtu.generator.main.generatortest" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../bartersystem" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="bartersystem" />
-      <envs />
+    <configuration name="shoppingcart.html" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" temporary="true" APPLICATION_SERVER_NAME="Tomcat 8.5.29" ALTERNATIVE_JRE_ENABLED="false">
+      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080/shoppingcart.html" />
+      <deployment>
+        <artifact name="bartersystem:war">
+          <settings>
+            <option name="CONTEXT_PATH" value="/" />
+          </settings>
+        </artifact>
+      </deployment>
+      <server-settings>
+        <option name="BASE_DIRECTORY_NAME" value="shoppingcart_html_bartersystem" />
+      </server-settings>
+      <predefined_log_file id="Tomcat" enabled="true" />
+      <predefined_log_file id="Tomcat Catalina" enabled="true" />
+      <predefined_log_file id="Tomcat Manager" enabled="false" />
+      <predefined_log_file id="Tomcat Host Manager" enabled="false" />
+      <predefined_log_file id="Tomcat Localhost Access" enabled="false" />
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <method>
+        <option name="BuildArtifacts" enabled="true">
+          <artifact name="bartersystem:war" />
+        </option>
+      </method>
     </configuration>
     <list size="6">
       <item index="0" class="java.lang.String" itemvalue="Tomcat Server.Unnamed" />
-      <item index="1" class="java.lang.String" itemvalue="Application.generatortest" />
-      <item index="2" class="java.lang.String" itemvalue="JUnit.OrderServiceImplTest.testCreateOrder" />
-      <item index="3" class="java.lang.String" itemvalue="JUnit.BarterOrder_OrderItemServiceImplTest.testQueryByOrderId" />
-      <item index="4" class="java.lang.String" itemvalue="JUnit.OrderItemServiceImplTest.testInsert" />
-      <item index="5" class="java.lang.String" itemvalue="JUnit.ReviewServiceImplTest.testQueryReviewNumByItemId" />
+      <item index="1" class="java.lang.String" itemvalue="JUnit.OrderItemServiceImplTest.testInsert" />
+      <item index="2" class="java.lang.String" itemvalue="JUnit.ReviewServiceImplTest.testQueryReviewNumByItemId" />
+      <item index="3" class="java.lang.String" itemvalue="Tomcat Server.shoppingcart.html" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.OrderItemServiceImplTest.testQueryByOrderIdUidUidItemId" />
+      <item index="5" class="java.lang.String" itemvalue="JUnit.ShoppingTrolleyItemServiceTest.testQueryByTrolleyId" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="JUnit.ReviewServiceImplTest.testQueryReviewNumByItemId" />
-        <item index="1" class="java.lang.String" itemvalue="JUnit.OrderItemServiceImplTest.testInsert" />
-        <item index="2" class="java.lang.String" itemvalue="JUnit.BarterOrder_OrderItemServiceImplTest.testQueryByOrderId" />
-        <item index="3" class="java.lang.String" itemvalue="Application.generatortest" />
-        <item index="4" class="java.lang.String" itemvalue="JUnit.OrderServiceImplTest.testCreateOrder" />
+        <item index="0" class="java.lang.String" itemvalue="JUnit.ShoppingTrolleyItemServiceTest.testQueryByTrolleyId" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.OrderItemServiceImplTest.testQueryByOrderIdUidUidItemId" />
+        <item index="2" class="java.lang.String" itemvalue="Tomcat Server.shoppingcart.html" />
+        <item index="3" class="java.lang.String" itemvalue="JUnit.ReviewServiceImplTest.testQueryReviewNumByItemId" />
+        <item index="4" class="java.lang.String" itemvalue="JUnit.OrderItemServiceImplTest.testInsert" />
       </list>
     </recent_temporary>
   </component>
@@ -649,7 +745,10 @@
       <workItem from="1522281625668" duration="15045000" />
       <workItem from="1522304510455" duration="53000" />
       <workItem from="1522304855714" duration="1808000" />
-      <workItem from="1522375028136" duration="350000" />
+      <workItem from="1522375028136" duration="2478000" />
+      <workItem from="1522390289597" duration="654000" />
+      <workItem from="1522460273040" duration="1468000" />
+      <workItem from="1522461795420" duration="17111000" />
     </task>
     <task id="LOCAL-00001" summary="额~~">
       <created>1521817753105</created>
@@ -756,22 +855,17 @@
       <option name="project" value="LOCAL" />
       <updated>1522252276705</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="最新版本，关键业务还是出不来">
+      <created>1522375443038</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1522375443038</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="BarterOrder_OrderItemServiceImplTest_testQueryByOrderId - 2018.03.28 at 09h 03m 25s.xml">
-      <configuration name="BarterOrder_OrderItemServiceImplTest.testQueryByOrderId" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="BarterOrder_OrderItemServiceImplTest_testQueryByOrderId - 2018.03.28 at 09h 04m 00s.xml">
-      <configuration name="BarterOrder_OrderItemServiceImplTest.testQueryByOrderId" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="BarterOrder_OrderItemServiceImplTest_testQueryByOrderId - 2018.03.28 at 09h 05m 35s.xml">
-      <configuration name="BarterOrder_OrderItemServiceImplTest.testQueryByOrderId" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="OrderItemServiceImplTest_testInsert - 2018.03.28 at 12h 25m 59s.xml">
-      <configuration name="OrderItemServiceImplTest.testInsert" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="OrderItemServiceImplTest_testInsert - 2018.03.28 at 12h 26m 21s.xml">
       <configuration name="OrderItemServiceImplTest.testInsert" configurationId="JUnit" />
     </history-entry>
@@ -784,15 +878,27 @@
     <history-entry file="OrderItemServiceImplTest_testInsert - 2018.03.28 at 14h 56m 29s.xml">
       <configuration name="OrderItemServiceImplTest.testInsert" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="OrderItemServiceImplTest_testQueryByOrderIdUidUidItemId - 2018.03.31 at 12h 20m 28s.xml">
+      <configuration name="OrderItemServiceImplTest.testQueryByOrderIdUidUidItemId" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="OrderItemServiceImplTest_testQueryByOrderIdUidUidItemId - 2018.03.31 at 12h 22m 35s.xml">
+      <configuration name="OrderItemServiceImplTest.testQueryByOrderIdUidUidItemId" configurationId="JUnit" />
+    </history-entry>
     <history-entry file="ReviewServiceImplTest_testQueryReviewNumByItemId - 2018.03.28 at 15h 21m 17s.xml">
       <configuration name="ReviewServiceImplTest.testQueryReviewNumByItemId" configurationId="JUnit" />
     </history-entry>
     <history-entry file="ReviewServiceImplTest_testQueryReviewNumByItemId - 2018.03.28 at 15h 21m 52s.xml">
       <configuration name="ReviewServiceImplTest.testQueryReviewNumByItemId" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="ShoppingTrolleyItemServiceTest_testQueryByTrolleyId - 2018.03.31 at 15h 22m 14s.xml">
+      <configuration name="ShoppingTrolleyItemServiceTest.testQueryByTrolleyId" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ShoppingTrolleyItemServiceTest_testQueryByTrolleyId - 2018.03.31 at 15h 22m 31s.xml">
+      <configuration name="ShoppingTrolleyItemServiceTest.testQueryByTrolleyId" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="221453000" />
+    <option name="totallyTimeSpent" value="242814000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -818,17 +924,19 @@
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295583" sideWeight="0.49785408" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4394111" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295583" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30584192" sideWeight="0.7440987" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3612684" sideWeight="0.7440987" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.10645527" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32842582" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295583" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28004292" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28969958" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3299356" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295583" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -836,9 +944,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection Results" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32918552" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34994337" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295583" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -915,11 +1021,12 @@
     <MESSAGE value="完美..." />
     <MESSAGE value="再次commit" />
     <MESSAGE value="再次commit~~~" />
-    <option name="LAST_COMMIT_MESSAGE" value="再次commit~~~" />
+    <MESSAGE value="最新版本，关键业务还是出不来" />
+    <option name="LAST_COMMIT_MESSAGE" value="最新版本，关键业务还是出不来" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="20" />
+      <option name="time" value="25" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -928,183 +1035,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/../bartersystem/src/test/java/com/daming/bartersystem/service/impl/OrderItemServiceImplTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="28" column="42" lean-forward="false" selection-start-line="28" selection-start-column="42" selection-end-line="28" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/entitys/Item.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-90">
-          <caret line="12" column="26" lean-forward="false" selection-start-line="12" selection-start-column="20" selection-end-line="12" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/DTO/SubmitOrderItemResult.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="278">
-          <caret line="14" column="18" lean-forward="false" selection-start-line="14" selection-start-column="18" selection-end-line="14" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../bartersystem/src/test/java/com/daming/bartersystem/service/impl/ItemServiceImplTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="13" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/controller/ReviewController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="21" column="58" lean-forward="true" selection-start-line="21" selection-start-column="58" selection-end-line="21" selection-end-column="58" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/service/impl/AdminServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="15" column="13" lean-forward="false" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/service/AdminService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="6" column="17" lean-forward="false" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/service/BarterOrder_OrderItemService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="9" column="32" lean-forward="false" selection-start-line="9" selection-start-column="32" selection-end-line="9" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/service/UserService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="4" column="17" lean-forward="false" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/service/UserBarterInformationService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="4" column="17" lean-forward="false" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/service/ShoppingTrolleyService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="4" column="17" lean-forward="false" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/service/ShoppingTrolleyItemService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="6" column="17" lean-forward="false" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/service/registerService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="4" column="17" lean-forward="false" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/service/LoginService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="4" column="17" lean-forward="false" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/service/ItemService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/service/OrderService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="174">
-          <caret line="18" column="17" lean-forward="false" selection-start-line="18" selection-start-column="17" selection-end-line="18" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/service/ReviewService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="11" column="27" lean-forward="true" selection-start-line="11" selection-start-column="27" selection-end-line="11" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/service/impl/ReviewServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="12" column="20" lean-forward="false" selection-start-line="12" selection-start-column="20" selection-end-line="12" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../bartersystem/src/test/java/com/daming/bartersystem/service/impl/ReviewServiceImplTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="13" column="8" lean-forward="false" selection-start-line="13" selection-start-column="8" selection-end-line="13" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/service/impl/OrderServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="116" column="28" lean-forward="false" selection-start-line="116" selection-start-column="25" selection-end-line="116" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/service/impl/BarterOrder_OrderItemServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="69">
-          <caret line="13" column="38" lean-forward="true" selection-start-line="13" selection-start-column="38" selection-end-line="13" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/service/impl/ItemServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="12" column="20" lean-forward="false" selection-start-line="12" selection-start-column="20" selection-end-line="12" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/service/impl/LoginServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="16" column="13" lean-forward="false" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/controller/ItemController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="51" column="37" lean-forward="false" selection-start-line="51" selection-start-column="17" selection-end-line="51" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/controller/LoginController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="45" column="76" lean-forward="false" selection-start-line="45" selection-start-column="69" selection-end-line="45" selection-end-column="76" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/DTO/ItemOwnerExchangeOrderResult.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
@@ -1112,31 +1042,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/service/impl/OrderItemServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1827">
-          <caret line="64" column="44" lean-forward="false" selection-start-line="64" selection-start-column="44" selection-end-line="64" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/service/OrderItemService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
-          <caret line="15" column="34" lean-forward="false" selection-start-line="15" selection-start-column="34" selection-end-line="15" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../bartersystem/src/main/webapp/assets/umeditor/lang/zh-cn/zh-cn.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../bartersystem/src/main/webapp/UserInformationManagement.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="156" column="42" lean-forward="false" selection-start-line="156" selection-start-column="42" selection-end-line="156" selection-end-column="42" />
         </state>
       </provider>
     </entry>
@@ -1205,10 +1114,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="5190">
           <caret line="173" column="78" lean-forward="false" selection-start-line="173" selection-start-column="76" selection-end-line="173" selection-end-column="78" />
-          <folding>
-            <element signature="n#style#0;n#img#0;n#td#1;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#img#0;n#td#1;n#tr#1;n#tbody#0;n#table#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1216,7 +1121,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4170">
           <caret line="139" column="34" lean-forward="false" selection-start-line="139" selection-start-column="34" selection-end-line="139" selection-end-column="34" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1224,9 +1128,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3540">
           <caret line="118" column="0" lean-forward="false" selection-start-line="118" selection-start-column="0" selection-end-line="183" selection-end-column="9" />
-          <folding>
-            <element signature="n#script#2;n#html#0;n#!!top" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1234,9 +1135,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4140">
           <caret line="138" column="0" lean-forward="false" selection-start-line="138" selection-start-column="0" selection-end-line="138" selection-end-column="0" />
-          <folding>
-            <element signature="n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1244,7 +1142,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1170">
           <caret line="39" column="43" lean-forward="false" selection-start-line="39" selection-start-column="43" selection-end-line="39" selection-end-column="43" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1252,7 +1149,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4500">
           <caret line="150" column="45" lean-forward="false" selection-start-line="150" selection-start-column="45" selection-end-line="150" selection-end-column="45" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1260,11 +1156,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="810">
           <caret line="27" column="102" lean-forward="false" selection-start-line="25" selection-start-column="1" selection-end-line="27" selection-end-column="102" />
-          <folding>
-            <element signature="n#nav#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#script#0;n#div#1;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <marker date="1522281789902" expanded="true" signature="5262:5365" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1272,7 +1163,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3030">
           <caret line="101" column="77" lean-forward="false" selection-start-line="101" selection-start-column="77" selection-end-line="101" selection-end-column="77" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1280,9 +1170,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-306">
           <caret line="89" column="56" lean-forward="false" selection-start-line="89" selection-start-column="56" selection-end-line="89" selection-end-column="56" />
-          <folding>
-            <element signature="n#style#0;n#img#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1290,7 +1177,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="791">
           <caret line="129" column="25" lean-forward="true" selection-start-line="129" selection-start-column="25" selection-end-line="129" selection-end-column="25" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1298,24 +1184,255 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4500">
           <caret line="157" column="12" lean-forward="false" selection-start-line="157" selection-start-column="12" selection-end-line="157" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../bartersystem/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="15" column="17" lean-forward="false" selection-start-line="15" selection-start-column="17" selection-end-line="15" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/DTO/ConfirmOrderResult.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="8" column="27" lean-forward="false" selection-start-line="8" selection-start-column="27" selection-end-line="8" selection-end-column="27" />
           <folding>
-            <element signature="n#nav#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="imports" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/entitys/BarterOrder_OrderItem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-300">
+          <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/service/impl/OrderItemServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="61" column="53" lean-forward="false" selection-start-line="61" selection-start-column="27" selection-end-line="61" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/service/OrderItemService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="40" lean-forward="true" selection-start-line="0" selection-start-column="40" selection-end-line="0" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../bartersystem/src/test/java/com/daming/bartersystem/service/impl/OrderItemServiceImplTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="554">
+          <caret line="38" column="31" lean-forward="false" selection-start-line="38" selection-start-column="31" selection-end-line="38" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/service/OrderService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="18" column="17" lean-forward="false" selection-start-line="18" selection-start-column="17" selection-end-line="18" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/service/BarterOrder_OrderItemService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="13" column="0" lean-forward="false" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/entitys/BarterOrderItem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-7379">
+          <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/DTO/ShoppingTrolleyResult.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="12" column="58" lean-forward="true" selection-start-line="12" selection-start-column="58" selection-end-line="12" selection-end-column="58" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../bartersystem/src/main/webapp/WEB-INF/web.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="366">
+          <caret line="25" column="20" lean-forward="false" selection-start-line="25" selection-start-column="20" selection-end-line="25" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/dao/ShoppingTrolleyItemMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="29" column="21" lean-forward="true" selection-start-line="29" selection-start-column="21" selection-end-line="29" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/service/ItemService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="6" column="17" lean-forward="false" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/controller/OrderController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="596">
-          <caret line="319" column="5" lean-forward="true" selection-start-line="319" selection-start-column="5" selection-end-line="319" selection-end-column="5" />
+        <state relative-caret-position="2225">
+          <caret line="371" column="73" lean-forward="false" selection-start-line="371" selection-start-column="66" selection-end-line="371" selection-end-column="73" />
           <folding>
-            <element signature="docComment;method#getOrder#0;class#OrderController#0" expanded="false" />
-            <element signature="e#1391#1424#0" expanded="false" />
             <element signature="method#getOrder#0;class#OrderController#0" expanded="false" />
-            <element signature="docComment;method#submitOrderItem#0;class#OrderController#0" expanded="false" />
-            <element signature="e#7173#7284#0" expanded="false" />
+            <element signature="method#submitOrderItem#0;class#OrderController#0" expanded="false" />
             <element signature="method#getApplyExchangeOrder#0;class#OrderController#0" expanded="false" />
+            <element signature="method#confirmOrder#0;class#OrderController#0" expanded="false" />
+            <element signature="e#19342#19362#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/service/ShoppingTrolleyService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="4" column="17" lean-forward="false" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../bartersystem/src/test/java/com/daming/bartersystem/service/impl/ItemServiceImplTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="13" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/service/ShoppingTrolleyItemService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="6" column="17" lean-forward="false" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/service/impl/ShoppingTrolleyServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="630">
+          <caret line="28" column="40" lean-forward="false" selection-start-line="28" selection-start-column="19" selection-end-line="28" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/controller/ShoppingTrolleyController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="422">
+          <caret line="71" column="99" lean-forward="false" selection-start-line="71" selection-start-column="73" selection-end-line="71" selection-end-column="99" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1257#1280#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../bartersystem/src/test/java/com/daming/bartersystem/service/ShoppingTrolleyItemServiceTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="14" column="31" lean-forward="false" selection-start-line="14" selection-start-column="31" selection-end-line="14" selection-end-column="31" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/service/impl/ShoppingTrolleyItemServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-30">
+          <caret line="22" column="39" lean-forward="true" selection-start-line="22" selection-start-column="39" selection-end-line="22" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/controller/UserController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="125">
+          <caret line="18" column="13" lean-forward="false" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/service/UserService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="4" column="17" lean-forward="false" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/controller/PIMController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="8" column="0" lean-forward="true" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/service/PIMService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="9" column="6" lean-forward="false" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/service/impl/UserBarterInformationServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../bartersystem/src/main/webapp/UserInformationManagement.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="235">
+          <caret line="176" column="22" lean-forward="true" selection-start-line="176" selection-start-column="22" selection-end-line="176" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/service/UserBarterInformationService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="7" column="68" lean-forward="false" selection-start-line="7" selection-start-column="47" selection-end-line="7" selection-end-column="68" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../bartersystem/src/main/java/com/daming/bartersystem/service/impl/UserBarterInformationService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="326">
+          <caret line="32" column="85" lean-forward="false" selection-start-line="32" selection-start-column="64" selection-end-line="32" selection-end-column="85" />
+          <folding />
         </state>
       </provider>
     </entry>
