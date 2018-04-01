@@ -1,17 +1,27 @@
 package com.daming.bartersystem.DTO;
 
+import com.daming.bartersystem.entitys.BarterOrder;
 import com.daming.bartersystem.entitys.BarterOrderItem;
 import com.daming.bartersystem.entitys.Item;
 
 import java.util.List;
 
 public class OrderResult {
+    private BarterOrder barterOrder;
 
     private List<BarterOrderItem> selfOrderList;
 
     private List<BarterOrderItem> ownerOrderList;
 
     private Item ownerItem;
+
+    public BarterOrder getBarterOrder() {
+        return barterOrder;
+    }
+
+    public void setBarterOrder(BarterOrder barterOrder) {
+        this.barterOrder = barterOrder;
+    }
 
     public List<BarterOrderItem> getSelfOrderList() {
         return selfOrderList;

@@ -1,19 +1,20 @@
 package com.daming.bartersystem.controller;
 
-import com.daming.bartersystem.DTO.Result;
-import com.daming.bartersystem.DTO.UserInformationResult;
-import com.daming.bartersystem.DTO.UserSimpleInfoResult;
+import com.daming.bartersystem.DTO.*;
 import com.daming.bartersystem.entitys.User;
 import com.daming.bartersystem.entitys.UserBarterUnformation;
 import com.daming.bartersystem.service.UserBarterInformationService;
 import com.daming.bartersystem.service.UserService;
 import com.sun.org.apache.regexp.internal.RE;
+import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 import javax.xml.ws.Action;
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 
 @Controller
 public class UserController {
@@ -75,8 +76,60 @@ public class UserController {
 
         }
         return result;
-
     }
 
+    @RequestMapping(value = "/updateUserData", method = RequestMethod.POST, consumes = "application/json",produces="application/json")
+    @ResponseBody
+    public Result updateUserData(@RequestBody String param,HttpSession session) throws IOException {
+        Integer uid = (Integer) session.getAttribute("uid");
+        Result result = new Result(0,"failure",null);
+        if (uid != null ){
+            //login
+            System.out.println("接受到的json格式是这个样子的："+param);
+            param = new String(param.getBytes("ISO-8859-1"), "UTF-8");
+            System.out.println("修改编码后的json格式是这个样子的："+param);
+            System.out.println("已经登录了耶~~(＾－＾)V");
+            ObjectMapper objectMapper = new ObjectMapper();
+            UserDataAccepter userDataAccepter = objectMapper.readValue(param, UserDataAccepter.class);
+            String newUsername = userDataAccepter.getUsername();
+            String newPhone =  userDataAccepter.getPhone();
+            String newEmail = userDataAccepter.getEmail();
+            System.out.println("获取到的username是：" +newUsername);
+            System.out.println("获取到的Phone是：" + newPhone);
+            System.out.println("获取到的Email是" + newEmail);
+            User user = userService.queryByUid(uid);
+            user.setUsername(newUsername);
+            user.setPhone(newPhone);
+            user.setEmail(newEmail);
+            Integer count = 0;
+            count = userService.updateUser(user);
+            if (count == 1){
+                result = new Result(0,"succeed",null);
+                return  result;
+            }else {
+                result = new Result(0,"updatefailure",null);
+                return  result;
+            }
+
+        }else {
+            //not login
+            result = new Result(0,"isNotLogin",null);
+            return  result;
+        }
+    }
+    @RequestMapping(value = "/updateUserPassword", method = RequestMethod.POST, consumes = "application/json",produces="application/json")
+    @ResponseBody
+    public Result updateUserPassword(@RequestBody String param,HttpSession session){
+        Integer uid = (Integer) session.getAttribute("uid");
+        Result result = new Result(0,"failure",null);
+        if (uid != null ){
+            //login
+
+        }else {
+            //not login
+            result = new Result(0,"isNotLogin",null);
+            return  result;
+        }
+    }
 
 }

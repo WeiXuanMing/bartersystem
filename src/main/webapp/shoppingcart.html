@@ -99,26 +99,15 @@
 		</tr>
 		</thead>
 		<tbody>
-		<tr>
-			<td>1</td>
-			<td><a href="url">易物用户甲</a></td>
-			<td>9成新尼采手机</td>
-			<td>广东省广州市天河区迎福路527号</td>
-			<td>1000</td>
-			<td>手机介绍手机介绍手机介绍</td>
+		<tr id="cartSample">
+			<td id="itemId">1</td>
+			<td id="owner_nickname"><a href="url">易物用户甲</a></td>
+			<td id="itemTitle">9成新尼采手机</td>
+			<td id="shipAddress">广东省广州市天河区迎福路527号</td>
+			<td id="ref_price">1000</td>
+			<td id="description">手机介绍手机介绍手机介绍</td>
 			<td align="center">
-				<button class="je-btn je-btn-mini je-bg-red je-f12">删除</button>
-			</td>
-		</tr>
-		<tr>
-			<td>2</td>
-			<td><a href="url">易物用户乙</a></td>
-			<td>健身房卡期限还有半年</td>
-			<td>广东省广州市天河区迎福路527号</td>
-			<td>2000</td>
-			<td>物品介绍物品介绍物品介绍/td>
-			<td align="center">
-				<button class="je-btn je-btn-mini je-bg-red je-f12">删除</button>
+				<button class="je-btn je-btn-mini je-bg-red je-f12" id="del_btn">删除</button>
 			</td>
 		</tr>
 		</tbody>
@@ -126,27 +115,66 @@
 
 </div>
 <div class="container" > </div>
-<script type="text/javascript">
-						$(document).ready(function(){
-							//加的效果
-							$(".add").click(function(){
-							var n=$(this).prev().val();
-							var num=parseInt(n)+1;
-							if(num==0){ return;}
-							$(this).prev().val(num);
-							});
-							//减的效果
-							$(".jian").click(function(){
-							var n=$(this).next().val();
-							var num=parseInt(n)-1;
-							if(num==0){ return}
-							$(this).next().val(num);
-							});
-						})
-				</script>
 <!-- 包括所有已编译的插件 -->
 <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 </body>
+<script type="application/javascript">
+	var cartSample = $("#cartSample");
+    cartSample.hide();
+    $(document).ready(function(){
+        $.getJSON("/getShoppingTrolley", function (result) {
+			if(result.message == "succeed"){
+                $.each(result.data.shoppingTrolleyItem,function (index, value){
+                    var newCartSample = cartSample.clone();
+                    newCartSample.attr("target","del");
+                    var itemId = value.itemId;
+                    var owner_nickname;
+                    var owner_uid;
+                    var itemTitle;
+                    var shipAddress;
+                    var ref_price;
+                    var description;
+                    newCartSample.find("#itemId").text(itemId);
+                    $.getJSON("/itemDetail/"+itemId, function (result) {
+                        alert(result.data.item.uid);
+                        if(result.message == "succeed"){
+                            owner_uid = result.data.item.uid;
+                            $.getJSON("/getUserSimpleInfo/"+owner_uid, function (result) {
+                                if(result.message == "succeed"){
+                                    owner_nickname = result.data.username;
+                                    newCartSample.find("#owner_nickname").text(owner_nickname);
+								}
+							});
+                            itemTitle = result.data.item.title;
+                            shipAddress = result.data.item.shipAddress;
+                            ref_price = result.data.item.refPrice;
+                            description = result.data.item.description;
+                            console.log(itemId+""+itemTitle+shipAddress+ref_price+description);
+                            newCartSample.find("#itemId").text(itemId);
+                            newCartSample.find("#itemTitle").text(itemTitle);
+                            newCartSample.find("#shipAddress").text(shipAddress);
+                            newCartSample.find("#ref_price").text(ref_price);
+                            newCartSample.find("#description").text(description);
+                            newCartSample.find("#del_btn").click(function () {
+                                var delItemid  = $(this).parent().parent().find("#itemId").text();
+                                //执行删除数据列操作
+                                $(this).parent().parent().remove();
+                            });
+                            newCartSample.click(function () {
+                                var delItemid  = $(this).find("#itemId").text();
+                                localStorage.setItem("ItemDetailItemId",delItemid);
+                                window.location.href='/itemdetail.html';
+                            });
+                            newCartSample.show();
+                            cartSample.after(newCartSample);
+						}
+					});
+
+				});
+			}
+		});
+	});
+</script>
 <script type="application/javascript">
     var logined = $("#logined");//已登录显示的组件
     logined.hide();

@@ -95,6 +95,7 @@ public class OrderController {
                     List<BarterOrderItem> ownerItemList = new ArrayList<BarterOrderItem>();
                     ownerItemList.add(originalBarterOrderItem);
                     orderResult.setOwnerOrderList(ownerItemList);
+                    orderResult.setBarterOrder(barterOrder);
                     result = new Result<OrderResult>(0,"订单创建成功",orderResult);
                     return result;
                 }else {
@@ -131,6 +132,7 @@ public class OrderController {
                 OrderResult orderResult = new OrderResult();
                 orderResult.setSelfOrderList(selfOrderList);
                 orderResult.setOwnerOrderList(ownerOrderList);
+                orderResult.setBarterOrder(barterOrder);
                 result = new Result<OrderResult>(0,"succeed",orderResult);
                 return result;
             }
@@ -163,6 +165,9 @@ public class OrderController {
      * @return
      */
 
+    /*
+    *
+    * */
     @RequestMapping(value = "/submitOrderItem/{orderId}", method = RequestMethod.POST, produces="application/json")
     @ResponseBody
     public Result<SubmitOrderItemResult> submitOrderItem(@RequestBody String param,@PathVariable("orderId") Integer orderId,HttpSession session) throws IOException {
@@ -177,6 +182,7 @@ public class OrderController {
         Result<SubmitOrderItemResult> result = new Result<SubmitOrderItemResult>(0,"failure",new SubmitOrderItemResult());
         System.out.println("接受到的json格式是这个样子的："+param);
         param = new String(param.getBytes("ISO-8859-1"), "UTF-8");
+        System.out.println("修改编码后的json格式是这个样子的："+param);
         Integer uid = (Integer) session.getAttribute("uid");
         /*
         中文乱码问题还可以通过修改tomcat配置文件/conf/server.xml 加上

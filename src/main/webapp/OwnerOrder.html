@@ -119,15 +119,15 @@
                 </tr>
                 </thead>
                 <tbody>
-                    <tr id="owner_orderItemSample">
-                        <td id="owner_itemId">物品编号</td>
+                    <tr id="applicant_orderItemSample">
+                        <td id="applicant_itemId">物品编号</td>
                         <td align="center" class="imgtd"><img src="../jeui/images/userphoto.jpg" class="userphoto"/></td>
-                        <td id="owner_itemtitle">标题</td>
-                        <td id="owner_itemShipAddress">收货地址</td>
-                        <td id="owner_itemRefPrice">参考价格</td>
-                        <td id="owner_itemDescription">介绍</td>
+                        <td id="applicant_itemtitle">标题</td>
+                        <td id="applicant_itemShipAddress">收货地址</td>
+                        <td id="applicant_itemRefPrice">参考价格</td>
+                        <td id="applicant_itemDescription">介绍</td>
                     </tr>
-                    <p type="hidden" id="owner_justforappend"></p>
+                    <p type="hidden" id="applicant_justforappend"></p>
                 </tbody>
             </table>
         </div>
@@ -140,23 +140,17 @@
 </div>
 
 </body>
-<!--
-	需要从localStorage获取的数据有
- 	orderItemId 代表获取关于那个item的订单
- 	chooseItemId 代表从box中选取自己的item作为订单的一部分
-
- -->
 <script type="text/javascript">
     localStorage.setItem("orderItemId",4);//测试数据
     var alreadyChosedItemId = new Array();//申请人选取的物品
-    var itemOwnerItemId = new Array();//物主物品id列表
+    var itemApplicantItemId = new Array();//物主物品id列表
     var seft_orderItemSample = $("#seft_orderItemSample");//seft_orderItemSample组件
     seft_orderItemSample.hide();
-    var owner_orderItemSample = $("#owner_orderItemSample")//owner_orderItemSample组件
-    owner_orderItemSample.hide();
+    var applicant_orderItemSample = $("#applicant_orderItemSample")//owner_orderItemSample组件
+    applicant_orderItemSample.hide();
     localStorage.removeItem("chooseItemId");//保证自己显示的itemId是从iframe中选出来的。
     var orderItemId  = localStorage.getItem("orderItemId");//获取关于那个item的订单
-    var testOrderId = 4;//测试数据
+    var testOrderId = 14;//测试数据
     var orderId; //当前订单id。
     var testOrderId;
     var receiver_address;
@@ -190,7 +184,7 @@
 			});
 		$("#confirm_btn").click(function () {
             //确认订单http://localhost:8080//confirmOrder/14
-            $.getJSON("/confirmOrder/"+orderId, function (result) {
+            $.getJSON("/confirmOrder/"+testOrderId, function (result) {
                 if (result.message=="succeed") {
                     alert("你已经确认订单，等待对方确定");
                     window.location.href='/order.html';
@@ -199,7 +193,7 @@
         });
 		$("#submit_btn").click(function () {
             //提交
-            var submitString = '{"orderId":"'+orderId+'",'+
+            var submitString = '{"orderId":"'+testOrderId+'",'+
                 '"receiver_address":"'+testReceiverAddress+'",'+
                     '"selfOrderItemIdList":[';
             var selfOrderItemIdListString = "";
@@ -215,7 +209,7 @@
             $.ajaxSetup({
                 contentType : 'application/json'
             });
-            $.post("/submitOrderItem/"+orderId,submitString,function (json,status) {
+            $.post("/submitOrderItem/"+testOrderId,submitString,function (json,status) {
                 if (json.message = "succeed"){
                     alert("提交成功");
                 }
@@ -231,7 +225,7 @@
 	function initItemList() {
         console.log("正在init");
 	    initSeftItemList();
-        initOwnerItemList();
+        initApplicantItemList();
         
     }
     function initSeftItemList(){
@@ -239,11 +233,9 @@
         console.log("正在initSeftItemList");
         var isConfirm = false;
         var isChosed = false;
-        $.getJSON("/getOrder/"+testOrderId, function (result) {
+        $.getJSON("/getItemOwnerExchangeOrder/"+testOrderId, function (result) {
             if (result.message=="succeed") {
-                //result.data.ownerOrderList
-                orderId = result.data.barterOrder.barterOrderId;
-                $.each(result.data.selfOrderList,function (index, value){
+                $.each(result.data.selfOrderItemList,function (index, value){
                     alreadyChosedItemId.push(value.itemId);
                     console.log("物品"+value.itemId+"的orderItemState："+value.orderItemState);
                     if (value.orderItemState == 1){
@@ -287,16 +279,16 @@
             }
         });
     }
-    function initOwnerItemList() {
-        $("[target='ownerlist_del']").remove();
+    function initApplicantItemList() {
+        $("[target='applicantlist_del']").remove();
         console.log("正在initOwnerItemList");
         var isConfirm = false;
         var isChosed = false;
-        $.getJSON("/getOrder/"+testOrderId, function (result) {
+        $.getJSON("/getItemOwnerExchangeOrder/"+testOrderId, function (result) {
             if (result.message=="succeed") {
                 //result.data.ownerOrderList
-                $.each(result.data.ownerOrderList,function (index, value){
-                    itemOwnerItemId.push(value.itemId);
+                $.each(result.data.applicantOrderItemList,function (index, value){
+                    itemApplicantItemId.push(value.itemId);
                     if (value.orderItemState == 1){
                         isChosed =true;
                     }
@@ -310,18 +302,18 @@
                 if(isConfirm){
                     $("#owner_list").css("border","2px solid #9AFF02");
                 }
-                for (var i = 0; i < itemOwnerItemId.length;i++) {
-                    $.getJSON("/itemDetail/" + itemOwnerItemId[i], function (result) {
+                for (var i = 0; i < itemApplicantItemId.length;i++) {
+                    $.getJSON("/itemDetail/" + itemApplicantItemId[i], function (result) {
                         if (result.message == "succeed") {
-                            var newOwner_orderItemSample = owner_orderItemSample.clone();
-                            newOwner_orderItemSample.attr("target","ownerlist_del");
-                            newOwner_orderItemSample.find("#owner_itemId").text(result.data.item.itemId);
-                            newOwner_orderItemSample.find("#owner_itemtitle").text(result.data.item.title);
-                            newOwner_orderItemSample.find("#owner_itemShipAddress").text(result.data.item.shipAddress);
-                            newOwner_orderItemSample.find("#owner_itemRefPrice").text(result.data.item.refPrice);
-                            newOwner_orderItemSample.find("#owner_itemDescription").text(result.data.item.description);
-                            newOwner_orderItemSample.show();
-                            owner_orderItemSample.after(newOwner_orderItemSample);
+                            var newApplicant_orderItemSample = applicant_orderItemSample.clone();
+                            newApplicant_orderItemSample.attr("target","applicantlist_del");
+                            newApplicant_orderItemSample.find("#applicant_itemId").text(result.data.item.itemId);
+                            newApplicant_orderItemSample.find("#applicant_itemtitle").text(result.data.item.title);
+                            newApplicant_orderItemSample.find("#applicant_itemShipAddress").text(result.data.item.shipAddress);
+                            newApplicant_orderItemSample.find("#applicant_itemRefPrice").text(result.data.item.refPrice);
+                            newApplicant_orderItemSample.find("#applicant_itemDescription").text(result.data.item.description);
+                            newApplicant_orderItemSample.show();
+                            applicant_orderItemSample.after(newApplicant_orderItemSample);
                         }
                     });
                 }
