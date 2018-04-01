@@ -11,6 +11,5 @@ public class PIMController {
     @Autowired
     private UserService userService;
 
-    @GetMapping("/getUI")
 
 }

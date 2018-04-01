@@ -140,8 +140,14 @@
 </div>
 
 </body>
+<!--
+    OwnerOrderItemId
+-->
+<!--
+	需要从localStorage获取的数据有
+ 	ownerOrderId 代表在OwnerOrder.html页面要显示的orderId
+ -->
 <script type="text/javascript">
-    localStorage.setItem("orderItemId",4);//测试数据
     var alreadyChosedItemId = new Array();//申请人选取的物品
     var itemApplicantItemId = new Array();//物主物品id列表
     var seft_orderItemSample = $("#seft_orderItemSample");//seft_orderItemSample组件
@@ -149,10 +155,8 @@
     var applicant_orderItemSample = $("#applicant_orderItemSample")//owner_orderItemSample组件
     applicant_orderItemSample.hide();
     localStorage.removeItem("chooseItemId");//保证自己显示的itemId是从iframe中选出来的。
-    var orderItemId  = localStorage.getItem("orderItemId");//获取关于那个item的订单
-    var testOrderId = 14;//测试数据
+    var ownerOrderId  = localStorage.getItem("ownerOrderId");//获取关于那个item的订单
     var orderId; //当前订单id。
-    var testOrderId;
     var receiver_address;
     var testReceiverAddress = "阳春帅气的东边二桥头";
 	$(document).ready(function(){
@@ -184,7 +188,7 @@
 			});
 		$("#confirm_btn").click(function () {
             //确认订单http://localhost:8080//confirmOrder/14
-            $.getJSON("/confirmOrder/"+testOrderId, function (result) {
+            $.getJSON("/confirmOrder/"+ownerOrderId, function (result) {
                 if (result.message=="succeed") {
                     alert("你已经确认订单，等待对方确定");
                     window.location.href='/order.html';
@@ -193,7 +197,7 @@
         });
 		$("#submit_btn").click(function () {
             //提交
-            var submitString = '{"orderId":"'+testOrderId+'",'+
+            var submitString = '{"orderId":"'+ownerOrderId+'",'+
                 '"receiver_address":"'+testReceiverAddress+'",'+
                     '"selfOrderItemIdList":[';
             var selfOrderItemIdListString = "";
@@ -209,7 +213,7 @@
             $.ajaxSetup({
                 contentType : 'application/json'
             });
-            $.post("/submitOrderItem/"+testOrderId,submitString,function (json,status) {
+            $.post("/submitOrderItem/"+ownerOrderId,submitString,function (json,status) {
                 if (json.message = "succeed"){
                     alert("提交成功");
                 }
@@ -233,7 +237,7 @@
         console.log("正在initSeftItemList");
         var isConfirm = false;
         var isChosed = false;
-        $.getJSON("/getItemOwnerExchangeOrder/"+testOrderId, function (result) {
+        $.getJSON("/getItemOwnerExchangeOrder/"+ownerOrderId, function (result) {
             if (result.message=="succeed") {
                 $.each(result.data.selfOrderItemList,function (index, value){
                     alreadyChosedItemId.push(value.itemId);
@@ -284,7 +288,7 @@
         console.log("正在initOwnerItemList");
         var isConfirm = false;
         var isChosed = false;
-        $.getJSON("/getItemOwnerExchangeOrder/"+testOrderId, function (result) {
+        $.getJSON("/getItemOwnerExchangeOrder/"+ownerOrderId, function (result) {
             if (result.message=="succeed") {
                 //result.data.ownerOrderList
                 $.each(result.data.applicantOrderItemList,function (index, value){

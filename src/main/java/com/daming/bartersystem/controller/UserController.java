@@ -3,12 +3,14 @@ package com.daming.bartersystem.controller;
 import com.daming.bartersystem.DTO.*;
 import com.daming.bartersystem.entitys.User;
 import com.daming.bartersystem.entitys.UserBarterUnformation;
+import com.daming.bartersystem.service.LoginService;
 import com.daming.bartersystem.service.UserBarterInformationService;
 import com.daming.bartersystem.service.UserService;
 import com.sun.org.apache.regexp.internal.RE;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.DigestUtils;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
@@ -24,6 +26,8 @@ public class UserController {
     @Autowired
     private UserBarterInformationService userBarterInformationService;
 
+    @Autowired
+    private LoginService loginService;
     @PostMapping("/getUI")
     @ResponseBody
     public Result<UserInformationResult> getUserInformation(HttpSession session){
@@ -119,11 +123,33 @@ public class UserController {
     }
     @RequestMapping(value = "/updateUserPassword", method = RequestMethod.POST, consumes = "application/json",produces="application/json")
     @ResponseBody
-    public Result updateUserPassword(@RequestBody String param,HttpSession session){
+    public Result updateUserPassword(@RequestBody String param,HttpSession session) throws IOException {
         Integer uid = (Integer) session.getAttribute("uid");
         Result result = new Result(0,"failure",null);
         if (uid != null ){
             //login
+            System.out.println("接受到的json格式是这个样子的："+param);
+            param = new String(param.getBytes("ISO-8859-1"), "UTF-8");
+            System.out.println("修改编码后的json格式是这个样子的："+param);
+            System.out.println("已经登录了耶~~(＾－＾)V");
+            ObjectMapper objectMapper = new ObjectMapper();
+            UserPasswordAccepter userPasswordAccepter = objectMapper.readValue(param, UserPasswordAccepter.class);
+            String oldPassword = userPasswordAccepter.getOldPassword();
+            String newPassword = userPasswordAccepter.getNewPassword();
+            String salt = "daming";
+            String base = uid + "/" + salt + "/" + oldPassword;
+            String uuid = DigestUtils.md5DigestAsHex(base.getBytes());
+            boolean isRight = userService.CheckUUID(uid,uuid);
+            if (isRight){
+                User user = userService.queryByUid(uid);
+                user.setPassword(newPassword);
+                userService.updateUser(user);
+                result = new Result(0,"succeed",null);
+                return result;
+            }else {
+                result = new Result(0,"incorrect",null);
+                return result;
+            }
 
         }else {
             //not login

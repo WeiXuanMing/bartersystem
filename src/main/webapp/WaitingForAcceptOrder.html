@@ -157,7 +157,8 @@ body {
             <li><a href="#">上架物品</a></li>
             <li><a href="#">已上架物品</a></li>
             <li ><a href="#">已完成订单</a></li>
-            <li class="active"><a href="#">未完成订单</a></li>
+            <li class="active"><a href="#">待接受订单</a></li>
+            <li ><a href="#">未完成订单</a></li>
           </ul>
 
         </div>
@@ -191,7 +192,7 @@ body {
   var orderSample = $("#orderSample");
   orderSample.hide();
   $(document).ready(function (){
-      $.getJSON("/getSelfOrder", function (result) {
+      $.getJSON("/getWaitingForAcceptOrder", function (result) {
           if (result.message == "succeed") {
               $.each(result.data.barterOrderList, function (index, value) {
                   var newOrderSample = orderSample.clone();
@@ -218,8 +219,8 @@ body {
                       newOrderSample.find("#order_state").text("未完成");
                   }
                   newOrderSample.click(function () {
-                      localStorage.setItem("orderItemId",itemId);
-                      window.location.href='/order.html';
+                      localStorage.setItem("ownerOrderId",orderId);
+                      window.location.href='/OwnerOrder.html';
                   }); 
                   newOrderSample.show();
                   orderSample.after(newOrderSample);

@@ -67,6 +67,17 @@ public class OrderServiceImpl implements OrderService{
         }
         return null;
     }
+
+    public List<BarterOrder> queryByItemId(Integer itemId) {
+        BarterOrderExample barterOrderExample = new BarterOrderExample();
+        BarterOrderExample.Criteria criteria = barterOrderExample.createCriteria();
+        criteria.andItemIdEqualTo(itemId);
+        List<BarterOrder> barterOrders = barterOrderMapper.selectByExample(barterOrderExample);
+        if(barterOrders!=null){
+            return barterOrders;
+        }
+        return null;
+    }
     /*
     //创建一个Order列和两个OrderItem列
     public Integer CreateOrder(Integer uid1, Integer uid2) {

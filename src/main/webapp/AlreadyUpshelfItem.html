@@ -143,8 +143,8 @@
 
 			</div>
 			<ul class="nav nav-sidebar">
-				<li ><a href="#">个人信息<span class="sr-only">(current)</span></a></li>
-				<li><a href="#">上架物品</a></li>
+				<li ><a href="UserInformationManagement.html">个人信息<span class="sr-only">(current)</span></a></li>
+				<li><a href="ItemUpshelfManagement.html">上架物品</a></li>
 				<li class="active"><a href="#">已上架物品</a></li>
 				<li><a href="#">已完成订单</a></li>
 				<li><a href="#">未完成订单</a></li>
@@ -162,6 +162,7 @@
 					<th>收货地址</th>
 					<th>参考价格</th>
 					<th>介绍</th>
+					<th>状态</th>
 					<th>操作</th>
 				</tr>
 				</thead>
@@ -171,11 +172,12 @@
 					<td id="itemId">物品编号</td>
 					<td align="center" class="imgtd"><img src="../jeui/images/userphoto.jpg" class="userphoto"/></td>
 					<td id="itemtitle">标题</td>
-					<td id="itemShipAddress">收货地址</td>
+					<td id="itemShipAddress">发货地址</td>
 					<td id="itemRefPrice">参考价格</td>
 					<td id="itemDescription">介绍</td>
+					<td id="itemIsOn">审核状态</td>
 					<td align="center">
-						<button class="je-btn je-btn-big je-bg-red je-f18 ">删除</button></td>
+						<button class="je-btn je-btn-big je-bg-red je-f18 " id="del_btn">删除</button></td>
 				</tr>
 				<input type="hidden" id="justforappend"/>
 				</tbody>
@@ -183,6 +185,55 @@
 		</div>
 	</div>
 </div>
+<script type="application/javascript">
+	var alreadyChosedItemId = new Array();
+	var itemSample = $("#itemSample");
+    itemSample.hide();
+    $(document).ready(function initSeftItemList(){
+        $("[target='del']").remove();
+        console.log("正在initSeftItemList");
+        $.getJSON("/possessions", function (result) {
+            if (result.message=="succeed") {
+                $.each(result.data.items, function (index, value) {
+                    var newItemSample = itemSample.clone();
+                    newItemSample.attr("target", "del");
+                    newItemSample.find("#itemId").text(value.itemId);
+                    newItemSample.find("#itemtitle").text(value.title);
+                    newItemSample.find("#itemShipAddress").text(value.shipAddress);
+                    newItemSample.find("#itemRefPrice").text(value.refPrice);
+                    newItemSample.find("#itemDescription").text(value.description);
+                    if(value.ison == 1){
+                        newItemSample.find("#itemIsOn").text("通过审核");
+                    }else {
+                        newItemSample.find("#itemIsOn").text("等待审核");
+					}
+                    newItemSample.find("#del_btn").click(function () {
+                        var id = $(this).parent().parent().find("#seft_itemId").text();
+                        console.log("del itemid:" + id);
+                        alreadyChosedItemIdDelItem(parseInt(id));
+                        for (var i in alreadyChosedItemId) {
+                            console.log("the ress alreadyChosedItemId item is:" + alreadyChosedItemId[i]);
+                        }
+                        $(this).parent().parent().remove();
+                    });
+                    newItemSample.show();
+                    itemSample.after(newItemSample);
+                });
+			}
+    });
+
+
+    });
+    function alreadyChosedItemIdDelItem(itemId) {
+        for (var i in alreadyChosedItemId){
+            if (alreadyChosedItemId[i] == itemId){
+                alreadyChosedItemId.splice(i,1);
+            }
+        }
+
+    }
+
+</script>
 <script type="text/javascript">
  jeui.use(["jquery","jeCheck"],function () {
         $("#newCheck").jeCheck({
@@ -199,5 +250,6 @@
         })
     });
 </script>
+
 </body>
 </html>

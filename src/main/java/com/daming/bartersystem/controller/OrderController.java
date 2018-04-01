@@ -412,4 +412,56 @@ public class OrderController {
             return result = new Result<ConfirmOrderResult>(0,"isNotLogin",confirmOrderResult);
         }
     }
+
+
+    @RequestMapping(value = "/getSelfOrder", method = RequestMethod.GET)
+    @ResponseBody
+    public Result<GetSelfOrderResult> getSelfOrder(HttpSession session){
+        Integer uid = (Integer) session.getAttribute("uid");
+        GetSelfOrderResult selfOrderResult = new GetSelfOrderResult();
+        Result<GetSelfOrderResult> result = new Result<GetSelfOrderResult>(0,"failure",selfOrderResult);
+        if (uid != null){
+            //login
+            List<BarterOrder> barterOrders = orderService.queryByUid(uid);
+            selfOrderResult.setBarterOrderList(barterOrders);
+            result = new Result<GetSelfOrderResult>(0,"succeed",selfOrderResult);
+            return result;
+        }else {
+            //not login
+            result = new Result<GetSelfOrderResult>(0,"isNotLogin",selfOrderResult);
+            return result;
+        }
+    }
+
+    @RequestMapping(value = "/getWaitingForAcceptOrder", method = RequestMethod.GET)
+    @ResponseBody
+    public Result<GetWaitingForAcceptOrderResult> getWaitingForAcceptOrder(HttpSession session){
+        Integer uid = (Integer) session.getAttribute("uid");
+        Result<GetWaitingForAcceptOrderResult> result = new Result<GetWaitingForAcceptOrderResult>(0,"failure",null);
+        List<BarterOrder> barterOrders = new ArrayList<BarterOrder>();
+        if (uid!= null){
+            //login
+            List<Item> items = itemService.queryByUid(uid); //用户所有item
+            if (items != null) {
+                for (Item item : items) {
+                    List<BarterOrder> barterOrderList = orderService.queryByItemId(item.getItemId());
+                    List<BarterOrder> barterOrder = barterOrderList;
+                    if (barterOrder != null){
+                        barterOrders.addAll(barterOrderList);
+                    }
+                }
+                GetWaitingForAcceptOrderResult getWaitingForAcceptOrderResult = new GetWaitingForAcceptOrderResult();
+                getWaitingForAcceptOrderResult.setBarterOrderList(barterOrders);
+                result = new Result<GetWaitingForAcceptOrderResult>(0,"succeed",getWaitingForAcceptOrderResult);
+            }else {
+                result = new Result<GetWaitingForAcceptOrderResult>(0,"NotItem",null);
+                return result;
+            }
+        }else {
+            //not login
+            result = new Result<GetWaitingForAcceptOrderResult>(0,"isNotLogin",null);
+            return result;
+        }
+        return result;
+    }
 }

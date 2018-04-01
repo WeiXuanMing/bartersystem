@@ -180,20 +180,20 @@ body {
                 <tbody>
                 <tr>
                   <td>昵称</td>
-                  <td><input type="text" class="je-input version" placeholder="请输入昵称"></td>
+                  <td><input type="text" class="je-input version" placeholder="请输入昵称" id="username_input"></td>
                 </tr>
                 <tr>
                   <td>手机号码</td>
-                  <td><input type="text" class="je-input author" placeholder="请输入手机号码"></td>
+                  <td><input type="text" class="je-input author" placeholder="请输入手机号码" id="phone_input"></td>
                 </tr>
                 <tr>
                   <td>邮箱地址</td>
-                  <td><input type="text" class="je-input homePage" placeholder="请输入邮箱地址"></td>
+                  <td><input type="text" class="je-input homePage" placeholder="请输入邮箱地址" id="email_input"></td>
                 </tr>
                 </tbody>
               </table>
             </form>
-            <div align="right"><button class="je-btn je-bg-native je-btn-big je-f18">确认修改</button></div>
+            <div align="right"><button class="je-btn je-bg-native je-btn-big je-f18" id="UI_btn">确认修改</button></div>
           </div>
           <script type="text/javascript">
               jeui.use(["jquery"],function () {
@@ -202,29 +202,105 @@ body {
           </script>
           <div class="je-form-item je-p20">
             <h1 class="page-header">修改密码</h1>
+            <h3 class="page-header" id="hidden_msg"></h3>
             <div class="je-w33 je-dib">
               <label class="je-label je-f14">旧密码</label>
               <div class="je-inputbox">
-                <input type="text" name="title" autocomplete="off" placeholder="请输入" class="je-input">
+                <input type="password" name="title" autocomplete="off" placeholder="请输入" class="je-input" id="oldPassword_input">
               </div>
             </div>
             <div class="je-w33 je-dib">
               <label class="je-label je-f14">新密码</label>
               <div class="je-inputbox">
-                <input type="text" name="title" autocomplete="off" placeholder="请输入" class="je-input">
+                <input type="password" name="title" autocomplete="off" placeholder="请输入" class="je-input" id="newPassword_input">
               </div>
             </div>
             <div class="je-w33 je-dib">
               <label class="je-label je-f14">确认密码</label>
               <div class="je-inputbox">
-                <input type="text" name="title" autocomplete="off" placeholder="请输入" disabled class="je-input">
+                <input type="password" name="title" autocomplete="off" placeholder="请输入" disabled class="je-input" id="re_enterPassword_input">
               </div>
             </div>
             <p/><p/>
-            <div align="right"><button class="je-btn je-bg-native je-btn-big je-f18">确认修改</button></div>
+            <div align="right"><button class="je-btn je-bg-native je-btn-big je-f18" id="password_btn">确认修改</button></div>
           </div>
         </div>
       </div>
     </div>
 </body>
+<script type="application/javascript">
+  $(document).ready(function () {
+      var username_input = $("#username_input");
+      var phone_input = $("#phone_input");
+      var email_input = $("#email_input");
+      var username = "";
+      var phone = "";
+      var email = "";
+      $.ajaxSetup({
+          contentType : 'application/json'
+      });
+      $.post("/getUI",function (json,status) {
+          var obj = json;
+          if(obj.message == "isLogin"){
+              username = obj.data.username;
+              phone = obj.data.phone;
+              email = obj.data.email;
+              username_input.val(username);
+              phone_input.val(phone);
+              email_input.val(email);
+          }
+      },"json");
+      $("#UI_btn").click(function () {
+          var newUsername = username_input.val();
+          var newPhone = phone_input.val();
+          var newEmail = email_input.val();
+          $.ajaxSetup({
+              contentType : 'application/json'
+          });
+          var mydata = '{'+'"username":"'+newUsername+'",'+
+                '"phone":"'+newPhone+'",'+
+                '"email":"'+newEmail+'"}'
+          alert(mydata);
+          $.post("/updateUserData",mydata,function (json,status) {
+              var obj = json;
+              if(obj.message == "succeed"){
+                alert("更新成功");
+                window.location.href='/UserInformationManagement.html';
+              }
+          },"json");
+      });
+      var oldPassword_input = $("#oldPassword_input");
+      var newPassword_input = $("#newPassword_input");
+      var re_enterPassword_input = $("#re_enterPassword_input");
+      newPassword_input.focus(function () {
+          re_enterPassword_input.attr("disabled",false);
+      });
+      var hidden_msg = $("#hidden_msg");
+      $("#password_btn").click(function () {
+          var oldPassword = oldPassword_input.val();
+          var newPassword = newPassword_input.val();
+          var re_enterPassword = re_enterPassword_input.val();
+          if (re_enterPassword!=newPassword){
+              hidden_msg.text("密码不一致");
+          }else {
+              $.ajaxSetup({
+                  contentType : 'application/json'
+              });
+              var mydata = '{'+'"oldPassword":"'+oldPassword+'",'+
+                  '"newPassword":"'+newPassword+'"}';
+              alert(mydata);
+              $.post("/updateUserPassword",mydata,function (json,status) {
+                  var obj = json;
+                  if(obj.message == "succeed"){
+                      alert("密码更新成功");
+                      window.location.href='/login';
+                  }
+              },"json");
+          }
+      });
+
+
+
+  });
+</script>
 </html>

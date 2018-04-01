@@ -23,4 +23,6 @@ public interface OrderService {
      List<Integer> queryUidByOrderId(Integer OrderId);
 
      BarterOrder queryByOrderId(Integer orderId);
+
+     List<BarterOrder> queryByItemId(Integer itemId);
 }

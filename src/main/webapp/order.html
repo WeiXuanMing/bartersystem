@@ -147,7 +147,7 @@
 
  -->
 <script type="text/javascript">
-    localStorage.setItem("orderItemId",4);//测试数据
+    //localStorage.setItem("orderItemId",4);//测试数据
     var alreadyChosedItemId = new Array();//申请人选取的物品
     var itemOwnerItemId = new Array();//物主物品id列表
     var seft_orderItemSample = $("#seft_orderItemSample");//seft_orderItemSample组件
@@ -158,7 +158,6 @@
     var orderItemId  = localStorage.getItem("orderItemId");//获取关于那个item的订单
     var testOrderId = 4;//测试数据
     var orderId; //当前订单id。
-    var testOrderId;
     var receiver_address;
     var testReceiverAddress = "阳春帅气的东边二桥头";
 	$(document).ready(function(){
@@ -239,7 +238,7 @@
         console.log("正在initSeftItemList");
         var isConfirm = false;
         var isChosed = false;
-        $.getJSON("/getOrder/"+testOrderId, function (result) {
+        $.getJSON("/getOrder/"+orderItemId, function (result) {
             if (result.message=="succeed") {
                 //result.data.ownerOrderList
                 orderId = result.data.barterOrder.barterOrderId;
@@ -292,7 +291,7 @@
         console.log("正在initOwnerItemList");
         var isConfirm = false;
         var isChosed = false;
-        $.getJSON("/getOrder/"+testOrderId, function (result) {
+        $.getJSON("/getOrder/"+orderItemId, function (result) {
             if (result.message=="succeed") {
                 //result.data.ownerOrderList
                 $.each(result.data.ownerOrderList,function (index, value){
