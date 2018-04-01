@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="../jeui/css/jeui.css">
     <link rel="stylesheet" href="../jeui/css/skin/jebox.css">
     <link rel="stylesheet" href="../jeui/css/skin/jedate.css">
-    <link rel="stylesheet" href="../jeui/css/skin/">
     <!-- jQuery (Bootstrap 的 JavaScript 插件需要引入 jQuery) -->
     <script src="https://code.jquery.com/jquery.js"></script>
     <script src="../jeui/js/modules/jeBox.js"></script>
@@ -120,7 +119,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                    <tr id="orderItemSample">
+                    <tr id="owner_orderItemSample">
                         <td id="owner_itemId">物品编号</td>
                         <td align="center" class="imgtd"><img src="../jeui/images/userphoto.jpg" class="userphoto"/></td>
                         <td id="owner_itemtitle">标题</td>
@@ -142,10 +141,16 @@
 
 </body>
 <script type="text/javascript">
-    var alreadyChosedItemId = new Array();
+    localStorage.setItem("orderItemId",4);//测试数据
+    var alreadyChosedItemId = new Array();//申请人选取的物品
+    var itemOwnerItemId = new Array();//物主物品id列表
     var seft_orderItemSample = $("#seft_orderItemSample");//seft_orderItemSample组件
     seft_orderItemSample.hide();
+    var owner_orderItemSample = $("#owner_orderItemSample")//owner_orderItemSample组件
+    owner_orderItemSample.hide();
     localStorage.removeItem("chooseItemId");//保证自己显示的itemId是从iframe中选出来的。
+    var orderItemId  = localStorage.getItem("orderItemId");//获取关于那个item的订单
+    var testItemId = 4;//测试数据
 	$(document).ready(function(){
 		$("#add_btn").click(function(){
                 jeBox.open({
@@ -172,8 +177,58 @@
                     }
                  });
 			});
-		initOwnerItemList();
+        initItemList();
 		});
+	function initItemList() {
+        console.log("正在init");
+	    initSeftItemList();
+        initOwnerItemList();
+        
+    }
+    function initOwnerItemList() {
+        $("[target='ownerlist_del']").remove();
+        console.log("正在initOwnerItemList");
+        var isConfirm = true;
+        var isChosed = true;
+        $.getJSON("/getOrder/"+testItemId, function (result) {
+            if (result.message=="succeed") {
+                //result.data.ownerOrderList
+                $.each(result.data.ownerOrderList,function (index, value){
+                    itemOwnerItemId.push(value.itemId);
+                    if (value.orderItemState != 1){
+                        isChosed = false;
+                        if (value.orderItemState != 2){
+                            isConfirm = false;
+                        }
+                    }
+                });
+                if (isChosed){
+                    $("#owner_list").css("border","2px solid #FFA042");
+                }
+                if(isConfirm){
+                    $("#owner_list").css("border","2px solid #9AFF02");
+                }
+                for (var i = 0; i < itemOwnerItemId.length;i++) {
+                    $.getJSON("/itemDetail/" + itemOwnerItemId[i], function (result) {
+                        if (result.message == "succeed") {
+                            var newOwner_orderItemSample = owner_orderItemSample.clone();
+                            newOwner_orderItemSample.attr("target", "ownerlist_del");
+                            newOwner_orderItemSample.find("#owner_itemId").text(result.data.item.itemId);
+                            newOwner_orderItemSample.find("#owner_itemtitle").text(result.data.item.title);
+                            newOwner_orderItemSample.find("#owner_itemShipAddress").text(result.data.item.shipAddress);
+                            newOwner_orderItemSample.find("#owner_itemRefPrice").text(result.data.item.refPrice);
+                            newOwner_orderItemSample.find("#owner_itemDescription").text(result.data.item.description);
+                            newOwner_orderItemSample.show();
+                            owner_orderItemSample.after(newOwner_orderItemSample);
+                        }
+                    });
+                }
+            }
+        });
+    }
+    function   initSeftItemList() {
+        
+    }
 	function alreadyChosedItemIdDelItem(itemId) {
         for (var i in alreadyChosedItemId){
             if (alreadyChosedItemId[i] == itemId){
@@ -183,6 +238,8 @@
 
     }
 	function reloadSeft_list() {
+        var isConfirm = true;
+        var isChosed = true;
         for (var i = 0; i < alreadyChosedItemId.length;i++){
             $("[target='del']").remove();
             $.getJSON("/itemDetail/" + alreadyChosedItemId[i], function (result) {
@@ -215,10 +272,23 @@
                         }
                         $(this).parent().parent().remove();
                     });
+                    if(result.data.item.orderItemState != 1){
+                        isChosed = false;
+                        if(result.data.item.orderItemState != 2){
+                            isConfirm = false;
+                        }
+                    }
                     newseft_orderItemSample.show();
                     seft_orderItemSample.after(newseft_orderItemSample);
                 }
             });
+
+            }
+            if (isChosed){
+                $("#seft_list").css("border:solid 2px #FFA042");
+            }
+            if(isConfirm){
+                $("#seft_list").css("border:solid 2px #9AFF02");
             }
     }
 	</script>

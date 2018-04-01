@@ -18,8 +18,6 @@ public class AdminServiceImpl implements AdminService{
     @Autowired
     private ItemMapper itemMapper;
     @Autowired
-    private UserMapper userMapper;
-    @Autowired
     private AdminInformationMapper adminInformationMapper;
     public boolean banByUid(Integer uid) {
         UserExample userExample = new UserExample();
