@@ -125,6 +125,9 @@ body {
   border-radius: 50%;
 }
 		  </style>
+	<style>
+		.userphoto{width: 60px;height: 60px;overflow: hidden;}
+	</style>
 </head>
 <body>
 <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -153,6 +156,7 @@ body {
 				<th>收货地址</th>
 				<th>参考价格</th>
 				<th>介绍</th>
+				<th>审核状态</th>
 				<th>操作</th>
 			</tr>
 			</thead>
@@ -165,8 +169,9 @@ body {
 				<td id="itemShipAddress">收货地址</td>
 				<td id="itemRefPrice">参考价格</td>
 				<td id="itemDescription">介绍</td>
+				<td id="itemIsOn">审核状态</td>
 				<td align="center">
-					<button class="je-btn je-btn-mini je-f12">通过审核</button>
+					<button class="je-btn je-btn-mini je-f12" id="Audit_btn">通过审核</button>
 				</td>
 			</tr>
 			<input type="hidden" id="justforappend"/>
@@ -183,7 +188,7 @@ body {
     $(document).ready(function () {
         var sample = $("#itemSample");
         sample.hide();
-        $.getJSON("/possessions", function (result) {
+        $.getJSON("/getWaitingForAuditItems", function (result) {
             if(result.message == "succeed"){
                 $.each(result.data.items, function (i, field) {
                     var itemId = field.itemId;
@@ -191,27 +196,38 @@ body {
                     var itemShipAddress = field.shipAddress;
                     var itemDescription = field.description;
                     var itemrefprice = field.refPrice;
-                    var isOn = field.isOn;
+                    var isOn = field.ison;
                     var newItemSample = sample.clone();
-                    initItemSample(itemId, itemtitle, itemShipAddress, itemDescription, itemrefprice, newItemSample);
+                    initItemSample(itemId, itemtitle, itemShipAddress, itemDescription, itemrefprice,isOn, newItemSample);
                     newItemSample.show();
-                    newItemSample.click(function () {
-                        localStorage.setItem("chooseItemId",itemId);
-                        var index = parent.jeBox.frameIndex(window.name); //先得到当前iframe层的索引
-                        parent.jeBox.close(index);
-                    });
-                    $("#justforappend").before(newItemSample);//justforappend
+                    sample.before(newItemSample);//justforappend
                 });
             }
         });
-
+		
     });
-    function initItemSample(itemId, itemtitle, itemShipAddress, itemDescription, itemrefprice, newItemSample){
+    function initItemSample(itemId, itemtitle, itemShipAddress, itemDescription, itemrefprice,isOn ,newItemSample){
         newItemSample.find("#itemId").text(itemId);
         newItemSample.find("#itemtitle").text(itemtitle);
         newItemSample.find("#itemShipAddress").text(itemShipAddress);
-        newItemSample.find("#itemRefPrice").text(itemDescription);
-        newItemSample.find("#itemDescription").text(itemrefprice);
+        newItemSample.find("#itemRefPrice").text(itemrefprice);
+        if (isOn == 0){
+            newItemSample.find("#itemIsOn").text("未审核");
+		}else {
+            newItemSample.find("#itemIsOn").text("已审核");
+		}
+        newItemSample.find("#itemDescription").text(itemDescription);
+		newItemSample.find("#Audit_btn").click(function () {
+			$.getJSON("/AuditItem/"+itemId,function (result) {
+				if (result.message == "succeed"){
+                    window.location.href = "/managementsystem_admin_itemAudit.html";
+				}
+            });
+        });
+		newItemSample.click(function () {
+			localStorage.setItem("ItemDetailItemId",itemId);
+            window.location.href = "/itemdetail.html";
+        });
     }
 
 </script>

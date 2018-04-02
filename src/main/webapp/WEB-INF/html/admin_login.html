@@ -44,7 +44,7 @@
         $.post("/AdminLogin",mydata,function (json,status) {
             var obj = json;
             if(obj.message == "succeed"){
-                window.location.href = "/managementsystem_admin_itemAudit.html"
+                window.location.href = "/managementsystem_admin_itemAudit.html";
             }else if (obj.message == "failure"){
                 hiddenMessage.show(500);
             }

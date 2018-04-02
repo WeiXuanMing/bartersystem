@@ -159,30 +159,22 @@ body {
 					<th>昵称</th>
 					<th>电话</th>
 					<th>邮箱</th>
+					<th>账户状态</th>
 					<th>操作</th>
 				</tr>
 				</thead>
 				<tbody>
-				<tr>
-					<td>01</td>
+				<tr id="userSample">
+					<td id="user_userId">01</td>
 					<td align="center"><img src="../jeui/images/userphoto.jpg" class="userphoto" style="width: 80px;height: 80px"/></td>
-					<td>myname</td>
-					<td>haha</td>
-					<td>18826078811</td>
-					<td>124142311@qq.com</td>
+					<td id="user_localAccount">myname</td>
+					<td id="user_username">haha</td>
+					<td id="user_phone">18826078811</td>
+					<td id="user_email">124142311@qq.com</td>
+					<td id="user_isDel">账户状态</td>
 					<td align="center">
-						<button class="je-btn je-btn-mini je-bg-red je-f12">封禁</button>
-					</td>
-				</tr>
-				<tr>
-					<td>02</td>
-					<td align="center"><img src="../jeui/images/userphoto.jpg" class="userphoto" style="width: 80px;height: 80px"/></td>
-					<td>abc</td>
-					<td>nickname</td>
-					<td>18826071122</td>
-					<td>341321423@qq.com</td>
-					<td align="center">
-						<button class="je-btn je-btn-mini je-bg-red je-f12">封禁</button>
+						<button class="je-btn je-btn-mini je-bg-red je-f12" id="ban_btn">封禁</button>
+						<button class="je-btn je-btn-mini je-bg-green je-f12" id="unban_btn">解封</button>
 					</td>
 				</tr>
 				</tbody>
@@ -194,4 +186,57 @@ body {
 <!-- 包括所有已编译的插件 -->
 <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 </body>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var sample = $("#userSample");
+        sample.hide();
+        $.getJSON("/getWaitingForAuditItems", function (result) {
+            if(result.message == "succeed"){
+                $.each(result.data.users, function (i, field) {
+                    var uid = field.uid;
+                    var loginAccount = field.loginAccount;
+                    var username = field.username;
+                    var phone = field.phone;
+                    var email = field.email;
+                    var isdel = field.isdel;
+                    var newUserSample = sample.clone();
+                    initUserSample(uid, loginAccount, username, phone, email,isdel, newUserSample);
+                    newUserSample.show();
+                    sample.before(newUserSample);//justforappend
+                });
+            }
+        });
+
+    });
+    function initUserSample(uid, loginAccount, username, phone, email,isdel ,newUserSample){
+        newUserSample.find("#user_userId").text(itemId);
+        newUserSample.find("#user_localAccount").text(itemtitle);
+        newUserSample.find("#user_username").text(itemShipAddress);
+        newUserSample.find("#user_phone").text(itemrefprice);
+        newUserSample.find("#user_email").text(itemrefprice);
+        var ban_btn = newUserSample.find("#ban_btn");
+        ban_btn.hide();
+		var unban_btn = newUserSample.find("#unban_btn");
+		unban_btn.hide();
+        if (isdel == 0){
+            newUserSample.find("#user_isDel").text("正常");
+            ban_btn.show();
+        }else {
+            newUserSample.find("#user_isDel").text("被封禁");
+            unban_btn.show();
+        }
+        ban_btn.click(function () {
+            $.getJSON("/banAccount/"+uid,function (result) {
+                if (result.message == "succeed"){
+                    window.location.href = "/managementsystem_admin_itemAudit.html";
+                }
+            });
+        });
+        unban_btn.click(function () {
+            localStorage.setItem("ItemDetailItemId",itemId);
+            window.location.href = "/itemdetail.html";
+        });
+    }
+
+</script>
 </html>
