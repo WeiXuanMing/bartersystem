@@ -136,7 +136,7 @@ public class AdminController {
     * */
     @RequestMapping(value = "/AdminLogin", method = RequestMethod.POST, consumes = "application/json",produces="application/json")
     @ResponseBody
-    public Result adminLogin(@RequestBody Map<String, String> map, ModelMap model){
+    public Result adminLogin(@RequestBody Map<String, String> map, ModelMap model,HttpSession session){
         String adminAccout = map.get("loginAccount");
         String password = map.get("password");
         Result result = new Result(0,"failure",null);
@@ -149,5 +149,10 @@ public class AdminController {
         }else {
             return result;
         }
+    }
+
+    @GetMapping("/AdminLogin")
+    public String showAdminLogin(){
+        return "admin_login";
     }
 }

@@ -191,7 +191,7 @@
             $.getJSON("/confirmOrder/"+ownerOrderId, function (result) {
                 if (result.message=="succeed") {
                     alert("你已经确认订单，等待对方确定");
-                    window.location.href='/order.html';
+                    window.location.href='/OwnerOrder.html';
                 }
             });
         });

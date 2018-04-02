@@ -125,10 +125,10 @@
                 <em class="add">+</em> </div>
             </div>
             <div class="col-md-4">
-              <button type="button" class="btn btn-danger"><span class="glyphicon glyphicon-shopping-cart"></span> 加入意愿单</button>
+              <button type="button" class="btn btn-danger" id="addToShoppingCart_btn"><span class="glyphicon glyphicon-shopping-cart"></span> 加入意愿单</button>
             </div>
             <div class="col-md-4">
-              <button type="button" class="btn btn-danger"><span class="glyphicon glyphicon-hand-up"></span> 我要换</button>
+              <button type="button" class="btn btn-danger" id="exchange_btn"><span class="glyphicon glyphicon-hand-up"></span> 我要换</button>
             </div>
           </div>
         </div>
@@ -349,10 +349,62 @@
                 }
 			});
         }
+
+        $("#addToShoppingCart_btn").click(
+            ///addToShoppingTrolley/{itemId}
+			function () {
+                $.ajax({type : 'PUT',
+                    url : '/addToShoppingTrolley/'+localStorageItemId,
+                    success : function(data) {
+                        alert(data.message);
+                        if (data.message == "succeed"){
+                            window.open('/shoppingcart.html');
+						}
+                    },
+                    error : function() {
+                        alert('Err...');
+                    }
+                });
+            }
+		);
+        $("#exchange_btn").click(
+            function () {
+                localStorage.setItem("orderItemId",localStorageItemId);
+                window.location.href='/order.html'
+            }
+		);
     })
 
 </script>
-<script type="text/javascript">
-
+<script type="application/javascript">
+    var logined = $("#logined");//已登录显示的组件
+    logined.hide();
+    var loginandregister = $("#loginandregister");
+    var username_href = $("#username_href");
+    var username = "";
+    var phone = "";
+    var email = "";
+    var balance =　"";
+    function init(){
+        $.post("/getUI","",function (json,status) {
+            var obj = json;
+            if(obj.message == "isLogin"){
+                username = obj.data.username;
+                phone = obj.data.phone;
+                email = obj.data.email;
+                balance = obj.data.balance;
+                loginandregister.hide();
+                document.getElementById("username_href").innerHTML = "Hi,"+username+"!";
+                logined.show();
+            }else if (obj.message == "isNotLogin"){
+            }
+        },"json");
+        $("#searchButton").click(function () {
+            var searchCondition = $("#searchCondition").val();
+            alert(searchCondition);
+            localStorage.setItem("searchCondition",searchCondition);
+            window.location.href='/page_search.html';
+        });
+    }
 </script>
 </html>

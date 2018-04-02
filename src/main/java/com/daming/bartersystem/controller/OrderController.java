@@ -81,19 +81,20 @@ public class OrderController {
                     barterOrderItem.setUid2(uid);
                     barterOrderItem.setOrderItemState(0);
                     orderItemService.insert(barterOrderItem);
-                    BarterOrderItem originalBarterOrderItem = orderItemService.queryByUidUidItemId(uid1, uid, itemId);//将起始物品的记录取出来
-                    Integer originalBarterOrderItemId = originalBarterOrderItem.getOrderitemId();
+                   // BarterOrderItem originalBarterOrderItem = orderItemService.queryByUidUidItemId(uid1, uid, itemId);//将起始物品的记录取出来
+                    //Integer originalBarterOrderItemId = originalBarterOrderItem.getOrderitemId();
                     //创建barterOrder_orderItem联系
                     BarterOrder_OrderItem barterOrder_orderItem = new BarterOrder_OrderItem();
                     barterOrder_orderItem.setBarterOrderId(orderId);
-                    barterOrder_orderItem.setOrderitemId(originalBarterOrderItemId);
+                    barterOrder_orderItem.setOrderitemId(barterOrderItem.getOrderitemId());
                     barterOrder_orderItem.setAbandoned(0);
                     System.out.println("正在创建订单表和订单详细表的联系，"+barterOrder_orderItem);
                     barterOrder_orderItemService.addBarterOrder_OrderItem(barterOrder_orderItem);
-                    System.out.println("订单创建成功，详细信息"+originalBarterOrderItem);
+                    System.out.println("订单创建成功，详细信息"+barterOrderItem);
                     OrderResult orderResult = new OrderResult();
+                    orderResult.setBarterOrder(barterOrder);
                     List<BarterOrderItem> ownerItemList = new ArrayList<BarterOrderItem>();
-                    ownerItemList.add(originalBarterOrderItem);
+                    ownerItemList.add(barterOrderItem);
                     orderResult.setOwnerOrderList(ownerItemList);
                     orderResult.setBarterOrder(barterOrder);
                     result = new Result<OrderResult>(0,"订单创建成功",orderResult);

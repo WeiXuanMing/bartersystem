@@ -157,7 +157,7 @@
     localStorage.removeItem("chooseItemId");//保证自己显示的itemId是从iframe中选出来的。
     var orderItemId  = localStorage.getItem("orderItemId");//获取关于那个item的订单
     var testOrderId = 4;//测试数据
-    var orderId; //当前订单id。
+    var orderId = localStorage.getItem("orderOrderId"); //当前订单id。
     var receiver_address;
     var testReceiverAddress = "阳春帅气的东边二桥头";
 	$(document).ready(function(){
@@ -178,7 +178,7 @@
                                 isExist = true;
                             }
                         }
-                        if (isExist == false){
+                        if (isExist == false && chooseItemId!= null){
                             //添加新元素
                             alreadyChosedItemId.push(chooseItemId);
                             reloadSeft_list();

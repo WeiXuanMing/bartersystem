@@ -74,7 +74,7 @@ public class AdminServiceImpl implements AdminService{
         criteria.andLoginAccountEqualTo(account);
         criteria.andPasswordEqualTo(password);
         List<AdminInformation> adminInformations = adminInformationMapper.selectByExample(adminInformationExample);
-        if (adminInformations!=null){
+        if (adminInformations!=null && adminInformations.size()>0){
             return adminInformations.get(0);
         }
         return null;
