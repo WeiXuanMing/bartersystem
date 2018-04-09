@@ -137,7 +137,7 @@ body {
 		<div class="col-sm-3 col-md-2 sidebar">
 			<div class="row"> </div>
 			<ul class="nav nav-sidebar">
-				<li><a href="#">审核上架商品<span class="sr-only">(current)</span></a></li>
+				<li><a href="/managementsystem_admin_itemAudit.html">审核上架商品<span class="sr-only">(current)</span></a></li>
 				<li class="active"><a href="#">帐号管理</a></li>
 			</ul>
 		</div>
@@ -190,7 +190,7 @@ body {
     $(document).ready(function () {
         var sample = $("#userSample");
         sample.hide();
-        $.getJSON("/getWaitingForAuditItems", function (result) {
+        $.getJSON("/getAllUserInfo", function (result) {
             if(result.message == "succeed"){
                 $.each(result.data.users, function (i, field) {
                     var uid = field.uid;
@@ -209,11 +209,11 @@ body {
 
     });
     function initUserSample(uid, loginAccount, username, phone, email,isdel ,newUserSample){
-        newUserSample.find("#user_userId").text(itemId);
-        newUserSample.find("#user_localAccount").text(itemtitle);
-        newUserSample.find("#user_username").text(itemShipAddress);
-        newUserSample.find("#user_phone").text(itemrefprice);
-        newUserSample.find("#user_email").text(itemrefprice);
+        newUserSample.find("#user_userId").text(uid);
+        newUserSample.find("#user_localAccount").text(loginAccount);
+        newUserSample.find("#user_username").text(username);
+        newUserSample.find("#user_phone").text(phone);
+        newUserSample.find("#user_email").text(email);
         var ban_btn = newUserSample.find("#ban_btn");
         ban_btn.hide();
 		var unban_btn = newUserSample.find("#unban_btn");
@@ -228,13 +228,16 @@ body {
         ban_btn.click(function () {
             $.getJSON("/banAccount/"+uid,function (result) {
                 if (result.message == "succeed"){
-                    window.location.href = "/managementsystem_admin_itemAudit.html";
+                    window.location.href = "/managementsystem_admin_AccountManagement.html";
                 }
             });
         });
         unban_btn.click(function () {
-            localStorage.setItem("ItemDetailItemId",itemId);
-            window.location.href = "/itemdetail.html";
+            $.getJSON("/unBanAccount/"+uid,function (result) {
+                if (result.message == "succeed"){
+                    window.location.href = "/managementsystem_admin_AccountManagement.html";
+                }
+            });
         });
     }
 

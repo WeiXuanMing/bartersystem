@@ -19,7 +19,7 @@ public class ItemServiceImpl implements ItemService{
         ItemExample itemExample = new ItemExample();
         ItemExample.Criteria criteria = itemExample.createCriteria();
         criteria.andItemIdEqualTo(itemId);
-        List<Item> items = itemMapper.selectByExample(itemExample);
+        List<Item> items = itemMapper.selectByExampleWithBLOBs(itemExample);
         if (items.size()==1){
             return items.get(0);
         }
@@ -31,6 +31,7 @@ public class ItemServiceImpl implements ItemService{
         ItemExample itemExample = new ItemExample();
         ItemExample.Criteria criteria = itemExample.createCriteria();
         criteria.andTitleLike("%"+condition+"%");
+        criteria.andIsonEqualTo(1);
         List<Item> itemList = itemMapper.selectByExample(itemExample);
         return itemList;
     }

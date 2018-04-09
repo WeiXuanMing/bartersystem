@@ -27,8 +27,10 @@
 			 <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
 			 <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
 		  <![endif]-->
-
+<!--
 	<link rel="stylesheet" href="/jeui/css/jeui.css">
+	-->
+
 </head>
 <body>
 <nav class="navbar navbar-default" role="navigation">
@@ -55,14 +57,18 @@
 			</div>
 			<ul class="nav navbar-nav navbar-right">
 				<li class="dropdown">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+					<a href="/UserInformationManagement.html" class="dropdown-toggle" data-toggle="dropdown">
 						个人信息
 						<b class="caret"></b>
 					</a>
 
 					<ul class="dropdown-menu">
-						<li><a href="#">设置</a></li>
-						<li><a href="#">我的钱包</a></li>
+						<li><a href="/UserInformationManagement.html">设置</a></li>
+						<li><a href="/ItemUpshelfManagement.html">上架物品</a></li>
+						<li><a href="/AlreadyUpshelfItem.html">已上架物品</a></li>
+						<li><a href="/AlreadyDoneOrder.html">已完成订单</a></li>
+						<li><a href="/WaitingForAcceptOrder.html">待接受订单</a></li>
+						<li><a href="/UnreadyOrder.html">未完成订单</a></li>
 					</ul>
 				</li>
 				<li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span>  购物车</a></li>
@@ -70,6 +76,8 @@
 		</div>
 	</div>
 </nav>
+
+
 	<div class="container">
 		<div class="row">
 					<nav class="navbar navbar-default" role="navigation">
@@ -143,17 +151,19 @@
       <div class="container-fluid">
         <div>
           <ul class="nav navbar-nav ">
-            <li class="active"><a href="#">商品详情</a></li>
-            <li><a href="#">评论<font size="2" id="reviewNum">1000</font>条</a></li>
+            <li class="active" id="switch_description"><a href="#">商品详情</a></li>
+            <li id="switch_review"><a href="#">评论<font size="2" id="reviewNum">1000</font>条</a></li>
           </ul>
         </div>
       </div>
     </nav>
   </div>
   <!--此处是物品信息的描述-->
-  <div class="row">
-  	
+  <div class = "row">
+	<div id="item_descriptionarea">
+
 	</div>
+  </div>
   <!--此处是评论的div -->
   <div class="container" id ="user_review_container">
 	  <div class="row" id="review_table">
@@ -225,11 +235,25 @@
 		var reviewNem = $("#reviewNum"); //评论数量
 		var review_text = $("#review_context");//评论内容
 		var review_button = $("#review_button");//评论按钮
-
+		var item_descriptionarea = $("#item_descriptionarea");//介绍区域
+		var user_review_container = $("#user_review_container");//评论区域
+		user_review_container.hide();
 		var user_review=$("#user_review");//用户评论div
         user_review.hide();
 //		var review_username= $("#review_username");//评论用户名
 //		var review_content=$("#review_content");//评论内容
+        $("#switch_description").click(function () {
+            $(this).attr("class","active");
+            $("#switch_review").attr("class","");
+            item_descriptionarea.show();
+            user_review_container.hide();
+        });
+        $("#switch_review").click(function () {
+            $(this).attr("class","active");
+            $("#switch_description").attr("class","");
+            item_descriptionarea.hide();
+            user_review_container.show();
+        });
         var localStorageItemId = localStorage.getItem("ItemDetailItemId");
         if (localStorageItemId != null){
            // localStorage.removeItem("ItemDetailItemId");
@@ -238,12 +262,13 @@
 			        /*
 			        * {"code":0,"message":"succeed","data":{"succeed":true}}
 			        * */
-			        alert(review_text.val());
-			        var reviewdata =   '{'+
-                        '"itemId" : "' + localStorageItemId + '",'+
-                        '"reviewContent" : "'+ review_text.val()
-                        +'"}';
+
 			        review_button.click(function () {
+                        alert(review_text.val());
+                        var reviewdata =   '{'+
+                            '"itemId" : "' + localStorageItemId + '",'+
+                            '"reviewContent" : "'+ review_text.val()
+                            +'"}';
 			            alert(reviewdata);
                         $.ajaxSetup({
                             contentType : 'application/json'
@@ -290,6 +315,8 @@
 					itemId.text(result.data.item.itemId);
 					refPrice.text(result.data.item.refPrice);
 					stock.text(result.data.item.stock);
+					alert(result.data.item.description+"这是物品介绍");
+					item_descriptionarea.html(result.data.item.description);
 					/*
 					* {
 							"code": 0,
@@ -373,6 +400,7 @@
                 window.location.href='/order.html'
             }
 		);
+
     })
 
 </script>
