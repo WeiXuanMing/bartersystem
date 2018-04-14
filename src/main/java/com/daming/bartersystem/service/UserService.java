@@ -15,4 +15,5 @@ public interface UserService {
      User queryByUsername(String username);
 
      boolean CheckUUID(Integer uid,String uuid);
+
 }

@@ -49,10 +49,10 @@
         </javaClientGenerator>
 
 
-
-        <table tableName="barterorder_orderitem" domainObjectName="BarterOrder_OrderItem" />
+        <table tableName="user_icon" domainObjectName="user_icon" />
         <!-- 表名对应生成的实体 -->
         <!--
+        <table tableName="barterorder_orderitem" domainObjectName="BarterOrder_OrderItem" />
         <table tableName="barter_order" domainObjectName="BarterOrder" />
         <table tableName="barterorder_orderitem" domainObjectName="BarterOrder_OrderItem" />
         <table tableName="user_review" domainObjectName="UserReview" />

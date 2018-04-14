@@ -1,0 +1,155 @@
+/*自定义头像*/
+#avatar-popup{
+  display: block;
+  width: 500px;
+  height: 300px;
+  background-color: #fff;
+  position: relative;
+  margin: auto;
+  top:0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  border-radius: 5px;
+  box-shadow: 0 0 4px 2px #999999;
+  padding: 10px;
+}
+div#avatar-main{
+  width: 350px;
+  margin: 30px auto;
+}
+div#avatar-left{
+  width: 150px;
+  float: left;
+}
+div#avatar-left #btns{
+  position: relative;
+}
+div#avatar-left #btns input{
+  position: absolute;
+  width: 64px;
+  height: 20px;
+  left: 0;
+  z-index: 2;
+  opacity: 0;
+  cursor: pointer !important;
+}
+div#avatar-left #btns a{
+  position: absolute;
+  width: 64px;
+  height: 20px;
+  z-index: 0;
+  font-size: 14px;
+  color: #006ecc;
+	text-align: center;
+}
+div#avatar-left #btns a.up-link{
+  left: 0;
+}
+div#avatar-left #btns a.random-link{
+  right: 0;
+}
+div#avatar-right{
+  width: 150px;
+  float: right;
+  position: relative;
+}
+#preview-text,#btns{
+  height: 30px;
+
+}
+#con-up{
+  position: absolute;
+  top: 0;
+  right: 30px;
+  cursor: pointer;
+}
+#avatar-all{
+  width: 150px;
+  height: 150px;
+  margin: 10px auto;
+}
+#avatar-all{
+  position: relative;
+  overflow: hidden;
+}
+#preview-show{
+	width: 120px;
+  height: 120px;
+  margin: 10px auto;
+	border-radius: 8%;
+	overflow: hidden;
+}
+#avatar-all canvas{
+  width: 100%;
+}
+#mask{
+  position: absolute;
+  border: 1px solid #00B7EE;
+  width: 120px;
+  height: 120px;
+  top: 10px;
+  left: 10px;
+  resize: both;
+  cursor: pointer;
+}
+#mask-inner{
+  border-radius: 8%;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  box-shadow: 0 0 0 200px rgba(0,0,0,0.5);
+}
+.rect{
+  width: 6px;
+  height: 6px;
+  background-color: rgb(247, 242, 242);
+  position: absolute;
+  z-index: 3;
+
+}
+#l{
+  left: -3px;
+  top: 48%;
+  cursor: w-resize;
+}
+#r{
+  right: -3px;
+  top: 48%;
+  cursor: e-resize;
+}
+#t{
+  top: -3px;
+  left: 48%;
+  cursor: n-resize;
+}
+#b{
+  bottom: -3px;
+  left: 48%;
+  cursor: s-resize;
+}
+
+#lt{
+  left: -3px;
+  top: -3px;
+  cursor: nw-resize;
+}
+#lb{
+  left: -3px;
+  bottom: -3px;
+  cursor: sw-resize;
+}
+#rt{
+  right: -3px;
+  top: -3px;
+  cursor: ne-resize;
+}
+#rb{
+  right: -3px;
+  bottom: -3px;
+  cursor: se-resize;
+}

@@ -26,6 +26,8 @@
   <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
   <!-- 引入 Bootstrap -->
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="./avatar/css/avatar.css">
+  <script type="text/javascript" src='./avatar/js/avatar.js'>  </script>
 <style>
 		  /*
  * Base structure
@@ -163,6 +165,49 @@ body {
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
           <h1 class="page-header">个人信息</h1>
+          <div class="je-p20" id="iconUpdate">
+            <div id="avatar-popup">
+              <div class="popup-close" id="avatar-close">
+                <span data-toggle="close" data-target=".userreply"></span>
+              </div>
+              <div id="avatar-edit-top">
+                编辑头像
+              </div>
+              <div id="avatar-main">
+                <div id="avatar-left">
+                  <div id="btns">
+                    <a href="#" class="up-link">头像上传</a>
+                    <input type="file" id="avatar-src"/>
+                  </div>
+                  <div id="avatar-all">
+                    <div id="mask">
+                      <!-- <div class="rect" id="l"></div>
+                      <div class="rect" id="r"></div>
+                      <div class="rect" id="t"></div>
+                      <div class="rect" id="b"></div> -->
+                      <div class="rect" id="lt"></div>
+                      <div class="rect" id="lb"></div>
+                      <div class="rect" id="rt"></div>
+                      <div class="rect" id="rb"></div>
+                      <div id="mask-inner">
+
+                      </div>
+                    </div>
+                    <canvas></canvas>
+                  </div>
+                </div>
+                <div id="avatar-right">
+                  <div id="preview-text">
+                    预览
+                  </div>
+                  <div id="preview-show">
+                    <canvas></canvas>
+                  </div>
+                </div>
+                <div class="clear"></div>
+              </div>
+            </div>
+          </div>
           <div class="je-p20">
             <form class="je-form-item">
               <table class="je-table je-f14">
@@ -255,12 +300,35 @@ body {
           var newUsername = username_input.val();
           var newPhone = phone_input.val();
           var newEmail = email_input.val();
+          var canvas = document.getElementById("show");
+          var icondata = canvas.toDataURL();
           $.ajaxSetup({
               contentType : 'application/json'
           });
           var mydata = '{'+'"username":"'+newUsername+'",'+
                 '"phone":"'+newPhone+'",'+
                 '"email":"'+newEmail+'"}'
+          //上传头像
+          var iconJson={
+              "type":"icon",
+              "icon":icondata
+          };
+          $.ajax({
+              type : "post",
+              url : "/updateIcon",
+              data: JSON.stringify(iconJson),
+              contentType : "application/json;charset=utf-8",
+              dataType:"json",
+              success:function (result) {
+                  if(result.message == "succeed"){
+                      alert("头像更新成功");
+                      window.location.href='/UserInformationManagement.html';
+                  }
+              },
+              error:function (result) {
+
+              }
+          });
           alert(mydata);
           $.post("/updateUserData",mydata,function (json,status) {
               var obj = json;
@@ -269,6 +337,8 @@ body {
                 window.location.href='/UserInformationManagement.html';
               }
           },"json");
+
+
       });
       var oldPassword_input = $("#oldPassword_input");
       var newPassword_input = $("#newPassword_input");

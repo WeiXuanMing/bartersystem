@@ -219,6 +219,7 @@ body {
                       newOrderSample.find("#order_state").text("未完成");
                   }
                   newOrderSample.click(function () {
+                      localStorage.setItem("orderOrderId",orderId);
                       localStorage.setItem("orderItemId",itemId);
                       window.location.href='/order.html';
                   }); 

@@ -3,6 +3,8 @@ package com.daming.bartersystem.DTO;
 import java.math.BigDecimal;
 
 public class UserInformationResult {
+    private Integer uid;
+
     private String username;
 
     private String phone;
@@ -10,6 +12,14 @@ public class UserInformationResult {
     private String email;
 
     private BigDecimal balance;
+
+    public Integer getUid() {
+        return uid;
+    }
+
+    public void setUid(Integer uid) {
+        this.uid = uid;
+    }
 
     public String getUsername() {
         return username;
@@ -46,7 +56,8 @@ public class UserInformationResult {
     @Override
     public String toString() {
         return "UserInformationResult{" +
-                "username='" + username + '\'' +
+                "uid=" + uid +
+                ", username='" + username + '\'' +
                 ", phone='" + phone + '\'' +
                 ", email='" + email + '\'' +
                 ", balance=" + balance +

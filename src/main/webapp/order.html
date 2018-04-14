@@ -141,9 +141,47 @@
         <div class="col-md-2"></div>
         <div id="" class="col-md-5"></div>
     </div>
+    <div class="row">
+        <div id="" class="col-md-5"><div align="center" ><button id="invite_btn" class="je-btn je-bg-orange je-btn-big je-f18">邀请聊天</button></div></div>
+        <div class="col-md-2"></div>
+        <div id="" class="col-md-5"></div>
+    </div>
 </div>
 
 </body>
+<script type="application/javascript">
+    var logined = $("#logined");//已登录显示的组件
+    logined.hide();
+    var loginandregister = $("#loginandregister");
+    var username_href = $("#username_href");
+    var uid = "";
+    var username = "";
+    var phone = "";
+    var email = "";
+    var balance =　"";
+    function init(){
+        $.post("/getUI","",function (json,status) {
+            var obj = json;
+            if(obj.message == "isLogin"){
+                uid = obj.data.uid;
+                username = obj.data.username;
+                phone = obj.data.phone;
+                email = obj.data.email;
+                balance = obj.data.balance;
+                loginandregister.hide();
+                document.getElementById("username_href").innerHTML = "Hi,"+username+"!";
+                logined.show();
+            }else if (obj.message == "isNotLogin"){
+            }
+        },"json");
+        $("#searchButton").click(function () {
+            var searchCondition = $("#searchCondition").val();
+            alert(searchCondition);
+            localStorage.setItem("searchCondition",searchCondition);
+            window.location.href='/page_search.html';
+        });
+    }
+</script>
 <!--
 	需要从localStorage获取的数据有
  	orderItemId 代表获取关于那个item的订单
@@ -164,10 +202,11 @@
     var orderId = localStorage.getItem("orderOrderId"); //当前订单id。
     var receiver_address;
     var testReceiverAddress = "阳春帅气的东边二桥头";
+    var InviterNickName = username;
 	$(document).ready(function(){
 		$("#add_btn").click(function(){
                 jeBox.open({
-                title:"mBox mobile页",
+                title:"物品列表",
                 type:'iframe',
                 padding:"0",
                 boxSize:["450px","80%"],
@@ -229,6 +268,31 @@
 		$("#cancel_btn").click(function () {
             //取消按钮
         });
+        $("#invite_btn").click(function () {
+            var charRoomId = "";
+            $.ajax({
+                type : "get",
+                url : "/createChatRoom",
+                dataType:"json",
+                success:function (commResult) {
+                    //commResult = JSON.stringify(commResult);
+                    charRoomId = commResult.data;
+                    console.log("创建并获取聊天室房间号成功"+charRoomId);
+                    console.log("想websocket发送信息通知对方加入聊天室");
+                    var ChatMonitorSocketJson = {
+                        "InviterId":uid,
+                        "InviterNickName":username,
+                        "CharRoomId":charRoomId
+                    };
+                    ChatMonitorSocketJson = JSON.stringify(ChatMonitorSocketJson);
+                    ChatMonitorSocket.send(ChatMonitorSocketJson);
+                },
+                error:function (commResult) {
+                    console.log("创建并获取聊天室房间号失败~")
+                }
+            });
+
+        });
         initItemList();
 		});
 	function initItemList() {
@@ -236,6 +300,45 @@
 	    initSeftItemList();
         initOwnerItemList();
         
+    }
+    //创建监听邀请信息的websocket,var socket = new WebSocket("ws://${pageContext.request.getServerName()}:${pageContext.request.getServerPort()}${pageContext.request.contextPath}/websocket/"+"1001/"+userInfo.uid);
+    var ChatMonitorSocket = new WebSocket('ws://'+location.hostname+':'+location.port+'/ChatMonitorSocket/'+orderId);
+    ChatMonitorSocket.onmessage=function(ev){
+        var obj = eval('('+ev.data+')');
+        console.log(obj);
+        //获取到房间信息就将房间号设置在sessionStorage，然后跳转到chat.jsp页面
+        InviterNickName = obj.InviterNickName;
+        var ChatRoomId = obj.ChatRoomId;
+        sessionStorage.setItem("ChatRoomId",ChatRoomId);
+        if (uid == obj.InviterId){
+            window.open("/chat.jsp");
+        }else {
+            //询问层
+            jeBox.open({
+                cell: "jbx",
+                title: "邀请通知",
+                //boxSize:["400px","150px"],
+                content: InviterNickName + '邀请你加入聊天室',
+                maskLock: true,
+                btnAlign: "center",
+                button: [
+                    {
+                        name: '进入',
+                        callback: function (index) {
+                            jeBox.msg('进入聊天室', {icon: 2, time: 3});
+                            jeBox.close(index);
+                            window.open("/chat.jsp");
+                        }
+                    },
+                    {
+                        name: '取消',
+                        callback: function () {
+                            jeBox.msg('你拒绝了邀请', {icon: 1, time: 3, button: [{name: "确定"}, {name: "取消"}]});
+                        }
+                    }
+                ]
+            })
+        }
     }
     function initSeftItemList(){
         $("[target='del']").remove();
@@ -394,35 +497,5 @@
             }
     }
 	</script>
-<script type="application/javascript">
-    var logined = $("#logined");//已登录显示的组件
-    logined.hide();
-    var loginandregister = $("#loginandregister");
-    var username_href = $("#username_href");
-    var username = "";
-    var phone = "";
-    var email = "";
-    var balance =　"";
-    function init(){
-        $.post("/getUI","",function (json,status) {
-            var obj = json;
-            if(obj.message == "isLogin"){
-                username = obj.data.username;
-                phone = obj.data.phone;
-                email = obj.data.email;
-                balance = obj.data.balance;
-                loginandregister.hide();
-                document.getElementById("username_href").innerHTML = "Hi,"+username+"!";
-                logined.show();
-            }else if (obj.message == "isNotLogin"){
-            }
-        },"json");
-        $("#searchButton").click(function () {
-            var searchCondition = $("#searchCondition").val();
-            alert(searchCondition);
-            localStorage.setItem("searchCondition",searchCondition);
-            window.location.href='/page_search.html';
-        });
-    }
-</script>
+
 </html>

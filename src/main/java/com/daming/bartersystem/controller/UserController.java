@@ -49,6 +49,7 @@ public class UserController {
             return result;
         }
         if (user!=null){
+            userInformationResult.setUid(user.getUid());
             userInformationResult.setUsername(user.getUsername());
             userInformationResult.setPhone(user.getPhone());
             userInformationResult.setEmail(user.getEmail());
