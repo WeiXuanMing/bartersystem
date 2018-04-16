@@ -32,11 +32,87 @@
 				</ul>
 			<div class="">
 				<form class="navbar-form navbar-left" role="search">
-       			 <div class="form-group">
-            		<input type="text" class="form-control" placeholder="Search" id="searchCondition">
-       			 </div>
-        			<button type="button" class="btn btn-default" id="searchButton">搜索</button>
-   			 	</form>
+						 <div class="form-group" class="dropdown-toggle" data-toggle="dropdown">
+							<input type="text" class="form-control" placeholder="Search" id="searchCondition" autocomplete="off">
+						 </div>
+						<button type="button" class="btn btn-default" id="searchButton">搜索</button>
+						<ul class="dropdown-menu" style="position: absolute;margin-left: 235px;width: 200px" id="searchHistoryList">
+							<li><a>搜索历史</a></li>
+						</ul>
+				</form>
+				<script type="text/javascript">
+                    function sleep(numberMillis) {
+                        var now = new Date();
+                        var exitTime = now.getTime() + numberMillis;
+                        while (true) {
+                            now = new Date();
+                            if (now.getTime() > exitTime)
+                                return;
+                        }
+                    }
+					var searchHistoryData = localStorage.getItem("searchHistoryData");
+                    searchHistoryData=searchHistoryData?JSON.parse(searchHistoryData):[];
+                    localStorage.setItem("searchHistoryData",searchHistoryData);
+                    var searchHistoryList = $("#searchHistoryList");
+                    var searchCondition = $("#searchCondition");
+                    searchCondition.keyup(function () {
+                        // 获取输入的数据
+                        var txt = searchCondition.val();
+                        //初始化一个变量用来承载查找到的数据
+                        var html='';
+                        var conditionJson={
+                            "word":txt
+                        }
+
+                        $.ajax({
+                            type :"post",
+                            url:"/onSearchValueChange",
+                            data: JSON.stringify(conditionJson),
+                            contentType : "application/json;charset=utf-8",
+                            dataType:"json",
+                            success:function(commResult){
+                                var result = commResult.data;
+                                for (var i = 0;i<commResult.data.length;i++)
+                                {
+                                    html += ' <li><a>' + commResult.data[i] + '</a></li>';
+                                }
+                                console.log("commResult.data"+commResult.data[0]+"  "+commResult.data.length);
+                                console.log(html);
+                                for(var i=0;i<searchHistoryData.length;i++){
+                                    var reg=new RegExp(txt);  //只有用构造函数方式才能传递参数
+
+                                    var index= searchHistoryData[i].search(reg); //在本地数据中查找是否含有输入的内容
+
+                                    //            如果有，则将数据放到变量中
+                                    if(index!=-1){
+                                        html+=' <li><a>'+searchHistoryData[i]+'</a></li>';
+                                    }
+                                }
+                                console.log(html);
+                                searchHistoryList.html(html);
+                            },
+                            error:function(commResult){
+
+                            }
+
+                        });
+
+                    });
+                    searchCondition.click(function () {
+                        var html='';
+                        for(var i=0;i<searchHistoryData.length;i++){
+                            var index= searchHistoryData[i]; //在本地数据中查找是否含有输入的内容
+                            if(index!=null){
+                                html+=' <li><a>'+searchHistoryData[i]+'</a></li>';
+                            }
+                        }
+                        searchHistoryList.html(html);
+                    });
+                    searchHistoryList.click(function (e) {
+						var li = e.target;
+                        searchCondition.val(li.innerHTML);
+                    });
+				</script>
     		</div>
 			<ul class="nav navbar-nav navbar-right">
            			<li class="dropdown">
@@ -44,7 +120,6 @@
 							个人信息
 							<b class="caret"></b>
 						</a>
-					
 						<ul class="dropdown-menu">
 							<li><a href="/UserInformationManagement.html">设置</a></li>
 							<li><a href="/ItemUpshelfManagement.html">上架物品</a></li>
@@ -59,7 +134,6 @@
 			</div>
 			</div>
 		</nav>
-
 		<div class="container-fluid">
 		<!--
 			<div class="row">
@@ -148,8 +222,12 @@
             },"json");
             $("#searchButton").click(function () {
 				var searchCondition = $("#searchCondition").val();
-				alert(searchCondition);
 				localStorage.setItem("searchCondition",searchCondition);
+				//将搜索历史存进localstorage
+				if(searchHistoryData.indexOf(searchCondition) == -1){
+                    searchHistoryData.push(searchCondition);
+				}
+                localStorage.setItem('searchHistoryData',searchHistoryData);
                 window.location.href='/page_search.html';
             });
         }

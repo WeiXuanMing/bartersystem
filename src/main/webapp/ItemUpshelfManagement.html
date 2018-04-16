@@ -26,13 +26,12 @@
   <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
   <!-- 引入 Bootstrap -->
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-
   <style type="text/css">
     #preview,
     .img,
     img {
-      width: 200px;
-      height: 200px;
+      width: 320px;
+      height: 320px;
     }
 
     #preview {
@@ -168,7 +167,7 @@ body {
             <li><a href="/UserInformationManagement.html">个人信息<span class="sr-only">(current)</span></a></li>
             <li class="active"><a href="#">上架物品</a></li>
             <li><a href="/AlreadyUpshelfItem.html">已上架物品</a></li>
-            <<li><a href="/AlreadyDoneOrder.html">已完成订单</a></li>
+            <li><a href="/AlreadyDoneOrder.html">已完成订单</a></li>
             <li><a href="/WaitingForAcceptOrder.html">待接受订单</a></li>
             <li><a href="/UnreadyOrder.html">未完成订单</a></li>
           </ul>
@@ -176,22 +175,26 @@ body {
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
           <h1 class="page-header">物品上架</h1>
-          <div id="itemImage"></div>
-          <input type="file" onchange="preview(this)" />
-          <script type="text/javascript">
-              function preview(file) {
-                  var prevDiv = document.getElementById('preview');
-                  if (file.files && file.files[0]) {
-                      var reader = new FileReader();
-                      reader.onload = function(evt) {
-                          prevDiv.innerHTML = '<img src="' + evt.target.result + '" />';
-                      }
-                      reader.readAsDataURL(file.files[0]);
-                  } else {
-                      prevDiv.innerHTML = '<div class="img" style="filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale,src=\'' + file.value + '\'"></div>';
-                  }
-              }
-          </script>
+          <div id="itemImage">
+            <div id="preview"></div>
+            <input type="file" onchange="preview(this)" />
+            <script type="text/javascript">
+                var icondata;
+                function preview(file) {
+                    var prevDiv = document.getElementById('preview');
+                    if (file.files && file.files[0]) {
+                        var reader = new FileReader();
+                        reader.onload = function(evt) {
+                            prevDiv.innerHTML = '<img id="itemImage_Img"  src="' + evt.target.result + '"/>';
+                            icondata = evt.target.result;
+                        }
+                        reader.readAsDataURL(file.files[0]);
+                    } else {
+                        prevDiv.innerHTML = '<div class="img" style="filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=crop),src=\'' + file.value + '\'"></div>';
+                    }
+                }
+            </script>
+          </div>
           <div class="je-p20">
             <form class="je-form-item">
               <table class="je-table je-f14">
@@ -336,6 +339,8 @@ body {
               "description":description
           };
           itemJson = JSON.stringify(itemJson);
+          //上传物品基本信息和物品介绍
+          var itemId = "";
           $.ajax({
               type : "post",
               url : "http://localhost:8080/ItemUpShelf",
@@ -345,13 +350,43 @@ body {
               success:function (commResult) {
                   if(commResult.message=="succeed"){
                       alert("成功上传");
-                      window.location.href='/ItemUpshelfManagement.html';
+                      //window.location.href='/ItemUpshelfManagement.html';
+                      itemId = commResult.data.itemId;
+                      console.log("接受到的itemId是"+commResult.data.itemId);
+                      console.log("icondata中的base64编码是"+icondata);
+
+
+                          console.log("houmian接受到的itemId是" + itemId);
+                          console.log("获取到的icondata是" + icondata);
+                          var itemImageJson = {
+                              "itemId": itemId,
+                              "image": icondata
+                          }
+                          //上传物品封面
+                          $.ajax({
+                              type: "post",
+                              url: "/ItemImageUpload",
+                              data: JSON.stringify(itemImageJson),
+                              contentType: "application/json;charset=utf-8",
+                              dataType: "json",
+                              success: function (commResult) {
+                                  if (commResult.message == "succeed") {
+                                      alert("成功上传");
+                                      //window.location.href='/ItemUpshelfManagement.html';
+                                  }
+                              },
+                              error: function (commResult) {
+
+                              }
+                          });
                   }
               },
               error:function (commResult) {
 
               }
           });
+
+
       });
 
 

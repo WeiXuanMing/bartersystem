@@ -48,10 +48,10 @@
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
 
-
-        <table tableName="user_icon" domainObjectName="user_icon" />
+        <table tableName="item_image" domainObjectName="Item_Image" />
         <!-- 表名对应生成的实体 -->
         <!--
+        <table tableName="user_icon" domainObjectName="user_icon" />
         <table tableName="barterorder_orderitem" domainObjectName="BarterOrder_OrderItem" />
         <table tableName="barter_order" domainObjectName="BarterOrder" />
         <table tableName="barterorder_orderitem" domainObjectName="BarterOrder_OrderItem" />
